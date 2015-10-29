@@ -41,6 +41,11 @@ class Department
      */
     private $county;
 
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="department")
+     */
+    private $users;
+
 
     /**
      * Get id
@@ -100,4 +105,3 @@ class Department
         return $this->number;
     }
 }
-

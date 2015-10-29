@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
@@ -81,26 +81,41 @@ swiftmailer:
 
 # Fos User bundle configuration
 fos_user:
-    db_driver: orm 
+    db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\User
 
 # Fos Rest Bundle Configuration
 fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
     view:
         view_response_listener: force
-        force_redirects:
-          html: true
         formats:
-            jsonp: true
-            json: true
             xml: true
-            rss: false
+            json : true
         templating_formats:
             html: true
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
         mime_types:
             json: ['application/json', 'application/x-json']
             rss: 'application/rss+xml'
             jpg: 'image/jpeg'
             png: 'image/png'
         jsonp_handler: ~
+    routing_loader:
+        default_format: json
+
+
+# JMS Serializer Configuration
+jms_serializer:
+    metadata:
+        auto_detection: true
+        directories:
+            FOSUB:
+                namespace_prefix: "FOS\\UserBundle"
+                path: "%kernel.root_dir%/serializer/FOSUserBundle"

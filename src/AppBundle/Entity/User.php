@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * User
  *
  * @ORM\Table(name="fos_user")
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class User extends BaseUser
 {
@@ -19,8 +21,15 @@ class User extends BaseUser
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Expose
      */
     protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Department", inversedBy="users")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     */
+    private $department;
 
     /**
      * Get id
@@ -104,4 +113,3 @@ class User extends BaseUser
         return $this->email;
     }
 }
-

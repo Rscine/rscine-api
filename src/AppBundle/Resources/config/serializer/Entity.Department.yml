@@ -1,0 +1,9 @@
+AppBundle\Entity\Department:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        name:
+            expose: true
+        number:
+            expose: true

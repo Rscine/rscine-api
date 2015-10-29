@@ -1,0 +1,7 @@
+AppBundle\Entity\County:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        name:
+            expose: true
