@@ -23,7 +23,7 @@ class UserController extends FOSRestController
     public function getUsersAction()
     {
         $users = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findAll();
-        return array('users' => $users);
+        return $users;
     }
 
     /**
