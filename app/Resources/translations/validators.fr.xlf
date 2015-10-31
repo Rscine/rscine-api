@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>user.username.not_blank</source>
+                <target>Veuillez entrer un nom d'utilisateur</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>user.email.not_blank</source>
+                <target>Veuillez entrer une adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>user.email.not_valid</source>
+                <target>Cette adresse e-mail n'est pas valide</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>user.plain_password.not_blank</source>
+                <target>Veuillez entrer un mot de passe</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>user.plain_password.too_short</source>
+                <target>Votre mot de passe est trop court (8 caractères minimum)</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>user.plain_password.too_long</source>
+                <target>Votre mot de passe est trop long (50 caractères maximum)</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
