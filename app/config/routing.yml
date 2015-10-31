@@ -22,16 +22,6 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-# Routing d'api
-
-users:
-    type: rest
-    resource: AppBundle\Controller\Api\UserController
-
-counties:
-    type: rest
-    resource: AppBundle\Controller\Api\CountyController
-
-departments:
-    type: rest
-    resource: AppBundle\Controller\Api\DepartmentController
+api:
+    resource: "api.yml"
+    prefix: api/

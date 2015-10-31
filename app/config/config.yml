@@ -87,6 +87,7 @@ fos_user:
 
 # Fos Rest Bundle Configuration
 fos_rest:
+    disable_csrf_role: IS_AUTHENTICATED_ANONYMOUSLY
     param_fetcher_listener: true
     body_listener: true
     format_listener: true
@@ -119,12 +120,13 @@ jms_serializer:
             FOSUB:
                 namespace_prefix: "FOS\\UserBundle"
                 path: "%kernel.root_dir%/serializer/FOSUserBundle"
+
 # Nelmio Cors Configuration
 # used to allow cross domain calls
 nelmio_cors:
     paths:
-        '^/':
+        '^/api':
             allow_origin: ['*']
-            allow_headers: ['X-Custom-Auth']
-            allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+            allow_headers: ['*']
+            allow_methods: ['POST', 'PUT', 'PATCH', 'GET', 'DELETE', 'OPTIONS']
             max_age: 3600
