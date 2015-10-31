@@ -136,6 +136,21 @@ class UserController extends FOSRestController
     }
 
     /**
+     * Supprime l'utilisateur $user
+     * DELETE api/users/{slug}
+     * @ParamConverter("user", class="AppBundle:User")
+     *
+     * @param  [type] $user [description]
+     * @return [type]       [description]
+     */
+    public function deleteUserAction($user)
+    {
+        $this->getDoctrine()->getManager()->remove($user);
+        $this->getDoctrine()->getManager()->flush();
+        return null;
+    }
+
+    /**
      * Retourne le formulaire d'édition d'un utilisateur ()
      *
      * @param  User   $user [description]
