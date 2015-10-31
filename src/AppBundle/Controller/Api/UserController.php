@@ -34,12 +34,28 @@ class UserController extends FOSRestController
     }
 
     /**
-     * [postUsersAction description]
+     * Crée un utilisateur
+     * POST api/users
+     *
      * @return [type] [description]
      */
-    public function postUsersAction()
+    public function postUsersAction(Request $request)
     {
+        $user = $this->get('fos_user.user_manager')->createUser();
 
+        $editForm = $this->createEditForm($user);
+
+        $editForm->submit($request->request->get($editForm->getName()));
+
+        if ($editForm->isValid() && $editForm->isSubmitted()) {
+
+            $this->getDoctrine()->getManager()->persist($user);
+            $this->getDoctrine()->getManager()->flush();
+
+            return  $user;
+        }
+
+        return $editForm->getErrors();
     }
 
     /**
