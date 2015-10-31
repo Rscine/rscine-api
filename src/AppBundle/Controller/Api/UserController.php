@@ -41,9 +41,7 @@ class UserController extends FOSRestController
      */
     public function postUsersAction(Request $request)
     {
-
-        $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->createUser();
+        $user = $this->get('fos_user.user_manager')->createUser();
 
         $editForm = $this->createEditForm($user);
 
@@ -51,11 +49,10 @@ class UserController extends FOSRestController
 
         if ($editForm->isValid() && $editForm->isSubmitted()) {
 
-            $userManager->updateUser($user);
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
-            return  null;
+            return  $user;
         }
 
         return $editForm->getErrors();
@@ -86,13 +83,11 @@ class UserController extends FOSRestController
     public function patchUserAction(Request $request, User $user)
     {
         $editForm = $this->createEditForm($user);
-        $userManager = $this->get('fos_user.user_manager');
 
         $editForm->submit($request->request->get($editForm->getName()));
 
         if ($editForm->isValid() && $editForm->isSubmitted()) {
 
-            $userManager->updateUser($user);
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
@@ -113,13 +108,11 @@ class UserController extends FOSRestController
     public function putUserAction(Request $request, $user)
     {
         $editForm = $this->createEditForm($user);
-        $userManager = $this->get('fos_user.user_manager');
 
         $editForm->submit($request->request->get($editForm->getName()));
 
         if ($editForm->isValid() && $editForm->isSubmitted()) {
 
-            $userManager->updateUser($user);
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
