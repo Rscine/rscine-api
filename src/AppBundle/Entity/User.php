@@ -112,4 +112,28 @@ class User extends BaseUser
     {
         return $this->email;
     }
+
+    /**
+     * Set department
+     *
+     * @param \AppBundle\Entity\Department $department
+     *
+     * @return User
+     */
+    public function setDepartment(\AppBundle\Entity\Department $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \AppBundle\Entity\Department
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
 }

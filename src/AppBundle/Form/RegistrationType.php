@@ -14,6 +14,10 @@ class RegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder
+            ->add('department', 'entity', array(
+                'class' => 'AppBundle:Department'
+            ));
     }
 
     /**
