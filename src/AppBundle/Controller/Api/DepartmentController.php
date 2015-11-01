@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use AppBundle\Entity\Department;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class DepartmentController extends FOSRestController
 {
@@ -22,6 +24,19 @@ class DepartmentController extends FOSRestController
     {
         $departments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Department')->findAll();
         return $departments;
+    }
+
+    /**
+     * Récupère un départment
+     * GET api/departments/{slug}
+     * @Rest\View()
+     * @ParamConverter("department", class="AppBundle:Department")
+     *
+     * @return [type] [description]
+     */
+    public function getDepartmentAction(Department $department)
+    {
+        return $department;
     }
 
 }

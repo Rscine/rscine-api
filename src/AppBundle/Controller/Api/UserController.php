@@ -39,7 +39,7 @@ class UserController extends FOSRestController
 
 
     /**
-     * Récupère un ustilisateur suivant le slug
+     * Récupère un utilisateur
      * GET api/users/{slug}
      * @Rest\View()
      * @ParamConverter("user", class="AppBundle:User")
