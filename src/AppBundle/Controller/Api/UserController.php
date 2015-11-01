@@ -12,6 +12,7 @@ use AppBundle\Form\RegistrationType;
 use AppBundle\Form\EditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -70,10 +71,10 @@ class UserController extends FOSRestController
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
-            return  $user;
+            return new JsonResponse($this->get('serializer')->toArray($user), 200);
         }
 
-        throw new HttpException(400, $registrationForm->getErrors(true, false));
+        return new JsonResponse($this->get('serializer')->toArray($registrationForm->getErrors()), 400);
     }
 
     /**
@@ -95,10 +96,10 @@ class UserController extends FOSRestController
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
-            return  $user;
+            return new JsonResponse($this->get('serializer')->toArray($user), 200);
         }
 
-        throw new HttpException(400, $registrationForm->getErrors(true));
+        return new JsonResponse($this->get('serializer')->toArray($editForm->getErrors()), 400);
     }
 
     /**
@@ -120,10 +121,10 @@ class UserController extends FOSRestController
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
 
-            return  null;
+            return new JsonResponse($this->get('serializer')->toArray($user), 200);
         }
 
-        throw new HttpException(400, $registrationForm->getErrors(true));
+        return new JsonResponse($this->get('serializer')->toArray($editForm->getErrors()), 400);
     }
 
     /**
