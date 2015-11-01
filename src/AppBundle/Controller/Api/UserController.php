@@ -13,9 +13,11 @@ use AppBundle\Form\EditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Exception\ValidatorException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use FOS\RestBundle\Controller\FOSRestController;
 use JMS\Serializer\SerializerBuilder;
 use Doctrine\ORM\EntityNotFoundException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class UserController extends FOSRestController
 {
@@ -71,7 +73,7 @@ class UserController extends FOSRestController
             return  $user;
         }
 
-        return $registrationForm->getErrors();
+        throw new HttpException(400, $registrationForm->getErrors(true));
     }
 
     /**
@@ -96,7 +98,7 @@ class UserController extends FOSRestController
             return  $user;
         }
 
-        return $editForm->getErrors();
+        throw new HttpException(400, $registrationForm->getErrors(true));
     }
 
     /**
@@ -121,11 +123,11 @@ class UserController extends FOSRestController
             return  null;
         }
 
-        return $editForm->getErrors();
+        throw new HttpException(400, $registrationForm->getErrors(true));
     }
 
     /**
-     * Retourne les options possibles pour un utilisateur
+     * Retourne les options possibles pour tous les utilisateurs
      * OPTIONS api/users
      *
      * @return [type]       [description]
