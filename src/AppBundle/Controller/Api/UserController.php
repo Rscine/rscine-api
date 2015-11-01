@@ -73,7 +73,7 @@ class UserController extends FOSRestController
             return  $user;
         }
 
-        throw new HttpException(400, $registrationForm->getErrors(true));
+        throw new HttpException(400, $registrationForm->getErrors(true, false));
     }
 
     /**

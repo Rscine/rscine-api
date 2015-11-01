@@ -26,6 +26,14 @@
                 <source>user.plain_password.too_long</source>
                 <target>Votre mot de passe est trop long (50 caractères maximum)</target>
             </trans-unit>
+            <trans-unit id="7">
+                <source>user.email.already_in_use</source>
+                <target>Cet e-mail est déjà utilisé</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>user.username.already_in_use</source>
+                <target>Ce nom d'utilisateur est déjà utilisé</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
