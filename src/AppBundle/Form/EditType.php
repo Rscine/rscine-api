@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RegistrationType extends AbstractType
+class EditType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -22,7 +22,6 @@ class RegistrationType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'validation_groups' => array('registration'),
             'data_class' => 'AppBundle\Entity\User'
         ));
     }
@@ -40,6 +39,6 @@ class RegistrationType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_user_register';
+        return 'appbundle_user_edit';
     }
 }

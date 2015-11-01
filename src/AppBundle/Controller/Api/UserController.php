@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use AppBundle\Entity\User;
 use AppBundle\Form\RegistrationType;
+use AppBundle\Form\EditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Exception\ValidatorException;
@@ -33,30 +34,6 @@ class UserController extends FOSRestController
         return $users;
     }
 
-    /**
-     * Crée un utilisateur
-     * POST api/users
-     *
-     * @return [type] [description]
-     */
-    public function postUsersAction(Request $request)
-    {
-        $user = $this->get('fos_user.user_manager')->createUser();
-
-        $editForm = $this->createEditForm($user);
-
-        $editForm->submit($request->request->get($editForm->getName()));
-
-        if ($editForm->isValid() && $editForm->isSubmitted()) {
-
-            $this->getDoctrine()->getManager()->persist($user);
-            $this->getDoctrine()->getManager()->flush();
-
-            return  $user;
-        }
-
-        return $editForm->getErrors();
-    }
 
     /**
      * Récupère un ustilisateur suivant le slug
@@ -70,6 +47,31 @@ class UserController extends FOSRestController
     public function getUserAction(User $user)
     {
         return $user;
+    }
+
+    /**
+     * Crée un utilisateur
+     * POST api/users
+     *
+     * @return [type] [description]
+     */
+    public function postUsersAction(Request $request)
+    {
+        $user = new User();
+
+        $registrationForm = $this->createRegistrationForm($user);
+
+        $registrationForm->submit($request->request->get($registrationForm->getName()));
+
+        if ($registrationForm->isValid() && $registrationForm->isSubmitted()) {
+
+            $this->getDoctrine()->getManager()->persist($user);
+            $this->getDoctrine()->getManager()->flush();
+
+            return  $user;
+        }
+
+        return $registrationForm->getErrors();
     }
 
     /**
@@ -167,16 +169,29 @@ class UserController extends FOSRestController
     }
 
     /**
-     * Retourne le formulaire d'édition d'un utilisateur ()
+     * Retourne le formulaire d'édition d'un utilisateur
      *
      * @param  User   $user [description]
      * @return [type]       [description]
      */
     public function createEditForm(User $user)
     {
-        $editForm = $this->createForm(new RegistrationType(), $user);
+        $editForm = $this->createForm(new EditType(), $user);
 
         return $editForm;
     }
+
+    /**
+     * Retourne le formulaire d'inscritpion d'un utilisateur
+     * @param  User   $user [description]
+     * @return [type]       [description]
+     */
+    public function createRegistrationForm(User $user)
+    {
+        $registrationForm = $this->createForm(new RegistrationType(), $user);
+
+        return $registrationForm;
+    }
+
 
 }
