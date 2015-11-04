@@ -27,9 +27,17 @@ class User extends BaseUser
     /**
      * @ORM\ManyToOne(targetEntity="Department", inversedBy="users")
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
-     * @Serializer\Expose
      */
     private $department;
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("department_id")
+     */
+    public function getDepartmentCode()
+    {
+        return ($this->getDepartment()) ? $this->getDepartment()->getId() : null;
+    }
 
     /**
      * Get id
