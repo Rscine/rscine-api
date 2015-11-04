@@ -9,10 +9,10 @@ use AppBundle\Entity\User;
 class LoadUserData implements FixtureInterface {
 
     private $usernames = array(
-        'monzey',
-        'jeanbono',
-        'aligator',
-        'melanizetofrais'
+        'monzey' => 33,
+        'jeanbono' => 34,
+        'aligator' => 48,
+        'melanizetofrais' => 68
     );
 
     /**
@@ -21,12 +21,17 @@ class LoadUserData implements FixtureInterface {
     public function load(ObjectManager $manager)
     {
 
-        foreach ($this->usernames as $username) {
+        foreach ($this->usernames as $username => $departmentNumber) {
             $user = new User();
             $user->setUsername(ucfirst($username));
             $user->setPlainPassword($username);
             $user->setLogin($username);
             $user->setEmail($username.'@gmail.com');
+
+            $department = $manager->getRepository('AppBundle:Department')->findOneByNumber($departmentNumber);
+
+            if ($department)
+                $user->setDepartment($department);
 
             $manager->persist($user);
         }
