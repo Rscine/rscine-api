@@ -12,7 +12,7 @@ class LoadUserData implements FixtureInterface {
         'monzey' => 33,
         'jeanbono' => 34,
         'aligator' => 48,
-        'melanizetofrais' => 68
+        'melanizetofrais' => 64
     );
 
     /**
