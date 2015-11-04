@@ -21,13 +21,13 @@ class User extends BaseUser
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Serializer\Expose
      */
     protected $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Department", inversedBy="users")
      * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     * @Serializer\Expose
      */
     private $department;
 
