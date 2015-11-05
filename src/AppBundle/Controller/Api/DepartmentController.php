@@ -45,7 +45,6 @@ class DepartmentController extends FOSRestController
     /**
      * Crée un département
      * POST api/departments
-     * @Rest\View()
      * 
      * @param  Request $request [description]
      * @return [type]           [description]
@@ -96,7 +95,35 @@ class DepartmentController extends FOSRestController
         }
 
         return new JsonResponse($this->get('serializer')->toArray($editForm->getErrors()));
+    }
 
+    /**
+     * Retourne les options possibles pour tous les utilisateurs
+     * OPTIONS api/departments
+     *
+     * @return [type]       [description]
+     */
+    public function optionsDepartmentsAction()
+    {
+        $response = new Response();
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST');
+
+        return $response;
+    }
+
+    /**
+     * Retourne les options possibles pour un département
+     * OPTIONS api/departments
+     * @ParamConverter("department", class="AppBundle:Department")
+     *
+     * @return [type]       [description]
+     */
+    public function optionsDepartmentAction(Department $department)
+    {
+        $response = new Response();
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST');
+
+        return $response;
     }
 
     /**
