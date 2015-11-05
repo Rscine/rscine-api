@@ -10,3 +10,7 @@ counties:
 departments:
     type: rest
     resource: AppBundle\Controller\Api\DepartmentController
+
+customers:
+    type: rest
+    resource: AppBundle\Controller\Api\CustomerController
