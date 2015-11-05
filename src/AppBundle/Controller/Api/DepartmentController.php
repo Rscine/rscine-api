@@ -43,6 +43,33 @@ class DepartmentController extends FOSRestController
     }
 
     /**
+     * Crée un département
+     * POST api/departments
+     * @Rest\View()
+     * 
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function postDepartmentAction(Request $request)
+    {
+        $department = new Department();
+
+        $createForm = $this->createCreateForm($department);
+
+        $createForm->submit($request->get($createForm->getName()));
+
+        if ($createForm->isValid() && $createForm->isSubmitted()) {
+
+            $this->getDoctrine()->getManager()->persist($department);
+            $this->getDoctrine()->getManager()->flush();
+
+            return new JsonResponse($this->get('serializer')->toArray($department));
+        }
+
+        return new JsonResponse($this->get('serializer')->toArray($createForm->getErrors()), 400);
+    }
+
+    /**
      * Modifie un départment
      * PUT api/departments/{slug}
      * @Rest\View()
@@ -83,6 +110,19 @@ class DepartmentController extends FOSRestController
         $editForm = $this->createForm(new DepartmentType(), $department);
 
         return $editForm;
+    }
+
+    /**
+     * Retourne le formulaire de création d'un départment
+     * 
+     * @param  [type] $department [description]
+     * @return [type]             [description]
+     */
+    protected function createCreateForm($department)
+    {
+        $createForm = $this->createForm(new DepartmentType(), $department);
+
+        return $createForm;
     }
 
 }
