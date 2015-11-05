@@ -98,6 +98,21 @@ class DepartmentController extends FOSRestController
     }
 
     /**
+     * Supprime le département $department
+     * DELETE api/departments/{slug}
+     * 
+     * @param  Department $department [description]
+     * @return [type]                 [description]
+     */
+    public function deleteDepartmentAction(Department $department)
+    {
+        $this->getDoctrine()->getManager()->remove($department);
+        $this->getDoctrine()->getManager()->flush();
+
+        return new JsonResponse(array('Message' => 'Department deleted'), 200);
+    }
+
+    /**
      * Retourne les options possibles pour tous les utilisateurs
      * OPTIONS api/departments
      *
@@ -106,7 +121,7 @@ class DepartmentController extends FOSRestController
     public function optionsDepartmentsAction()
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST');
 
         return $response;
     }
@@ -121,7 +136,7 @@ class DepartmentController extends FOSRestController
     public function optionsDepartmentAction(Department $department)
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST');
 
         return $response;
     }
