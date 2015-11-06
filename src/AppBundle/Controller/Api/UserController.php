@@ -52,30 +52,30 @@ class UserController extends FOSRestController
         return $user;
     }
 
-    /**
-     * Crée un utilisateur
-     * POST api/users
-     *
-     * @return [type] [description]
-     */
-    public function postUsersAction(Request $request)
-    {
-        $user = new User();
+    // /**
+    //  * Crée un utilisateur
+    //  * POST api/users
+    //  *
+    //  * @return [type] [description]
+    //  */
+    // public function postUsersAction(Request $request)
+    // {
+    //     $user = new User();
 
-        $registrationForm = $this->createRegistrationForm($user);
+    //     $registrationForm = $this->createRegistrationForm($user);
 
-        $registrationForm->submit($request->request->get($registrationForm->getName()));
+    //     $registrationForm->submit($request->request->get($registrationForm->getName()));
 
-        if ($registrationForm->isValid() && $registrationForm->isSubmitted()) {
+    //     if ($registrationForm->isValid() && $registrationForm->isSubmitted()) {
 
-            $this->getDoctrine()->getManager()->persist($user);
-            $this->getDoctrine()->getManager()->flush();
+    //         $this->getDoctrine()->getManager()->persist($user);
+    //         $this->getDoctrine()->getManager()->flush();
 
-            return new JsonResponse($this->get('serializer')->toArray($user), 200);
-        }
+    //         return new JsonResponse($this->get('serializer')->toArray($user), 200);
+    //     }
 
-        return new JsonResponse($this->get('serializer')->toArray($registrationForm->getErrors()), 400);
-    }
+    //     return new JsonResponse($this->get('serializer')->toArray($registrationForm->getErrors()), 400);
+    // }
 
     /**
      * Modifie un utilisateur
@@ -143,7 +143,7 @@ class UserController extends FOSRestController
 
     /**
      * Retourne les options possibles pour un utilisateur
-     * OPTIONS api/users
+     * OPTIONS api/users/{slug}
      * @ParamConverter("user", class="AppBundle:User")
      *
      * @return [type]       [description]

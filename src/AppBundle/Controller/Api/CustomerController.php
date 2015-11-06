@@ -11,6 +11,8 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Customer;
+use AppBundle\Form\CustomerRegistrationType;
+use AppBundle\Form\CustomerProfileForm;
 
 class CustomerController extends FOSRestController
 {
@@ -125,4 +127,29 @@ class CustomerController extends FOSRestController
         return new JsonResponse(array('Message' => 'Customer deleted'), 200);
     }
 
+    /**
+     * Retourne le formulaire de création d'un utilisateur client
+     * 
+     * @param  Customer $customer [description]
+     * @return [type]             [description]
+     */
+    private function createCustomerRegistrationType(Customer $customer)
+    {
+        $customerRegistrationType = $this->createForm(new CustomerRegistrationType(), $customer);
+
+        return $customerRegistrationType;
+    }
+
+    /**
+     * Retourne le forumaire d'édition de profil d'un utilisateur client
+     * 
+     * @param  Customer $customer [description]
+     * @return [type]             [description]
+     */
+    private function createCustomerProfileForm(Customer $customer)
+    {
+        $customerProfileForm = $this->createForm(new CustomerProfileForm(), $customer);
+
+        return $customerProfileForm;
+    }
 }

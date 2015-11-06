@@ -5,15 +5,20 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 use JMS\Serializer\Annotation as Serializer;
+use AppBundle\Entity\Contractor;
+use AppBundle\Entity\Customer;
 
 /**
  * User
  *
  * @ORM\Table(name="fos_user")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discriminator", type="string")
+ * @ORM\DiscriminatorMap({"contractor" = "Contractor", "employee" = "Customer"})
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
     /**
      * @var integer
