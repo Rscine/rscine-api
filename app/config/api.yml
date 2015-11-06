@@ -14,3 +14,7 @@ departments:
 customers:
     type: rest
     resource: AppBundle\Controller\Api\CustomerController
+
+contractor:
+    type: rest
+    resource: AppBundle\Controller\Api\ContractorController

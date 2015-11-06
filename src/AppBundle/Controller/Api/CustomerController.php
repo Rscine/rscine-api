@@ -49,7 +49,7 @@ class CustomerController extends FOSRestController
     {
         $customer = new Customer();
 
-        $registrationForm = $this->createRegistrationForm($customer);
+        $registrationForm = $this->createCustomerRegistrationForm($customer);
 
         $registrationForm->submit($request->get($registrationForm->getName()));
 
@@ -72,7 +72,7 @@ class CustomerController extends FOSRestController
      */
     public function putCustomerAction(Request $request, Customer $customer)
     {
-        $profileForm = $this->createProfileForm($customer);
+        $profileForm = $this->createCustomerProfileForm($customer);
 
         $profileForm->submit($request->get($profileForm->getName()));
 
@@ -133,7 +133,7 @@ class CustomerController extends FOSRestController
      * @param  Customer $customer [description]
      * @return [type]             [description]
      */
-    private function createCustomerRegistrationType(Customer $customer)
+    private function createCustomerRegistrationForm(Customer $customer)
     {
         $customerRegistrationType = $this->createForm(new CustomerRegistrationType(), $customer);
 
