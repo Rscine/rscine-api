@@ -4,15 +4,15 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\User;
+use AppBundle\Entity\Customer;
 
-class LoadUserData implements FixtureInterface {
+class LoadCustomerData implements FixtureInterface {
 
     private $usernames = array(
-        'monzey' => 33,
-        'jeanbono' => 34,
-        'aligator' => 48,
-        'melanizetofrais' => 64
+        'eirika' => 33,
+        'ephraim' => 34,
+        'duessel' => 48,
+        'frantz' => 64
     );
 
     /**
@@ -22,7 +22,7 @@ class LoadUserData implements FixtureInterface {
     {
 
         foreach ($this->usernames as $username => $departmentNumber) {
-            $user = new User();
+            $user = new Customer();
             $user->setUsername(ucfirst($username));
             $user->setPlainPassword($username);
             $user->setLogin($username);
