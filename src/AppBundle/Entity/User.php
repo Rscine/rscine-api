@@ -14,7 +14,7 @@ use AppBundle\Entity\Customer;
  * @ORM\Table(name="fos_user")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discriminator", type="string")
- * @ORM\DiscriminatorMap({"contractor" = "Contractor", "employee" = "Customer"})
+ * @ORM\DiscriminatorMap({"contractor" = "Contractor", "customer" = "Customer"})
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
