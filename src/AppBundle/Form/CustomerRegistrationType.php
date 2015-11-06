@@ -5,8 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use AppBundle\Form\RegistrationType;
 
-class CustomerRegistrationType extends AbstractType
+class CustomerRegistrationType extends RegistrationType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,15 +28,7 @@ class CustomerRegistrationType extends AbstractType
             'data_class' => 'AppBundle\Entity\User'
         ));
     }
-
-    /**
-     * @return string
-     */
-    public function getParent()
-    {
-        return 'appbundle_user_register';
-    }
-
+    
     /**
      * @return string
      */
