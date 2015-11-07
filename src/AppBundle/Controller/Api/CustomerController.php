@@ -87,6 +87,29 @@ class CustomerController extends FOSRestController
         return new JsonResponse($this->get('serializer')->toArray($profileForm->getErrors()), 400);
     }
 
+     /**
+     * Modifie un utilisateur client
+     * PATCH api/customers/{slug}
+     * 
+     * @ParamConverter("customer", class="AppBundle:Customer")
+     */
+    public function patchCustomerAction(Request $request, Customer $customer)
+    {
+        $profileForm = $this->createCustomerProfileForm($customer);
+
+        $profileForm->submit($request->get($profileForm->getName()));
+
+        if ($profileForm->isValid() && $profileForm->isSubmitted()) {
+
+              $this->getDoctrine()->getManager()->persist($customer);
+              $this->getDoctrine()->getManager()->flsuh();
+
+              return $customer;
+        }
+
+        return new JsonResponse($this->get('serializer')->toArray($profileForm->getErrors()), 400);
+    }
+
     /**
      * Récupère les options possibles pour un utilisateur client
      * OPTIONS api/customers/{slug}
@@ -96,7 +119,7 @@ class CustomerController extends FOSRestController
     public function optionsCustomerAction(Customer $customer)
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST, PUT, DELETE');
 
         return $response;
     }
@@ -108,7 +131,7 @@ class CustomerController extends FOSRestController
     public function optionsCustomersAction()
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST, PUT, DELETE');
 
         return $response;
     }
