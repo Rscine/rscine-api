@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EditType extends AbstractType
+class ProfileType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -39,6 +39,6 @@ class EditType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_user_edit';
+        return 'appbundle_user_profile';
     }
 }
