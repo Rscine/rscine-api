@@ -15,6 +15,10 @@ customers:
     type: rest
     resource: AppBundle\Controller\Api\CustomerController
 
-contractor:
+contractors:
     type: rest
     resource: AppBundle\Controller\Api\ContractorController
+
+companies:
+    type: rest
+    resource: AppBundle\Controller\Api\CompanyController
