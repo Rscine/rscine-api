@@ -12,7 +12,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Customer;
 use AppBundle\Form\CustomerRegistrationType;
-use AppBundle\Form\CustomerProfileForm;
+use AppBundle\Form\CustomerProfileType;
 
 class CustomerController extends FOSRestController
 {
@@ -84,7 +84,7 @@ class CustomerController extends FOSRestController
               return $customer;
         }
 
-        return new JsonResponse($this->get('serializer')->toArray($profileForm->getErrors()));
+        return new JsonResponse($this->get('serializer')->toArray($profileForm->getErrors()), 400);
     }
 
     /**
@@ -148,7 +148,7 @@ class CustomerController extends FOSRestController
      */
     private function createCustomerProfileForm(Customer $customer)
     {
-        $customerProfileForm = $this->createForm(new CustomerProfileForm(), $customer);
+        $customerProfileForm = $this->createForm(new CustomerProfileType(), $customer);
 
         return $customerProfileForm;
     }

@@ -5,9 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use AppBundle\Form\RegistrationType;
+use AppBundle\Form\ProfileType;
 
-class ContractorRegistrationType extends RegistrationType
+class ContractorProfileType extends ProfileType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,7 +27,7 @@ class ContractorRegistrationType extends RegistrationType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'validation_groups' => array('registration'),
+            'validation_groups' => array('profile'),
             'data_class' => 'AppBundle\Entity\Contractor'
         ));
     }
@@ -37,6 +37,6 @@ class ContractorRegistrationType extends RegistrationType
      */
     public function getName()
     {
-        return 'appbundle_contractor_register';
+        return 'appbundle_contractor_profile';
     }
 }
