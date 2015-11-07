@@ -121,7 +121,7 @@ class DepartmentController extends FOSRestController
     public function optionsDepartmentsAction()
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST, PUT');
 
         return $response;
     }
@@ -136,7 +136,7 @@ class DepartmentController extends FOSRestController
     public function optionsDepartmentAction(Department $department)
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST, PUT');
 
         return $response;
     }
