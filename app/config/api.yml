@@ -22,3 +22,7 @@ contractors:
 companies:
     type: rest
     resource: AppBundle\Controller\Api\CompanyController
+
+offers:
+    type: rest
+    resource: AppBundle\Controller\Api\OfferController
