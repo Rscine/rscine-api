@@ -111,7 +111,7 @@ class UserController extends FOSRestController
     public function optionsUsersAction()
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, PUT, DELETE');
 
         return $response;
     }
@@ -126,7 +126,7 @@ class UserController extends FOSRestController
     public function optionsUserAction(User $user)
     {
         $response = new Response();
-        $response->headers->set('Allow', 'OPTIONS, GET, PATCH');
+        $response->headers->set('Allow', 'OPTIONS, GET, PATCH, PUT, DELETE');
 
         return $response;
     }
