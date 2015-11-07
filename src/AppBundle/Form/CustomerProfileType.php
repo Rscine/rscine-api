@@ -24,7 +24,7 @@ class CustomerProfileType extends ProfileType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'validation_groups' => array('registration'),
+            'validation_groups' => array('profile'),
             'data_class' => 'AppBundle\Entity\Customer'
         ));
     }

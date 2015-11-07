@@ -79,7 +79,7 @@ class CustomerController extends FOSRestController
         if ($profileForm->isValid() && $profileForm->isSubmitted()) {
 
               $this->getDoctrine()->getManager()->persist($customer);
-              $this->getDoctrine()->getManager()->flsuh();
+              $this->getDoctrine()->getManager()->flush();
 
               return $customer;
         }
