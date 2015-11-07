@@ -12,7 +12,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Contractor;
 use AppBundle\Form\ContractorRegistrationType;
-use AppBundle\Form\ContractorProfileForm;
+use AppBundle\Form\ContractorProfileType;
 
 class ContractorController extends FOSRestController
 {
@@ -79,7 +79,7 @@ class ContractorController extends FOSRestController
         if ($profileForm->isValid() && $profileForm->isSubmitted()) {
 
               $this->getDoctrine()->getManager()->persist($contractor);
-              $this->getDoctrine()->getManager()->flsuh();
+              $this->getDoctrine()->getManager()->flush();
 
               return $contractor;
         }
@@ -148,7 +148,7 @@ class ContractorController extends FOSRestController
      */
     private function createContractorProfileForm(Contractor $contractor)
     {
-        $contractorProfileForm = $this->createForm(new ContractorProfileForm(), $contractor);
+        $contractorProfileForm = $this->createForm(new ContractorProfileType(), $contractor);
 
         return $contractorProfileForm;
     }
