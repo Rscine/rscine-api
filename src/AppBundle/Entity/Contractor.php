@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 use JMS\Serializer\Annotation as Serializer;
 use AppBundle\Model\UserInterface;
+use AppBundle\Entity\Company;
 
 /**
  * Contractor
@@ -31,6 +32,17 @@ class Contractor extends User implements UserInterface
      */
     private $rate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="employees")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     * @var Company
+     */
+    private $company;
+
+    public function getCompanyId()
+    {
+        return ($this->getCompany()) ? $this->getCompany()->getId() : null;
+    }
 
     /**
      * Get id
@@ -65,5 +77,28 @@ class Contractor extends User implements UserInterface
     {
         return $this->rate;
     }
-}
 
+    /**
+     * Set company
+     *
+     * @param \AppBundle\Entity\Company $company
+     *
+     * @return Contractor
+     */
+    public function setCompany(\AppBundle\Entity\Company $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \AppBundle\Entity\Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+}

@@ -15,7 +15,10 @@ class ContractorRegistrationType extends RegistrationType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        
+        $builder
+            ->add('company', 'entity', array(
+                'class' => 'AppBundle:Company'
+            ));
     }
 
     /**
