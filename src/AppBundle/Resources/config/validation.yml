@@ -31,3 +31,15 @@ AppBundle\Entity\User:
                 minMessage: user.plain_password.too_short
                 maxMessage: user.plain_password.too_long
                 groups: [registration]
+
+AppBundle\Entity\Offer:
+    constraints: ~
+    properties:
+        name:
+            - NotBlank:
+                message: offer.name.not_blank
+                groups: [Default]
+        description:
+            - NotBlank:
+                message: offer.description.not_blank
+                groups: [Default]

@@ -34,6 +34,14 @@
                 <source>user.username.already_in_use</source>
                 <target>Ce nom d'utilisateur est déjà utilisé</target>
             </trans-unit>
+            <trans-unit id="9">
+                <source>offer.name.not_blank</source>
+                <target>Veuillez entrer un nom pour l'offre</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>offer.description.not_blank</source>
+                <target>Veuillez entrer une description pour l'offre</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
