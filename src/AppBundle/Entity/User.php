@@ -40,7 +40,7 @@ abstract class User extends BaseUser
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("department_id")
      */
-    public function getDepartmentCode()
+    public function getDepartmentId()
     {
         return ($this->getDepartment()) ? $this->getDepartment()->getId() : null;
     }

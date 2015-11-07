@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Department
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Department
 {
@@ -18,6 +20,7 @@ class Department
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Expose
      */
     private $id;
 
@@ -25,6 +28,7 @@ class Department
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Serializer\Expose
      */
     private $name;
 
@@ -32,6 +36,7 @@ class Department
      * @var integer
      *
      * @ORM\Column(name="number", type="integer")
+     * @Serializer\Expose
      */
     private $number;
 
@@ -46,6 +51,14 @@ class Department
      */
     private $users;
 
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("county_id")
+     */
+    public function getCountyId()
+    {
+        return ($this->getCounty()) ? $this->getCounty()->getId() : null;
+    }
 
     /**
      * Get id
