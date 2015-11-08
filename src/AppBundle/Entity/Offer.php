@@ -67,6 +67,24 @@ class Offer
     private $handler;
 
     /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("creator_id")
+     */
+    public function getCreatorId()
+    {
+        return ($this->getCreator()) ? $this->getCreator()->getId() : null;
+    }
+    
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("handler_id")
+     */
+    public function getHandlerId()
+    {
+        return ($this->getHandler()) ? $this->getHandler()->getId() : null;
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -123,5 +141,93 @@ class Offer
     {
         return $this->description;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->applicants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set creator
+     *
+     * @param \AppBundle\Entity\Customer $creator
+     *
+     * @return Offer
+     */
+    public function setCreator(\AppBundle\Entity\Customer $creator = null)
+    {
+        $this->creator = $creator;
+
+        return $this;
+    }
+
+    /**
+     * Get creator
+     *
+     * @return \AppBundle\Entity\Customer
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * Add applicant
+     *
+     * @param \AppBundle\Entity\Contractor $applicant
+     *
+     * @return Offer
+     */
+    public function addApplicant(\AppBundle\Entity\Contractor $applicant)
+    {
+        $this->applicants[] = $applicant;
+
+        return $this;
+    }
+
+    /**
+     * Remove applicant
+     *
+     * @param \AppBundle\Entity\Contractor $applicant
+     */
+    public function removeApplicant(\AppBundle\Entity\Contractor $applicant)
+    {
+        $this->applicants->removeElement($applicant);
+    }
+
+    /**
+     * Get applicants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getApplicants()
+    {
+        return $this->applicants;
+    }
+
+    /**
+     * Set handler
+     *
+     * @param \AppBundle\Entity\Contractor $handler
+     *
+     * @return Offer
+     */
+    public function setHandler(\AppBundle\Entity\Contractor $handler = null)
+    {
+        $this->handler = $handler;
+
+        return $this;
+    }
+
+    /**
+     * Get handler
+     *
+     * @return \AppBundle\Entity\Contractor
+     */
+    public function getHandler()
+    {
+        return $this->handler;
+    }
+}
