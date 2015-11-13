@@ -5,8 +5,9 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Contractor;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadContractorData implements FixtureInterface {
+class LoadContractorData implements FixtureInterface, OrderedFixtureInterface {
 
     private $usernames = array(
         'cormag' => 33,
@@ -37,6 +38,11 @@ class LoadContractorData implements FixtureInterface {
         }
 
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 1;
     }
 
 }

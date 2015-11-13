@@ -5,9 +5,9 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\County;
-use AppBundle\AppBundle;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadCountyData implements FixtureInterface {
+class LoadCountyData implements FixtureInterface, OrderedFixtureInterface {
 
     private $countyNames = array(
         'Languedoc-Roussillon',
@@ -29,6 +29,11 @@ class LoadCountyData implements FixtureInterface {
         }
 
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 4;
     }
 
 }

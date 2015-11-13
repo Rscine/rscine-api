@@ -5,8 +5,9 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Customer;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadCustomerData implements FixtureInterface {
+class LoadCustomerData implements FixtureInterface, OrderedFixtureInterface {
 
     private $usernames = array(
         'eirika' => 33,
@@ -37,6 +38,11 @@ class LoadCustomerData implements FixtureInterface {
         }
 
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 2;
     }
 
 }

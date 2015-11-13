@@ -5,9 +5,9 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Department;
-use AppBundle\AppBundle;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadDepartmentData implements FixtureInterface {
+class LoadDepartmentData implements FixtureInterface, OrderedFixtureInterface {
 
     private $departmentNames = array(
         'Hérault' => 34,
@@ -30,6 +30,11 @@ class LoadDepartmentData implements FixtureInterface {
         }
 
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 3;
     }
 
 }
