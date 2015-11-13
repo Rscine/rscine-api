@@ -41,6 +41,10 @@ class Contractor extends User implements UserInterface
      */
     private $company;
 
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("company_id")
+     */
     public function getCompanyId()
     {
         return ($this->getCompany()) ? $this->getCompany()->getId() : null;
