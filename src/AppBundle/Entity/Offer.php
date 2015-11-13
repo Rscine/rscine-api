@@ -53,7 +53,11 @@ class Offer
      * Candidats à la demande
      * @var Array<Contractor>
      *
-     * @ORM\OneToMany(targetEntity="Contractor", mappedBy="offersAppliedTo")
+     * @ORM\ManyToMany(targetEntity="Contractor", inversedBy="offersAppliedTo", cascade={"persist"})
+     * @ORM\JoinTable(name="offers_applications",
+     *      joinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="applicant_id", referencedColumnName="id")}
+     *      )
      */
     private $applicants;
 
@@ -74,7 +78,7 @@ class Offer
     {
         return ($this->getCreator()) ? $this->getCreator()->getId() : null;
     }
-    
+
     /**
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("handler_id")
@@ -82,6 +86,19 @@ class Offer
     public function getHandlerId()
     {
         return ($this->getHandler()) ? $this->getHandler()->getId() : null;
+    }
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("applicants")
+     */
+    public function getApplicantsIds()
+    {
+        $ids = array();
+        foreach ($this->getApplicants() as $applicant) {
+             $ids[] = $applicant->getId();
+         } 
+         return $ids;
     }
 
     /**
@@ -183,6 +200,7 @@ class Offer
     public function addApplicant(\AppBundle\Entity\Contractor $applicant)
     {
         $this->applicants[] = $applicant;
+        $applicant->addOfferAppliedTo($this);
 
         return $this;
     }
@@ -195,6 +213,7 @@ class Offer
     public function removeApplicant(\AppBundle\Entity\Contractor $applicant)
     {
         $this->applicants->removeElement($applicant);
+        $applicant->removeOfferAppliedTo($this);
     }
 
     /**

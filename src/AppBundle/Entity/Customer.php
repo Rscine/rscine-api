@@ -33,4 +33,3 @@ class Customer extends User implements UserInterface
         return $this->id;
     }
 }
-
