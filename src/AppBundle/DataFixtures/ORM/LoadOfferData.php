@@ -12,9 +12,9 @@ class LoadOfferData implements FixtureInterface, OrderedFixtureInterface{
 
     private $offers = array(
         'Take back Neimi' => 'You need to take back Neimi so that she can be with us all along from now on',
-        'Join Ephraim' => 'Join Ephraim for his battle against the Lord of Verdaint',
+        'Join Ephraim' => 'Join Ephraim for his battle against the Lord of Grado',
         'Kill Cormag' => 'Chase down and delete Cormag, the vilainous wyvern knight',
-        'Save Eirika' => 'Eirika is being hunt by some of the king\'s sbires. Save her at any cost'
+        'Save Eirika' => 'Eirika is being hunt by some of the Rausten\'s sbires. Save her at any cost'
     );
 
     /**
@@ -54,7 +54,7 @@ class LoadOfferData implements FixtureInterface, OrderedFixtureInterface{
 
     public function getOrder()
     {
-        return 5;
+        return 6;
     }
 
 }
