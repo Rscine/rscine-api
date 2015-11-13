@@ -1,0 +1,33 @@
+AppBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [username]
+            message: user.username.already_in_use
+            groups: [profile, registration]
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            message: user.email.already_in_use
+            groups: [profile, registration]
+    properties:
+        username:
+            - NotBlank:
+                message: user.username.not_blank
+                groups: [profile, registration]
+        email:
+            - NotBlank:
+                message: user.email.not_blank
+                groups: [profile, registration]
+            - Email:
+                message: user.email.not_valid
+                checkMX: true
+                groups: [profile, registration]
+        plainPassword:
+            - NotBlank:
+                message: user.plain_password.not_blank
+                groups: [registration]
+            - Length:
+                min: 8
+                max: 50
+                minMessage: user.plain_password.too_short
+                maxMessage: user.plain_password.too_long
+                groups: [registration]
