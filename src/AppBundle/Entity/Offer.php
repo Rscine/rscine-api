@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Offer
@@ -69,6 +70,26 @@ class Offer
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     * @Serializer\Expose
+     * @Serializer\Type("DateTime<'Y-m-d'>")
+     */
+    private $created;
+
+    /**
+     * @var datetime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     * @Serializer\Expose
+     * @Serializer\Type("DateTime<'Y-m-d'>")
+     */
+    private $updated;
 
     /**
      * @Serializer\VirtualProperty
