@@ -10,6 +10,7 @@ use AppBundle\Model\UserInterface;
 /**
  * Customer
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Customer extends User implements UserInterface
 {

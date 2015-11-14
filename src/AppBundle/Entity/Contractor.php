@@ -15,6 +15,7 @@ use AppBundle\Entity\Offer;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Contractor extends User implements UserInterface
 {
@@ -59,7 +60,6 @@ class Contractor extends User implements UserInterface
     private $offersAppliedTo;
 
     /**
-     * 
      * @ORM\OneToMany(targetEntity="Offer", mappedBy="handler")
      */
     private $offersHandled;
