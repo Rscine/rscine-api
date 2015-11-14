@@ -24,7 +24,7 @@ class LoadCompanyData implements FixtureInterface, OrderedFixtureInterface {
 
         foreach ($this->companies as $companyName) {
             $company = new Company();
-            $company->setSiret(uniqid());
+            $company->setSiret(md5(uniqid(rand(), true)));
             $company->setName($companyName);
 
             $manager->persist($company);
