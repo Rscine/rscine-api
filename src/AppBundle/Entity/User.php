@@ -37,7 +37,7 @@ abstract class User extends BaseUser
     private $department;
 
     /**
-     * @ORM\OneToOne(targetEntity="ContactInformations")
+     * @ORM\OneToOne(targetEntity="ContactInformations", cascade={"persist"})
      * @ORM\JoinColumn(name="contact_informations_id", referencedColumnName="id")
      */
     private $contactInformations;
@@ -49,6 +49,25 @@ abstract class User extends BaseUser
     public function getDepartmentId()
     {
         return ($this->getDepartment()) ? $this->getDepartment()->getId() : null;
+    }
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("contact_emails")
+     */
+    public function getContactEmails()
+    {
+        $contactEmails = array();
+
+        if ($this->getContactInformations()) {
+
+            foreach ($this->getContactInformations()->getEmails() as $email) {
+                $contactEmails[] = $email->getEmail();
+            }
+
+        }
+
+        return $contactEmails;
     }
 
     /**
@@ -155,5 +174,29 @@ abstract class User extends BaseUser
     public function getDepartment()
     {
         return $this->department;
+    }
+
+    /**
+     * Set contactInformations
+     *
+     * @param \AppBundle\Entity\ContactInformations $contactInformations
+     *
+     * @return User
+     */
+    public function setContactInformations(\AppBundle\Entity\ContactInformations $contactInformations = null)
+    {
+        $this->contactInformations = $contactInformations;
+
+        return $this;
+    }
+
+    /**
+     * Get contactInformations
+     *
+     * @return \AppBundle\Entity\ContactInformations
+     */
+    public function getContactInformations()
+    {
+        return $this->contactInformations;
     }
 }

@@ -3,17 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as Serializer;
-use AppBundle\Entity\ContactInformations;
 
 /**
- * Phone
+ * Email
  *
  * @ORM\Table()
  * @ORM\Entity
- * @Serializer\ExclusionPolicy("ALL")
  */
-class Phone
+class Email
 {
     /**
      * @var integer
@@ -27,13 +24,11 @@ class Phone
     /**
      * @var string
      *
-     * @ORM\Column(name="number", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255)
      */
-    private $number;
+    private $email;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
@@ -43,6 +38,7 @@ class Phone
      * @ORM\JoinColumn(name="contact_information_id", referencedColumnName="id")
      */
     private $contactInformations;
+
 
     /**
      * Get id
@@ -55,35 +51,35 @@ class Phone
     }
 
     /**
-     * Set number
+     * Set email
      *
-     * @param string $number
+     * @param string $email
      *
-     * @return Phone
+     * @return Email
      */
-    public function setNumber($number)
+    public function setEmail($email)
     {
-        $this->number = $number;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get number
+     * Get email
      *
      * @return string
      */
-    public function getNumber()
+    public function getEmail()
     {
-        return $this->number;
+        return $this->email;
     }
 
     /**
      * Set type
      *
-     * @param string $type
+     * @param \stdClass $type
      *
-     * @return Phone
+     * @return Email
      */
     public function setType($type)
     {
@@ -95,7 +91,7 @@ class Phone
     /**
      * Get type
      *
-     * @return string
+     * @return \stdClass
      */
     public function getType()
     {
@@ -107,7 +103,7 @@ class Phone
      *
      * @param \AppBundle\Entity\ContactInformations $contactInformations
      *
-     * @return Phone
+     * @return Email
      */
     public function setContactInformations(\AppBundle\Entity\ContactInformations $contactInformations = null)
     {
