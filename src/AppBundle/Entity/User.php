@@ -70,6 +70,26 @@ abstract class User extends BaseUser
         return $contactEmails;
     }
 
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("contact_phones")
+     */
+    public function getContactPhones()
+    {
+        $contactPhones = array();
+
+        if ($this->getContactInformations()) {
+
+            foreach ($this->getContactInformations()->getPhones() as $phone) {
+                $contactPhones[] = $phone->getNumber();
+            }
+
+        }
+
+        return $contactPhones;
+    }
+
     /**
      * Get id
      *
