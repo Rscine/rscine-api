@@ -37,6 +37,12 @@ abstract class User extends BaseUser
     private $department;
 
     /**
+     * @ORM\OneToOne(targetEntity="ContactInformations")
+     * @ORM\JoinColumn(name="contact_informations_id", referencedColumnName="id")
+     */
+    private $contactInformations;
+
+    /**
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("department_id")
      */
