@@ -4,13 +4,13 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Contractor;
+use AppBundle\Entity\User;
 use AppBundle\Entity\ContactInformations;
 use AppBundle\Entity\Phone;
 use AppBundle\Entity\Email;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadContractorData implements FixtureInterface, OrderedFixtureInterface {
+class LoadUserData implements FixtureInterface, OrderedFixtureInterface {
 
     private $users = array(
         array(
@@ -26,12 +26,32 @@ class LoadContractorData implements FixtureInterface, OrderedFixtureInterface {
         array(
             'name' => 'colm',
             'department' => 48,
-            'company' => 'Frelia'
+            'company' => 'Rausten'
         ),
         array(
             'name' => 'gerrik',
             'department' => 64,
+            'company' => 'Frelia'
+        ),
+        array(
+            'name' => 'eirika',
+            'department' => 33,
             'company' => 'Renais'
+        ),
+        array(
+            'name' => 'ephraim',
+            'department' => 34,
+            'company' => 'Renais'
+        ),
+        array(
+            'name' => 'duessel',
+            'department' => 48,
+            'company' => 'Frelia'
+        ),
+        array(
+            'name' => 'frantz',
+            'department' => 64,
+            'company' => 'Frelia'
         )
     );
 
@@ -42,7 +62,7 @@ class LoadContractorData implements FixtureInterface, OrderedFixtureInterface {
     {
 
         foreach ($this->users as $userItem) {
-            $user = new Contractor();
+            $user = new User();
             $user->setUsername(ucfirst($userItem['name']));
             $user->setPlainPassword($userItem['name']);
             $user->setLogin($userItem['name']);

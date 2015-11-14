@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Gedmo\Mapping\Annotation as Gedmo;
+use AppBundle\Model\ContractorInterface;
+use AppBundle\Model\CustomerInterface;
 
 /**
  * Offer
@@ -43,18 +45,18 @@ class Offer
 
     /**
      * Créateur de la demande (utilisateur client)
-     * @var Customer
+     * @var AppBundle\Model\CustomerInterface
      *
-     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="offers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Model\CustomerInterface", inversedBy="offers")
      * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
      */
     private $creator;
 
     /**
      * Candidats à la demande
-     * @var Array<Contractor>
+     * @var Array<AppBundle\Model\ContractorInterface>
      *
-     * @ORM\ManyToMany(targetEntity="Contractor", inversedBy="offersAppliedTo", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Model\ContractorInterface", inversedBy="offersAppliedTo", cascade={"persist"})
      * @ORM\JoinTable(name="offers_applications",
      *      joinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="applicant_id", referencedColumnName="id")}
@@ -64,9 +66,9 @@ class Offer
 
     /**
      * Maître d'oeuvre
-     * @var Contractor
+     * @var AppBundle\Model\ContractorInterface
      *
-     * @ORM\ManyToOne(targetEntity="Contractor", inversedBy="offersHandled")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Model\ContractorInterface", inversedBy="offersHandled")
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;
@@ -190,11 +192,11 @@ class Offer
     /**
      * Set creator
      *
-     * @param \AppBundle\Entity\Customer $creator
+     * @param \AppBundle\Entity\AppBundle\Model\CustomerInterface $creator
      *
      * @return Offer
      */
-    public function setCreator(\AppBundle\Entity\Customer $creator = null)
+    public function setCreator(CustomerInterface $creator = null)
     {
         $this->creator = $creator;
 
@@ -204,7 +206,7 @@ class Offer
     /**
      * Get creator
      *
-     * @return \AppBundle\Entity\Customer
+     * @return \AppBundle\Entity\AppBundle\Model\CustomerInterface
      */
     public function getCreator()
     {
@@ -214,11 +216,11 @@ class Offer
     /**
      * Add applicant
      *
-     * @param \AppBundle\Entity\Contractor $applicant
+     * @param AppBundle\Model\ContractorInterface $applicant
      *
      * @return Offer
      */
-    public function addApplicant(\AppBundle\Entity\Contractor $applicant)
+    public function addApplicant(ContractorInterface $applicant)
     {
         $this->applicants[] = $applicant;
         $applicant->addOfferAppliedTo($this);
@@ -229,9 +231,9 @@ class Offer
     /**
      * Remove applicant
      *
-     * @param \AppBundle\Entity\Contractor $applicant
+     * @param \AppBundle\Entity\AppBundle\Model\ContractorInterface $applicant
      */
-    public function removeApplicant(\AppBundle\Entity\Contractor $applicant)
+    public function removeApplicant(ContractorInterface $applicant)
     {
         $this->applicants->removeElement($applicant);
         $applicant->removeOfferAppliedTo($this);
@@ -250,11 +252,11 @@ class Offer
     /**
      * Set handler
      *
-     * @param \AppBundle\Entity\Contractor $handler
+     * @param AppBundle\Model\ContractorInterface $handler
      *
      * @return Offer
      */
-    public function setHandler(\AppBundle\Entity\Contractor $handler = null)
+    public function setHandler(ContractorInterface $handler = null)
     {
         $this->handler = $handler;
 
@@ -264,7 +266,7 @@ class Offer
     /**
      * Get handler
      *
-     * @return \AppBundle\Entity\Contractor
+     * @return AppBundle\Model\ContractorInterface
      */
     public function getHandler()
     {

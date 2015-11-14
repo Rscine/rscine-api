@@ -28,7 +28,7 @@ class ContractorRegistrationType extends RegistrationType
     {
         $resolver->setDefaults(array(
             'validation_groups' => array('registration'),
-            'data_class' => 'AppBundle\Entity\Contractor'
+            'data_class' => 'AppBundle\Entity\User'
         ));
     }
 

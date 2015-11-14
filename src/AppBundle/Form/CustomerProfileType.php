@@ -25,7 +25,7 @@ class CustomerProfileType extends ProfileType
     {
         $resolver->setDefaults(array(
             'validation_groups' => array('profile'),
-            'data_class' => 'AppBundle\Entity\Customer'
+            'data_class' => 'AppBundle\Entity\User'
         ));
     }
     

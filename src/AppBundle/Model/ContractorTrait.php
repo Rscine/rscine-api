@@ -1,37 +1,18 @@
-<?php
+<?php 
 
-namespace AppBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Entity\User as BaseUser;
-use JMS\Serializer\Annotation as Serializer;
-use AppBundle\Model\UserInterface;
-use AppBundle\Entity\Company;
-use AppBundle\Entity\Offer;
-
+namespace AppBundle\Model;
 
 /**
  * Contractor
  *
- * @ORM\Table()
- * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
-class Contractor extends User implements UserInterface
-{
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+trait ContractorTrait {
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="rate", type="integer")
+     * @ORM\Column(name="rate", type="integer", nullable=true)
      */
     private $rate;
 

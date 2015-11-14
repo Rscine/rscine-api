@@ -5,21 +5,24 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 use JMS\Serializer\Annotation as Serializer;
-use AppBundle\Entity\Contractor;
-use AppBundle\Entity\Customer;
+use AppBundle\Model\ContractorTrait;
+use AppBundle\Model\CustomerTrait;
+use AppBundle\Model\ContractorInterface;
+use AppBundle\Model\CustomerInterface;
 
 /**
  * User
  *
  * @ORM\Table(name="fos_user")
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="discriminator", type="string")
- * @ORM\DiscriminatorMap({"contractor" = "Contractor", "customer" = "Customer"})
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
-abstract class User extends BaseUser
+class User extends BaseUser implements ContractorInterface, CustomerInterface
 {
+
+    use ContractorTrait;
+    use CustomerTrait;
+
     /**
      * @var integer
      *

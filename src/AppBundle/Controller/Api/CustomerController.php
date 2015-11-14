@@ -10,7 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use AppBundle\Entity\Customer;
+use AppBundle\Entity\User;
+use AppBundle\Model\CustomerInterface;
 use AppBundle\Form\CustomerRegistrationType;
 use AppBundle\Form\CustomerProfileType;
 
@@ -21,9 +22,9 @@ class CustomerController extends FOSRestController
      * GET api/customers/{slug}
      * 
      * @Rest\View()
-     * @ParamConverter("customer", class="AppBundle:Customer")
+     * @ParamConverter("customer", class="AppBundle:User")
      */
-    public function getCustomerAction(Customer $customer)
+    public function getCustomerAction(CustomerInterface $customer)
     {
         return $customer;
     }
@@ -36,7 +37,7 @@ class CustomerController extends FOSRestController
      */
     public function getCustomersAction()
     {
-        $customers = $this->getDoctrine()->getManager()->getRepository('AppBundle\Entity\Customer')->findAll();
+        $customers = $this->getDoctrine()->getManager()->getRepository('AppBundle\Entity\User')->findAll();
 
         return $customers;  
     }
@@ -47,7 +48,7 @@ class CustomerController extends FOSRestController
      */
     public function postCustomerAction(Request $request)
     {
-        $customer = new Customer();
+        $customer = new User();
 
         $registrationForm = $this->createCustomerRegistrationForm($customer);
 
@@ -68,9 +69,9 @@ class CustomerController extends FOSRestController
      * Modifie un utilisateur client
      * PUT api/customers/{slug}
      * 
-     * @ParamConverter("customer", class="AppBundle:Customer")
+     * @ParamConverter("customer", class="AppBundle:User")
      */
-    public function putCustomerAction(Request $request, Customer $customer)
+    public function putCustomerAction(Request $request, CustomerInterface $customer)
     {
         $profileForm = $this->createCustomerProfileForm($customer);
 
@@ -87,13 +88,14 @@ class CustomerController extends FOSRestController
         return new JsonResponse($this->get('serializer')->toArray($profileForm->getErrors()), 400);
     }
 
-     /**
+    /**
+     *
      * Modifie un utilisateur client
      * PATCH api/customers/{slug}
      * 
-     * @ParamConverter("customer", class="AppBundle:Customer")
+     * @ParamConverter("customer", class="AppBundle:User")
      */
-    public function patchCustomerAction(Request $request, Customer $customer)
+    public function patchCustomerAction(Request $request, CustomerInterface $customer)
     {
         $profileForm = $this->createCustomerProfileForm($customer);
 
@@ -114,9 +116,9 @@ class CustomerController extends FOSRestController
      * Récupère les options possibles pour un utilisateur client
      * OPTIONS api/customers/{slug}
      *
-     * @ParamConverter("customer", class="AppBundle:Customer")
+     * @ParamConverter("customer", class="AppBundle:User")
      */
-    public function optionsCustomerAction(Customer $customer)
+    public function optionsCustomerAction(CustomerInterface $customer)
     {
         $response = new Response();
         $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST, PUT, DELETE');
@@ -140,9 +142,9 @@ class CustomerController extends FOSRestController
      * Supprime un utilisateur client $customer
      * DELETE api/customers/{slug}
      * 
-     * @ParamConverter("customer", class="AppBundle:Customer")
+     * @ParamConverter("customer", class="AppBundle:User")
      */
-    public function deleteCustomerAction(Customer $customer)
+    public function deleteCustomerAction(CustomerInterface $customer)
     {
         $this->getDoctrine()->getManager()->remove($customer);
         $this->getDoctrine()->getManager()->flush();
@@ -156,7 +158,7 @@ class CustomerController extends FOSRestController
      * @param  Customer $customer [description]
      * @return [type]             [description]
      */
-    private function createCustomerRegistrationForm(Customer $customer)
+    private function createCustomerRegistrationForm(CustomerInterface $customer)
     {
         $customerRegistrationType = $this->createForm(new CustomerRegistrationType(), $customer);
 
@@ -169,7 +171,7 @@ class CustomerController extends FOSRestController
      * @param  Customer $customer [description]
      * @return [type]             [description]
      */
-    private function createCustomerProfileForm(Customer $customer)
+    private function createCustomerProfileForm(CustomerInterface $customer)
     {
         $customerProfileForm = $this->createForm(new CustomerProfileType(), $customer);
 

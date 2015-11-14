@@ -10,7 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use AppBundle\Entity\Contractor;
+use AppBundle\Entity\User;
+use AppBundle\Model\ContractorInterface;
 use AppBundle\Form\ContractorRegistrationType;
 use AppBundle\Form\ContractorProfileType;
 
@@ -21,9 +22,9 @@ class ContractorController extends FOSRestController
      * GET api/contractors/{slug}
      * 
      * @Rest\View()
-     * @ParamConverter("contractor", class="AppBundle:Contractor")
+     * @ParamConverter("contractor", class="AppBundle:User")
      */
-    public function getContractorAction(Contractor $contractor)
+    public function getContractorAction(ContractorInterface $contractor)
     {
         return $contractor;
     }
@@ -36,7 +37,7 @@ class ContractorController extends FOSRestController
      */
     public function getContractorsAction()
     {
-        $contractors = $this->getDoctrine()->getManager()->getRepository('AppBundle\Entity\Contractor')->findAll();
+        $contractors = $this->getDoctrine()->getManager()->getRepository('AppBundle\Entity\User')->findAll();
 
         return $contractors;  
     }
@@ -47,7 +48,7 @@ class ContractorController extends FOSRestController
      */
     public function postContractorAction(Request $request)
     {
-        $contractor = new Contractor();
+        $contractor = new User();
 
         $registrationForm = $this->createContractorRegistrationForm($contractor);
 
@@ -68,9 +69,9 @@ class ContractorController extends FOSRestController
      * Modifie un utilisateur client
      * PUT api/contractors/{slug}
      * 
-     * @ParamConverter("contractor", class="AppBundle:Contractor")
+     * @ParamConverter("contractor", class="AppBundle:User")
      */
-    public function putContractorAction(Request $request, Contractor $contractor)
+    public function putContractorAction(Request $request, ContractorInterface $contractor)
     {
         $profileForm = $this->createContractorProfileForm($contractor);
 
@@ -91,9 +92,9 @@ class ContractorController extends FOSRestController
      * Récupère les options possibles pour un utilisateur client
      * OPTIONS api/contractors/{slug}
      *
-     * @ParamConverter("contractor", class="AppBundle:Contractor")
+     * @ParamConverter("contractor", class="AppBundle:User")
      */
-    public function optionsContractorAction(Contractor $contractor)
+    public function optionsContractorAction(ContractorInterface $contractor)
     {
         $response = new Response();
         $response->headers->set('Allow', 'OPTIONS, GET, PATCH, POST');
@@ -117,9 +118,9 @@ class ContractorController extends FOSRestController
      * Supprime un utilisateur client $contractor
      * DELETE api/contractors/{slug}
      * 
-     * @ParamConverter("contractor", class="AppBundle:Contractor")
+     * @ParamConverter("contractor", class="AppBundle:User")
      */
-    public function deleteContractorAction(Contractor $contractor)
+    public function deleteContractorAction(ContractorInterface $contractor)
     {
         $this->getDoctrine()->getManager()->remove($contractor);
         $this->getDoctrine()->getManager()->flush();
@@ -133,7 +134,7 @@ class ContractorController extends FOSRestController
      * @param  Contractor $contractor [description]
      * @return [type]             [description]
      */
-    private function createContractorRegistrationForm(Contractor $contractor)
+    private function createContractorRegistrationForm(ContractorInterface $contractor)
     {
         $contractorRegistrationType = $this->createForm(new ContractorRegistrationType(), $contractor);
 
@@ -146,7 +147,7 @@ class ContractorController extends FOSRestController
      * @param  Contractor $contractor [description]
      * @return [type]             [description]
      */
-    private function createContractorProfileForm(Contractor $contractor)
+    private function createContractorProfileForm(ContractorInterface $contractor)
     {
         $contractorProfileForm = $this->createForm(new ContractorProfileType(), $contractor);
 

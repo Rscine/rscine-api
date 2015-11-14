@@ -25,7 +25,7 @@ class CustomerRegistrationType extends RegistrationType
     {
         $resolver->setDefaults(array(
             'validation_groups' => array('registration'),
-            'data_class' => 'AppBundle\Entity\Customer'
+            'data_class' => 'AppBundle\Entity\User'
         ));
     }
     
