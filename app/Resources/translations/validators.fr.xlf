@@ -42,6 +42,14 @@
                 <source>offer.description.not_blank</source>
                 <target>Veuillez entrer une description pour l'offre</target>
             </trans-unit>
+            <trans-unit id="11">
+                <source>company.name.not_blank</source>
+                <target>Veuillez entrer un nom pour la société</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>company.siret.not_blank</source>
+                <target>Veuillez entrer un numero de siret pour la société</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
