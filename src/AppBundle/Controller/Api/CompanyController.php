@@ -11,6 +11,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Company;
+use AppBundle\Form\CompanyType;
 
 class CompanyController extends FOSRestController
 {
@@ -77,12 +78,12 @@ class CompanyController extends FOSRestController
         if ($editForm->isValid() && $editForm->isSubmitted()) {
 
               $this->getDoctrine()->getManager()->persist($company);
-              $this->getDoctrine()->getManager()->flsuh();
+              $this->getDoctrine()->getManager()->flush();
 
               return $company;
         }
 
-        return new JsonResponse($this->get('serializer')->toArray($editForm->getErrors()));
+        return new JsonResponse($this->get('serializer')->toArray($editForm->getErrors()), 400);
     }
 
     /**
