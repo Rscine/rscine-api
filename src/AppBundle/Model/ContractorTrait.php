@@ -2,6 +2,9 @@
 
 namespace AppBundle\Model;
 
+use AppBundle\Entity\Offer;
+use AppBundle\Entity\Company;
+
 /**
  * Contractor
  *
@@ -86,7 +89,7 @@ trait ContractorTrait {
      *
      * @return Contractor
      */
-    public function setCompany(\AppBundle\Entity\Company $company = null)
+    public function setCompany(Company $company = null)
     {
         $this->company = $company;
 
@@ -110,7 +113,7 @@ trait ContractorTrait {
      *
      * @return Contractor
      */
-    public function addOfferAppliedTo(\AppBundle\Entity\Offer $offerAppliedTo)
+    public function addOfferAppliedTo(Offer $offerAppliedTo)
     {
         $this->offerAppliedTo[] = $offerAppliedTo;
 
@@ -122,7 +125,7 @@ trait ContractorTrait {
      *
      * @param \AppBundle\Entity\Offer $offersAppliedTo
      */
-    public function removeOfferAppliedTo(\AppBundle\Entity\Offer $offerAppliedTo)
+    public function removeOfferAppliedTo(Offer $offerAppliedTo)
     {
         $this->offerAppliedTo->removeElement($offerAppliedTo);
     }
@@ -144,7 +147,7 @@ trait ContractorTrait {
      *
      * @return Contractor
      */
-    public function addOfferHandled(\AppBundle\Entity\Contractor $offerHandled)
+    public function addOfferHandled(Offer $offerHandled)
     {
         $this->offerHandled[] = $offerHandled;
 
@@ -156,7 +159,7 @@ trait ContractorTrait {
      *
      * @param \AppBundle\Entity\Contractor $offersHandled
      */
-    public function removeOfferHandled(\AppBundle\Entity\Contractor $offerHandled)
+    public function removeOfferHandled(Offer $offerHandled)
     {
         $this->offerHandled->removeElement($offersHandled);
     }
