@@ -14,6 +14,9 @@ class ProfileType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('department', 'entity', array(
+            'class' => 'AppBundle:Department'
+        ));
     }
 
     /**
@@ -32,7 +35,7 @@ class ProfileType extends AbstractType
      */
     public function getParent()
     {
-        return 'fos_user_registration';
+        return 'fos_user_profile';
     }
 
     /**
