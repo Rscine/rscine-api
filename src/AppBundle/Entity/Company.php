@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use AppBundle\Entity\Contractor;
+use AppBundle\Model\Worker;
 
 /**
  * Company
@@ -13,7 +14,7 @@ use AppBundle\Entity\Contractor;
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
-class Company
+class Company extends Worker
 {
     /**
      * @var integer
@@ -23,7 +24,7 @@ class Company
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Serializer\Expose
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
@@ -42,8 +43,8 @@ class Company
     private $name;
 
     /**
-     * OneToMany(targetEntity="Contractor", mappedBy="company")
-     * @var Contractor
+     * OneToMany(targetEntity="Worker", mappedBy="company")
+     * @var Worker
      */
     private $employees;
 

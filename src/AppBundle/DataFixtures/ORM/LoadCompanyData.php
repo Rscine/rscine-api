@@ -24,6 +24,10 @@ class LoadCompanyData implements FixtureInterface, OrderedFixtureInterface {
 
         foreach ($this->companies as $companyName) {
             $company = new Company();
+            $company->setUsername(ucfirst($companyName));
+            $company->setPlainPassword($companyName);
+            $company->setLogin(strtolower($companyName));
+            $company->setEmail(strtolower($companyName).'@gmail.com');
             $company->setSiret(md5(uniqid(rand(), true)));
             $company->setName($companyName);
 

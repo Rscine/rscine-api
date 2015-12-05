@@ -15,12 +15,14 @@ use AppBundle\Model\CustomerInterface;
  *
  * @ORM\Table(name="fos_user")
  * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
  * @Serializer\ExclusionPolicy("ALL")
  */
-class User extends BaseUser implements ContractorInterface, CustomerInterface
+abstract class User extends BaseUser implements CustomerInterface
 {
 
-    use ContractorTrait;
     use CustomerTrait;
 
     /**

@@ -4,15 +4,15 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\User;
+use AppBundle\Entity\Individual;
 use AppBundle\Entity\ContactInformations;
 use AppBundle\Entity\Phone;
 use AppBundle\Entity\Email;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadUserData implements FixtureInterface, OrderedFixtureInterface {
+class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
 
-    private $users = array(
+    private $individuals = array(
         array(
             'name' => 'cormag',
             'department' => 33,
@@ -61,24 +61,24 @@ class LoadUserData implements FixtureInterface, OrderedFixtureInterface {
     public function load(ObjectManager $manager)
     {
 
-        foreach ($this->users as $userItem) {
-            $user = new User();
-            $user->setUsername(ucfirst($userItem['name']));
-            $user->setPlainPassword($userItem['name']);
-            $user->setLogin($userItem['name']);
-            $user->setEmail($userItem['name'].'@gmail.com');
+        foreach ($this->individuals as $individualItem) {
+            $individual = new Individual();
+            $individual->setUsername(ucfirst($individualItem['name']));
+            $individual->setPlainPassword($individualItem['name']);
+            $individual->setLogin($individualItem['name']);
+            $individual->setEmail($individualItem['name'].'@gmail.com');
 
             // Department binding
-            $department = $manager->getRepository('AppBundle:Department')->findOneByNumber($userItem['department']);
+            $department = $manager->getRepository('AppBundle:Department')->findOneByNumber($individualItem['department']);
 
             if ($department)
-                $user->setDepartment($department);
+                $individual->setDepartment($department);
 
             // Company binding
-            $company = $manager->getRepository('AppBundle:Company')->findOneByName($userItem['company']);
+            $company = $manager->getRepository('AppBundle:Company')->findOneByName($individualItem['company']);
 
             if ($company)
-                $user->setCompany($company);
+                $individual->setCompany($company);
 
             // Contact informations binding
             $contactInformations = new ContactInformations();
@@ -98,14 +98,14 @@ class LoadUserData implements FixtureInterface, OrderedFixtureInterface {
 
             $email = new Email();
 
-            $email->setEmail($userItem['name'].'@'.strtolower($user->getCompany()->getName()).'.com');
+            $email->setEmail($individualItem['name'].'@'.strtolower($individual->getCompany()->getName()).'.com');
             $email->setType('office');
 
             $contactInformations->addEmail($email);
 
-            $user->setContactInformations($contactInformations);
+            $individual->setContactInformations($contactInformations);
 
-            $manager->persist($user);
+            $manager->persist($individual);
         }
 
         $manager->flush();
