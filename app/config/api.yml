@@ -11,13 +11,9 @@ departments:
     type: rest
     resource: AppBundle\Controller\Api\DepartmentController
 
-customers:
+individuals:
     type: rest
-    resource: AppBundle\Controller\Api\CustomerController
-
-contractors:
-    type: rest
-    resource: AppBundle\Controller\Api\ContractorController
+    resource: AppBundle\Controller\Api\IndividualController
 
 companies:
     type: rest
