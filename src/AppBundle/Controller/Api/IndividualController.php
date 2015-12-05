@@ -11,8 +11,8 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Individual;
-use AppBundle\Form\IndividualRegistrationType;
-use AppBundle\Form\IndividualProfileType;
+use AppBundle\Form\RegistrationType as IndividualRegistrationType;
+use AppBundle\Form\ProfileType as IndividualProfileType;
 
 class IndividualController extends FOSRestController
 {

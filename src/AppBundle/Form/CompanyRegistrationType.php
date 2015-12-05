@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CompanyType extends AbstractType
+class CompanyRegistrationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -26,6 +26,7 @@ class CompanyType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'validation_groups' => array('registration'),
             'data_class' => 'AppBundle\Entity\Company'
         ));
     }
@@ -33,8 +34,16 @@ class CompanyType extends AbstractType
     /**
      * @return string
      */
+    public function getParent()
+    {
+        return 'appbundle_user_registration';
+    }
+
+    /**
+     * @return string
+     */
     public function getName()
     {
-        return 'appbundle_company';
+        return 'appbundle_company_registration';
     }
 }

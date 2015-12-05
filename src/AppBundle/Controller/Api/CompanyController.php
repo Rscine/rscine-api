@@ -11,7 +11,8 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Company;
-use AppBundle\Form\CompanyType;
+use AppBundle\Form\CompanyRegistrationType;
+use AppBundle\Form\CompanyProfileType;
 
 class CompanyController extends FOSRestController
 {
@@ -134,7 +135,7 @@ class CompanyController extends FOSRestController
      */
     private function createCreateForm(Company $company)
     {
-        $createForm = $this->createForm(new CompanyType(), $company);
+        $createForm = $this->createForm(new CompanyRegistrationType(), $company);
 
         return $createForm;
     }
@@ -147,7 +148,7 @@ class CompanyController extends FOSRestController
      */
     private function createEditForm(Company $company)
     {
-        $editForm = $this->createForm(new CompanyType(), $company);
+        $editForm = $this->createForm(new CompanyProfileType(), $company);
 
         return $editForm;
     }

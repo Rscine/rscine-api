@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RegistrationType extends AbstractType
+class CompanyProfileType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,9 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('department', 'entity', array(
-                'class' => 'AppBundle:Department'
-            ));
+            ->add('siret')
+            ->add('name')
+        ;
     }
 
     /**
@@ -26,8 +26,7 @@ class RegistrationType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'validation_groups' => array('registration'),
-            'data_class' => 'AppBundle\Entity\User'
+            'data_class' => 'AppBundle\Entity\Company'
         ));
     }
 
@@ -36,7 +35,7 @@ class RegistrationType extends AbstractType
      */
     public function getParent()
     {
-        return 'fos_user_registration';
+        return 'appbundle_user_profile';
     }
 
     /**
@@ -44,6 +43,6 @@ class RegistrationType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_user_registration';
+        return 'appbundle_company_profile';
     }
 }
