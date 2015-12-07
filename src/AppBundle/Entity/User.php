@@ -13,9 +13,9 @@ use AppBundle\Model\CustomerInterface;
 /**
  * User
  *
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="user")
  * @ORM\Entity
- * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
  * @Serializer\ExclusionPolicy("ALL")

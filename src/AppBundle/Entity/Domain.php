@@ -21,6 +21,24 @@ class Domain
      */
     private $id;
 
+    /**
+     * @var string
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var ArrayCollection<Profile>
+     * @ORM\OneToMany(targetEntity="Profile", mappedBy="domains", cascade={"persist"})
+     */
+    private $availableProfiles;
+
+    /**
+     * @var ArrayCollection<Genre>
+     * @ORM\OneToMany(targetEntity="Genre", mappedBy="domains", cascade={"persist"})
+     */
+    private $availableGenres;
+
 
     /**
      * Get id
@@ -31,5 +49,108 @@ class Domain
     {
         return $this->id;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->availableProfiles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->availableGenres = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Domain
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add availableProfile
+     *
+     * @param \AppBundle\Entity\Profile $availableProfile
+     *
+     * @return Domain
+     */
+    public function addAvailableProfile(\AppBundle\Entity\Profile $availableProfile)
+    {
+        $this->availableProfiles[] = $availableProfile;
+        $availableProfile->setDomain($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove availableProfile
+     *
+     * @param \AppBundle\Entity\Profile $availableProfile
+     */
+    public function removeAvailableProfile(\AppBundle\Entity\Profile $availableProfile)
+    {
+        $this->availableProfiles->removeElement($availableProfile);
+        $availableProfile->setDomain(null);
+    }
+
+    /**
+     * Get availableProfiles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAvailableProfiles()
+    {
+        return $this->availableProfiles;
+    }
+
+    /**
+     * Add availableGenre
+     *
+     * @param \AppBundle\Entity\Genre $availableGenre
+     *
+     * @return Domain
+     */
+    public function addAvailableGenre(\AppBundle\Entity\Genre $availableGenre)
+    {
+        $this->availableGenres[] = $availableGenre;
+        $availableGenre->setDomain($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove availableGenre
+     *
+     * @param \AppBundle\Entity\Genre $availableGenre
+     */
+    public function removeAvailableGenre(\AppBundle\Entity\Genre $availableGenre)
+    {
+        $this->availableGenres->removeElement($availableGenre);
+        $availableGenre->setDomain(null);
+    }
+
+    /**
+     * Get availableGenres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAvailableGenres()
+    {
+        return $this->availableGenres;
+    }
+}

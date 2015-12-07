@@ -73,6 +73,7 @@ doctrine:
         resolve_target_entities:
             AppBundle\Model\ContractorInterface: AppBundle\Entity\User
             AppBundle\Model\CustomerInterface: AppBundle\Entity\User
+            AppBundle\Model\Worker: AppBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:
