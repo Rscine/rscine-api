@@ -71,7 +71,7 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         resolve_target_entities:
-            AppBundle\Model\ContractorInterface: AppBundle\Entity\User
+            AppBundle\Model\ContractorInterface: AppBundle\Entity\Worker
             AppBundle\Model\CustomerInterface: AppBundle\Entity\User
             AppBundle\Model\Worker: AppBundle\Entity\User
 

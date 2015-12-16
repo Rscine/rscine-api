@@ -17,7 +17,7 @@ use AppBundle\Model\CustomerInterface;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
+ * @ORM\DiscriminatorMap({"worker" = "Worker", "company" = "Company", "individual" = "Individual"})
  * @Serializer\ExclusionPolicy("ALL")
  */
 abstract class User extends BaseUser implements CustomerInterface

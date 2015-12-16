@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Model\Worker;
+use AppBundle\Entity\Worker;
 
 /**
  * Profile
@@ -36,7 +36,7 @@ class Profile
 
     /**
      * @var ArrayCollection<Worker>
-     * @ORM\ManyToMany(targetEntity="AppBundle\Model\Worker", inversedBy="profiles")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Worker", inversedBy="profiles")
      */
     private $workers;
 

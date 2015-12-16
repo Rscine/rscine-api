@@ -47,7 +47,7 @@ class Offer
      * Créateur de la demande (utilisateur client)
      * @var AppBundle\Model\CustomerInterface
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Model\CustomerInterface", inversedBy="offers")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Model\CustomerInterface", inversedBy="offersCreated")
      * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
      */
     private $creator;

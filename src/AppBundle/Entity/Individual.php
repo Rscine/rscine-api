@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Model\Worker;
+use AppBundle\Entity\Worker;
 
 /**
  * Individual

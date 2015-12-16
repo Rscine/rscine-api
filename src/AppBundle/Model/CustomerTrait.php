@@ -9,6 +9,14 @@ namespace AppBundle\Model;
 trait CustomerTrait {
 
     /**
+     * Offres créées par le customer
+     * @var Array<Offer>
+     * 
+     * @ORM\OneToMany(targetEntity="Offer", mappedBy="creator")
+     */
+    private $offersCreated;
+
+    /**
      * Get id
      *
      * @return integer
@@ -17,4 +25,5 @@ trait CustomerTrait {
     {
         return $this->id;
     }
+
 }

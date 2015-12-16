@@ -42,7 +42,7 @@ class LoadProfileData implements FixtureInterface, OrderedFixtureInterface {
 
     public function getOrder()
     {
-        return 7;
+        return 3;
     }
 
 }

@@ -16,42 +16,50 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
         array(
             'name' => 'cormag',
             'department' => 33,
-            'company' => 'Rausten'
+            'company' => 'Rausten',
+            'domain' => 'Sword'
         ),
         array(
             'name' => 'neimi',
             'department' => 34,
-            'company' => 'Rausten'
+            'company' => 'Rausten',
+            'domain' => 'Sword'
         ),
         array(
             'name' => 'colm',
             'department' => 48,
-            'company' => 'Rausten'
+            'company' => 'Rausten',
+            'domain' => 'Spear'
         ),
         array(
             'name' => 'gerrik',
             'department' => 64,
-            'company' => 'Frelia'
+            'company' => 'Frelia',
+            'domain' => 'Axe'
         ),
         array(
             'name' => 'eirika',
             'department' => 33,
-            'company' => 'Renais'
+            'company' => 'Renais',
+            'domain' => 'Spear'
         ),
         array(
             'name' => 'ephraim',
             'department' => 34,
-            'company' => 'Renais'
+            'company' => 'Renais',
+            'domain' => 'Bow'
         ),
         array(
             'name' => 'duessel',
             'department' => 48,
-            'company' => 'Frelia'
+            'company' => 'Frelia',
+            'domain' => 'Bow'
         ),
         array(
             'name' => 'frantz',
             'department' => 64,
-            'company' => 'Frelia'
+            'company' => 'Frelia',
+            'domain' => 'Axe'
         )
     );
 
@@ -67,6 +75,13 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             $individual->setPlainPassword($individualItem['name']);
             $individual->setLogin($individualItem['name']);
             $individual->setEmail($individualItem['name'].'@gmail.com');
+
+            // Domain binding
+            $domain = $manager->getRepository('AppBundle:Domain')->findOneByName($individualItem['domain']);
+
+            if ($domain)
+                $individual->setDomain($domain);
+
 
             // Department binding
             $department = $manager->getRepository('AppBundle:Department')->findOneByNumber($individualItem['department']);
@@ -102,7 +117,6 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             $email->setType('office');
 
             $contactInformations->addEmail($email);
-
             $individual->setContactInformations($contactInformations);
 
             $manager->persist($individual);
@@ -113,7 +127,7 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
 
     public function getOrder()
     {
-        return 3;
+        return 7;
     }
 
     /**

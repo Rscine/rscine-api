@@ -54,7 +54,7 @@ class LoadDomainData implements FixtureInterface, OrderedFixtureInterface {
 
     public function getOrder()
     {
-        return 8;
+        return 6;
     }
 
 }

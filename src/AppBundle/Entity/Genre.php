@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Model\Worker;
+use AppBundle\Entity\Worker;
 
 /**
  * Genre
@@ -37,7 +37,7 @@ class Genre
 
     /**
      * @var ArrayCollection<Worker>
-     * @ORM\ManyToMany(targetEntity="AppBundle\Model\Worker", inversedBy="genres")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Worker", inversedBy="genres")
      */
     private $workers;
 

@@ -1,15 +1,22 @@
 <?php
 
-namespace AppBundle\Model;
+namespace AppBundle\Entity;
 
+use AppBundle\Entity\Domain;
+use AppBundle\Entity\User;
 use AppBundle\Model\ContractorInterface;
 use AppBundle\Model\ContractorTrait;
-use AppBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Worker
+ * 
+ * @ORM\Table(name="worker")
+ * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
  */
 abstract class Worker extends User implements ContractorInterface
 {
@@ -53,6 +60,27 @@ abstract class Worker extends User implements ContractorInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set domain to the worker
+     * @param Domain $domain 
+     * @return Worker
+     */
+    public function setDomain(Domain $domain)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get the worker domain
+     * @return Domain $domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 }
 

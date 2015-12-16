@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use AppBundle\Entity\Contractor;
-use AppBundle\Model\Worker;
+use AppBundle\Entity\Worker;
 
 /**
  * Company

@@ -29,15 +29,21 @@ class Domain
 
     /**
      * @var ArrayCollection<Profile>
-     * @ORM\OneToMany(targetEntity="Profile", mappedBy="domains", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Profile", mappedBy="domain", cascade={"persist"})
      */
     private $availableProfiles;
 
     /**
      * @var ArrayCollection<Genre>
-     * @ORM\OneToMany(targetEntity="Genre", mappedBy="domains", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Genre", mappedBy="domain", cascade={"persist"})
      */
     private $availableGenres;
+
+    /**
+     * @var Worker
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Worker", mappedBy="domain", cascade={"persist"})
+     */
+    private $workers;
 
 
     /**
