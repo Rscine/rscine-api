@@ -2,16 +2,17 @@
 
 namespace AppBundle\Controller\Api;
 
+use AppBundle\Entity\Offer;
+use AppBundle\Form\OfferType;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Request\ParamFetcher;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\Controller\Annotations as Rest;
-use AppBundle\Entity\Offer;
-use AppBundle\Form\OfferType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class OfferController extends FOSRestController
 {
@@ -20,12 +21,17 @@ class OfferController extends FOSRestController
      * Récupère la liste des départements
      * GET api/offers
      * @Rest\View()
+     * @Rest\QueryParam(name="sort", requirements="(created|id|name)", default="created", description="search according to date, id or name")
+     * @Rest\QueryParam(name="dir", requirements="(asc|desc)", default="desc", description="sort search ascending or descending")
      *
      * @return [type] [description]
      */
-    public function getOffersAction()
+    public function getOffersAction(ParamFetcher $paramFetcher)
     {
-        $offers = $this->getDoctrine()->getManager()->getRepository('AppBundle:Offer')->findAll();
+        $sortBy = $paramFetcher->get('sort');
+        $sortDir = $paramFetcher->get('dir');
+
+        $offers = $this->getDoctrine()->getManager()->getRepository('AppBundle:Offer')->findBy(array(), array($sortBy => $sortDir));
         return $offers;
     }
 
