@@ -4,12 +4,15 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Worker;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * Individual
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Individual extends Worker
 {

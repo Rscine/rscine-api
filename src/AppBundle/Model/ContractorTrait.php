@@ -16,6 +16,7 @@ trait ContractorTrait {
      * @var integer
      *
      * @ORM\Column(name="rate", type="integer", nullable=true)
+     * @Serializer\Expose
      */
     private $rate;
 
@@ -44,9 +45,47 @@ trait ContractorTrait {
     private $offersAppliedTo;
 
     /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("offers_applied_to")
+     */
+    public function getOffersAppliedToIds()
+    {
+        $offersAppliedTo = array();
+
+        if ($this->getOffersAppliedTo()) {
+
+            foreach ($this->getOffersAppliedTo() as $offerAppliedTo) {
+                $offersAppliedTo[] = $offerAppliedTo->getId();
+            }
+
+        }
+
+        return $offersAppliedTo;
+    }
+
+    /**
      * @ORM\OneToMany(targetEntity="Offer", mappedBy="handler")
      */
     private $offersHandled;
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("offers_handled")
+     */
+    public function getOffersHandledIds()
+    {
+        $offersHandled = array();
+
+        if ($this->getOffersHandled()) {
+
+            foreach ($this->getOffersHandled() as $offerHandled) {
+                $offersHandled[] = $offerHandled->getId();
+            }
+
+        }
+
+        return $offersHandled;
+    }
 
     /**
      * Get id

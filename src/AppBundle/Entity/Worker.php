@@ -17,6 +17,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
+ * @Serializer\ExclusionPolicy("ALL")
  */
 abstract class Worker extends User implements ContractorInterface
 {
