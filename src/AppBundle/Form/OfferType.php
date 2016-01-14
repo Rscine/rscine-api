@@ -17,6 +17,9 @@ class OfferType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('creator', 'entity', array(
+                'class' => 'AppBundle:User'
+            ))
         ;
     }
 
