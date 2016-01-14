@@ -135,9 +135,9 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
      * @param  [type] $digits [description]
      * @return [type]         [description]
      */
-    private function generateRandomPhoneNumber($digits = 10)
+    private function generateRandomPhoneNumber($digits = 9)
     {
-        return str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
+        return '0'.str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
     }
 
 }
