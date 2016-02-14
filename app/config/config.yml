@@ -72,9 +72,9 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         resolve_target_entities:
-            AppBundle\Model\ContractorInterface: AppBundle\Entity\Worker
-            AppBundle\Model\CustomerInterface: AppBundle\Entity\User
-            AppBundle\Model\Worker: AppBundle\Entity\User
+            AppBundle\Model\ContractorInterface: Rscine\AppBundle\Entity\Worker
+            AppBundle\Model\CustomerInterface: Rscine\AppBundle\Entity\User
+            AppBundle\Model\Worker: Rscine\AppBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -88,7 +88,7 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: Rscine\AppBundle\Entity\User
 
 # Fos Rest Bundle Configuration
 fos_rest:

@@ -1,24 +1,24 @@
 
 users:
     type: rest
-    resource: AppBundle\Controller\Api\UserController
+    resource: Rscine\AppBundle\Controller\Api\UserController
 
 counties:
     type: rest
-    resource: AppBundle\Controller\Api\CountyController
+    resource: Rscine\AppBundle\Controller\Api\CountyController
 
 departments:
     type: rest
-    resource: AppBundle\Controller\Api\DepartmentController
+    resource: Rscine\AppBundle\Controller\Api\DepartmentController
 
 individuals:
     type: rest
-    resource: AppBundle\Controller\Api\IndividualController
+    resource: Rscine\AppBundle\Controller\Api\IndividualController
 
 companies:
     type: rest
-    resource: AppBundle\Controller\Api\CompanyController
+    resource: Rscine\AppBundle\Controller\Api\CompanyController
 
 offers:
     type: rest
-    resource: AppBundle\Controller\Api\OfferController
+    resource: Rscine\AppBundle\Controller\Api\OfferController

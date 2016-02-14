@@ -19,7 +19,7 @@ class CompanyController extends FOSRestController
     /**
      * Récupère un utilisateur client
      * GET api/companies/{slug}
-     * 
+     *
      * @Rest\View()
      * @ParamConverter("company", class="RscineAppBundle:Company")
      */
@@ -31,14 +31,14 @@ class CompanyController extends FOSRestController
     /**
      * Récupère tous les utilisateurs clients
      * GET api/companies
-     * 
+     *
      * @Rest\View()
      */
     public function getCompaniesAction()
     {
         $companies = $this->getDoctrine()->getManager()->getRepository('Rscine\AppBundle\Entity\Company')->findAll();
 
-        return $companies;  
+        return $companies;
     }
 
     /**
@@ -54,7 +54,7 @@ class CompanyController extends FOSRestController
         $createForm->submit($request->get($createForm->getName()));
 
         if ($createForm->isValid() && $createForm->isSubmitted()) {
-            
+
             $this->getDoctrine()->getManager()->persist($company);
             $this->getDoctrine()->getManager()->flush();
 
@@ -67,7 +67,7 @@ class CompanyController extends FOSRestController
     /**
      * Modifie un utilisateur client
      * PUT api/companies/{slug}
-     * 
+     *
      * @ParamConverter("company", class="RscineAppBundle:Company")
      */
     public function putCompanyAction(Request $request, Company $company)
@@ -116,7 +116,7 @@ class CompanyController extends FOSRestController
     /**
      * Supprime un utilisateur client $company
      * DELETE api/companies/{slug}
-     * 
+     *
      * @ParamConverter("company", class="RscineAppBundle:Company")
      */
     public function deleteCompanyAction(Company $company)
@@ -129,7 +129,7 @@ class CompanyController extends FOSRestController
 
     /**
      * Retourne le formulaire de création d'un utilisateur client
-     * 
+     *
      * @param  Company $company [description]
      * @return [type]             [description]
      */
@@ -142,7 +142,7 @@ class CompanyController extends FOSRestController
 
     /**
      * Retourne le forumaire d'édition de profil d'un utilisateur client
-     * 
+     *
      * @param  Company $company [description]
      * @return [type]             [description]
      */

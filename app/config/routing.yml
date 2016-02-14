@@ -27,7 +27,7 @@ fos_user_change_password:
 #     prefix:   /login
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@RscineAppBundle/Controller/"
     type:     annotation
 
 api:
