@@ -71,7 +71,10 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        resolve_target_entities: ~
+        resolve_target_entities:
+            Rscine\AppBundle\Model\Offer\OfferApplicantInterface: Rscine\AppBundle\Entity\Worker
+            Rscine\AppBundle\Model\Offer\OfferHandlerInterface: Rscine\AppBundle\Entity\Worker
+            Rscine\AppBundle\Model\Offer\OfferCreatorInterface: Rscine\AppBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:

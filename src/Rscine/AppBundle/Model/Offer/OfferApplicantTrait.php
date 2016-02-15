@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Représente un utilisateur pouvant candidater à des offres
  */
-trait OfferApplierTrait
+trait OfferApplicantTrait
 {
     /**
      * @var ArrayCollection<Offer>

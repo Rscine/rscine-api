@@ -5,9 +5,9 @@ namespace Rscine\AppBundle\Entity;
 use Rscine\AppBundle\Entity\Domain;
 use Rscine\AppBundle\Entity\User;
 use Rscine\AppBundle\Model\Offer\OfferHandlerTrait;
-use Rscine\AppBundle\Model\Offer\OfferApplierTrait;
+use Rscine\AppBundle\Model\Offer\OfferApplicantTrait;
 use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
-use Rscine\AppBundle\Model\Offer\OfferApplierInterface;
+use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
@@ -21,10 +21,10 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
  * @Serializer\ExclusionPolicy("ALL")
  */
-abstract class Worker extends User implements OfferApplierInterface, OfferHandlerInterface
+abstract class Worker extends User implements OfferApplicantInterface, OfferHandlerInterface
 {
     use OfferHandlerTrait;
-    use OfferApplierTrait;
+    use OfferApplicantTrait;
 
     /**
      * @var integer

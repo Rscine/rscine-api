@@ -5,8 +5,12 @@ namespace Rscine\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Rscine\AppBundle\Model\ContractorInterface;
-use Rscine\AppBundle\Model\CustomerInterface;
+use Rscine\AppBundle\Model\Offer\OfferApplicantTrait;
+use Rscine\AppBundle\Model\Offer\OfferHandlerTrait;
+use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
+use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
+use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
+use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
 
 /**
  * Offer
@@ -45,18 +49,18 @@ class Offer
 
     /**
      * Créateur de la demande (utilisateur client)
-     * @var Rscine\AppBundle\Model\OfferCreatorInterface
+     * @var OfferCreatorInterface
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="offersCreated")
+     * @ORM\ManyToOne(targetEntity="Rscine\AppBundle\Model\Offer\OfferCreatorInterface", inversedBy="offersCreated")
      * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
      */
     private $creator;
 
     /**
      * Candidats à la demande
-     * @var Array<Rscine\AppBundle\Model\Worker>
+     * @var Array<OfferApplicantInterface>
      *
-     * @ORM\ManyToMany(targetEntity="Worker", inversedBy="offersAppliedTo", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Model\Offer\OfferApplicantInterface", inversedBy="offersAppliedTo", cascade={"persist"})
      * @ORM\JoinTable(name="offers_applications",
      *      joinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="applicant_id", referencedColumnName="id")}
@@ -66,9 +70,9 @@ class Offer
 
     /**
      * Maître d'oeuvre
-     * @var Rscine\AppBundle\Model\OfferHandlerInterface
+     * @var OfferHandlerInterface
      *
-     * @ORM\ManyToOne(targetEntity="Worker", inversedBy="offersHandled")
+     * @ORM\ManyToOne(targetEntity="Rscine\AppBundle\Model\Offer\OfferHandlerInterface", inversedBy="offersHandled")
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;

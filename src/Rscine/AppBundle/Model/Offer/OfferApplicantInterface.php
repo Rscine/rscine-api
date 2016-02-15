@@ -5,7 +5,7 @@ namespace Rscine\AppBundle\Model\Offer;
 /**
  * Représente un utilisateur pouvant candidater à des offres
  */
-interface OfferApplierInterface
+interface OfferApplicantInterface
 {
     /**
      * Returns all offers applied to
@@ -19,7 +19,7 @@ interface OfferApplierInterface
      *
      * @param Offer $offer
      *
-     * @return OfferApplierInterface
+     * @return OfferApplicantInterface
      */
     public function addOfferAppliedTo(Offer $offer);
 
@@ -28,7 +28,7 @@ interface OfferApplierInterface
      *
      * @param  Offer  $offer
      *
-     * @return OfferApplierInterface
+     * @return OfferApplicantInterface
      */
     public function removeOfferAppliedTo(Offer $offer);
 }
