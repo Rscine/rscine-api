@@ -11,6 +11,8 @@ use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
 use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
 use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
 use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
+use Rscine\AppBundle\Model\Timestampable\TimestampableTrait;
+use Rscine\AppBundle\Model\Timestampable\TimestampableInterface;
 
 /**
  * Offer
@@ -19,8 +21,10 @@ use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
-class Offer
+class Offer implements TimestampableInterface
 {
+    use TimestampableTrait;
+
     /**
      * @var integer
      *
@@ -76,26 +80,6 @@ class Offer
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;
-
-    /**
-     * @var datetime $created
-     *
-     * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(type="datetime")
-     * @Serializer\Expose
-     * @Serializer\Type("DateTime<'Y-m-d'>")
-     */
-    private $created;
-
-    /**
-     * @var datetime $updated
-     *
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime")
-     * @Serializer\Expose
-     * @Serializer\Type("DateTime<'Y-m-d'>")
-     */
-    private $updated;
 
     /**
      * @Serializer\VirtualProperty
