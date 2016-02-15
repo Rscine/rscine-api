@@ -34,7 +34,7 @@ class Email
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ContactInformations", inversedBy="phones")
+     * @ORM\ManyToOne(targetEntity="ContactInformations", inversedBy="emails")
      * @ORM\JoinColumn(name="contact_information_id", referencedColumnName="id")
      */
     private $contactInformations;

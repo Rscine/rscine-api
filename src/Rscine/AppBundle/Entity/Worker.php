@@ -4,14 +4,16 @@ namespace Rscine\AppBundle\Entity;
 
 use Rscine\AppBundle\Entity\Domain;
 use Rscine\AppBundle\Entity\User;
-use Rscine\AppBundle\Model\ContractorInterface;
-use Rscine\AppBundle\Model\ContractorTrait;
+use Rscine\AppBundle\Model\Offer\OfferHandlerTrait;
+use Rscine\AppBundle\Model\Offer\OfferApplierTrait;
+use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
+use Rscine\AppBundle\Model\Offer\OfferApplierInterface;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Worker
- * 
+ *
  * @ORM\Table(name="worker")
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
@@ -19,10 +21,10 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
  * @Serializer\ExclusionPolicy("ALL")
  */
-abstract class Worker extends User implements ContractorInterface
+abstract class Worker extends User implements OfferApplierInterface, OfferHandlerInterface
 {
-
-    use Contractortrait;
+    use OfferHandlerTrait;
+    use OfferApplierTrait;
 
     /**
      * @var integer
@@ -32,13 +34,6 @@ abstract class Worker extends User implements ContractorInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Domain", inversedBy="workers")
-     * @ORM\JoinColumn(name="domain_id", referencedColumnName="id")
-     * @var Domain
-     */
-    private $domain;
 
     /**
      * @ORM\ManyToMany(targetEntity="Profile", mappedBy="workers")
@@ -65,7 +60,7 @@ abstract class Worker extends User implements ContractorInterface
 
     /**
      * Set domain to the worker
-     * @param Domain $domain 
+     * @param Domain $domain
      * @return Worker
      */
     public function setDomain(Domain $domain)
@@ -84,4 +79,3 @@ abstract class Worker extends User implements ContractorInterface
         return $this->domain;
     }
 }
-

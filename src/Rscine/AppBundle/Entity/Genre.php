@@ -24,16 +24,10 @@ class Genre
 
     /**
      * @var String
-     * 
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
-    /**
-     * @var Domain
-     * @ORM\ManyToOne(targetEntity="Domain", inversedBy="availableGenres")
-     */
-    private $domain;
 
     /**
      * @var ArrayCollection<Worker>

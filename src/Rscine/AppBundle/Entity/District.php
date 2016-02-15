@@ -6,13 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Department
+ * District
  *
  * @ORM\Table()
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
-class Department
+class District
 {
     /**
      * @var integer
@@ -41,23 +41,23 @@ class Department
     private $number;
 
     /**
-     * @ORM\ManyToOne(targetEntity="County", inversedBy="departments")
-     * @ORM\JoinColumn(name="county_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Region", inversedBy="districts")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      */
-    private $county;
+    private $region;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="department")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="district")
      */
     private $users;
 
     /**
      * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("county_id")
+     * @Serializer\SerializedName("region_id")
      */
-    public function getCountyId()
+    public function getRegionId()
     {
-        return ($this->getCounty()) ? $this->getCounty()->getId() : null;
+        return ($this->getRegion()) ? $this->getRegion()->getId() : null;
     }
 
     /**
@@ -75,7 +75,7 @@ class Department
      *
      * @param string $name
      *
-     * @return Department
+     * @return District
      */
     public function setName($name)
     {
@@ -99,7 +99,7 @@ class Department
      *
      * @param integer $number
      *
-     * @return Department
+     * @return District
      */
     public function setNumber($number)
     {
@@ -126,27 +126,27 @@ class Department
     }
 
     /**
-     * Set county
+     * Set region
      *
-     * @param \Rscine\AppBundle\Entity\County $county
+     * @param \Rscine\AppBundle\Entity\Region $region
      *
-     * @return Department
+     * @return District
      */
-    public function setCounty(\Rscine\AppBundle\Entity\County $county = null)
+    public function setRegion(\Rscine\AppBundle\Entity\Region $region = null)
     {
-        $this->county = $county;
+        $this->region = $region;
 
         return $this;
     }
 
     /**
-     * Get county
+     * Get region
      *
-     * @return \Rscine\AppBundle\Entity\County
+     * @return \Rscine\AppBundle\Entity\Region
      */
-    public function getCounty()
+    public function getRegion()
     {
-        return $this->county;
+        return $this->region;
     }
 
     /**
@@ -154,7 +154,7 @@ class Department
      *
      * @param \Rscine\AppBundle\Entity\User $user
      *
-     * @return Department
+     * @return District
      */
     public function addUser(\Rscine\AppBundle\Entity\User $user)
     {

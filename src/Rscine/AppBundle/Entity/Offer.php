@@ -45,18 +45,18 @@ class Offer
 
     /**
      * Créateur de la demande (utilisateur client)
-     * @var Rscine\AppBundle\Model\CustomerInterface
+     * @var Rscine\AppBundle\Model\OfferCreatorInterface
      *
-     * @ORM\ManyToOne(targetEntity="Rscine\AppBundle\Model\CustomerInterface", inversedBy="offersCreated")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="offersCreated")
      * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
      */
     private $creator;
 
     /**
      * Candidats à la demande
-     * @var Array<Rscine\AppBundle\Model\ContractorInterface>
+     * @var Array<Rscine\AppBundle\Model\Worker>
      *
-     * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Model\ContractorInterface", inversedBy="offersAppliedTo", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Worker", inversedBy="offersAppliedTo", cascade={"persist"})
      * @ORM\JoinTable(name="offers_applications",
      *      joinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="applicant_id", referencedColumnName="id")}
@@ -66,9 +66,9 @@ class Offer
 
     /**
      * Maître d'oeuvre
-     * @var Rscine\AppBundle\Model\ContractorInterface
+     * @var Rscine\AppBundle\Model\OfferHandlerInterface
      *
-     * @ORM\ManyToOne(targetEntity="Rscine\AppBundle\Model\ContractorInterface", inversedBy="offersHandled")
+     * @ORM\ManyToOne(targetEntity="Worker", inversedBy="offersHandled")
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;
@@ -120,7 +120,7 @@ class Offer
         $ids = array();
         foreach ($this->getApplicants() as $applicant) {
              $ids[] = $applicant->getId();
-         } 
+         }
          return $ids;
     }
 

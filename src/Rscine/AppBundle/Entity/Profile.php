@@ -29,12 +29,6 @@ class Profile
     private $name;
 
     /**
-     * @var Domain
-     * @ORM\ManyToOne(targetEntity="Domain", inversedBy="availableProfiles")
-     */
-    private $domain;
-
-    /**
      * @var ArrayCollection<Worker>
      * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Entity\Worker", inversedBy="profiles")
      */

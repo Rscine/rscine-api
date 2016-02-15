@@ -38,6 +38,12 @@ class ContactInformations
      */
     private $phones;
 
+    /**
+     * @var Address
+     *
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="contactInformations", cascade={"persist"})
+     */
+    private $addresses;
 
     /**
      * Get id

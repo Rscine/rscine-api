@@ -7,13 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * County
+ * Region
  *
  * @ORM\Table()
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
  */
-class County
+class Region
 {
     /**
      * @var integer
@@ -34,9 +34,9 @@ class County
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Department", mappedBy="county")
+     * @ORM\OneToMany(targetEntity="District", mappedBy="region")
      */
-    private $departments;
+    private $districts;
 
     /**
      * Get id
@@ -53,7 +53,7 @@ class County
      *
      * @param string $name
      *
-     * @return County
+     * @return Region
      */
     public function setName($name)
     {
@@ -74,7 +74,7 @@ class County
 
     public function __construct()
     {
-        $this->departments = new ArrayCollection();
+        $this->districts = new ArrayCollection();
     }
 
 }

@@ -5,10 +5,8 @@ namespace Rscine\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
 use JMS\Serializer\Annotation as Serializer;
-use Rscine\AppBundle\Model\ContractorTrait;
-use Rscine\AppBundle\Model\CustomerTrait;
-use Rscine\AppBundle\Model\ContractorInterface;
-use Rscine\AppBundle\Model\CustomerInterface;
+use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
+use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
 
 /**
  * User
@@ -20,10 +18,9 @@ use Rscine\AppBundle\Model\CustomerInterface;
  * @ORM\DiscriminatorMap({"worker" = "Worker", "company" = "Company", "individual" = "Individual"})
  * @Serializer\ExclusionPolicy("ALL")
  */
-abstract class User extends BaseUser implements CustomerInterface
+abstract class User extends BaseUser implements OfferCreatorInterface
 {
-
-    use CustomerTrait;
+    use OfferCreatorTrait;
 
     /**
      * @var integer
@@ -36,10 +33,10 @@ abstract class User extends BaseUser implements CustomerInterface
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Department", inversedBy="users")
-     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="District", inversedBy="users")
+     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
      */
-    private $department;
+    private $district;
 
     /**
      * @ORM\OneToOne(targetEntity="ContactInformations", cascade={"persist"})
@@ -49,11 +46,11 @@ abstract class User extends BaseUser implements CustomerInterface
 
     /**
      * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("department_id")
+     * @Serializer\SerializedName("district_id")
      */
-    public function getDepartmentId()
+    public function getDistrictId()
     {
-        return ($this->getDepartment()) ? $this->getDepartment()->getId() : null;
+        return ($this->getDistrict()) ? $this->getDistrict()->getId() : null;
     }
 
     /**
@@ -178,27 +175,27 @@ abstract class User extends BaseUser implements CustomerInterface
     }
 
     /**
-     * Set department
+     * Set district
      *
-     * @param \Rscine\AppBundle\Entity\Department $department
+     * @param \Rscine\AppBundle\Entity\District $district
      *
      * @return User
      */
-    public function setDepartment(\Rscine\AppBundle\Entity\Department $department = null)
+    public function setDistrict(\Rscine\AppBundle\Entity\District $district = null)
     {
-        $this->department = $department;
+        $this->district = $district;
 
         return $this;
     }
 
     /**
-     * Get department
+     * Get district
      *
-     * @return \Rscine\AppBundle\Entity\Department
+     * @return \Rscine\AppBundle\Entity\District
      */
-    public function getDepartment()
+    public function getDistrict()
     {
-        return $this->department;
+        return $this->district;
     }
 
     /**
