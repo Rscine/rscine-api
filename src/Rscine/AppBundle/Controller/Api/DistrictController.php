@@ -9,60 +9,60 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Rscine\AppBundle\Entity\Department;
-use Rscine\AppBundle\Form\DepartmentType;
+use Rscine\AppBundle\Entity\District;
+use Rscine\AppBundle\Form\DistrictType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-class DepartmentController extends FOSRestController
+class DistrictController extends FOSRestController
 {
 
     /**
      * Récupère la liste des départements
-     * GET api/departments
+     * GET api/districts
      * @Rest\View()
      *
      * @return [type] [description]
      */
-    public function getDepartmentsAction()
+    public function getDistrictsAction()
     {
-        $departments = $this->getDoctrine()->getManager()->getRepository('RscineAppBundle:Department')->findAll();
-        return $departments;
+        $districts = $this->getDoctrine()->getManager()->getRepository('RscineAppBundle:District')->findAll();
+        return $districts;
     }
 
     /**
      * Récupère un départment
-     * GET api/departments/{slug}
+     * GET api/districts/{slug}
      * @Rest\View()
-     * @ParamConverter("department", class="RscineAppBundle:Department")
+     * @ParamConverter("district", class="RscineAppBundle:District")
      *
      * @return [type] [description]
      */
-    public function getDepartmentAction(Department $department)
+    public function getDistrictAction(District $district)
     {
-        return $department;
+        return $district;
     }
 
     /**
      * Crée un département
-     * POST api/departments
-     * 
+     * POST api/districts
+     *
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function postDepartmentAction(Request $request)
+    public function postDistrictAction(Request $request)
     {
-        $department = new Department();
+        $district = new District();
 
-        $createForm = $this->createCreateForm($department);
+        $createForm = $this->createCreateForm($district);
 
         $createForm->submit($request->get($createForm->getName()));
 
         if ($createForm->isValid() && $createForm->isSubmitted()) {
 
-            $this->getDoctrine()->getManager()->persist($department);
+            $this->getDoctrine()->getManager()->persist($district);
             $this->getDoctrine()->getManager()->flush();
 
-            return new JsonResponse($this->get('serializer')->toArray($department));
+            return new JsonResponse($this->get('serializer')->toArray($district));
         }
 
         return new JsonResponse($this->get('serializer')->toArray($createForm->getErrors()), 400);
@@ -70,27 +70,27 @@ class DepartmentController extends FOSRestController
 
     /**
      * Modifie un départment
-     * PUT api/departments/{slug}
+     * PUT api/districts/{slug}
      * @Rest\View()
-     * @ParamConverter("department", class="RscineAppBundle:Department")
+     * @ParamConverter("district", class="RscineAppBundle:District")
      *
      * @param  Request    $request    [description]
-     * @param  Department $department [description]
+     * @param  District $district [description]
      * @return [type]                 [description]
      */
-    public function putDepartmentAction(Request $request, Department $department)
+    public function putDistrictAction(Request $request, District $district)
     {
 
-        $editForm = $this->createEditForm($department);
+        $editForm = $this->createEditForm($district);
 
         $editForm->submit($request->get($editForm->getName()));
 
         if ($editForm->isValid() && $editForm->isSubmitted()) {
 
-            $this->getDoctrine()->getManager()->persist($department);
+            $this->getDoctrine()->getManager()->persist($district);
             $this->getDoctrine()->getManager()->flush();
 
-            return new JsonResponse($this->get('serializer')->toArray($department), 200);
+            return new JsonResponse($this->get('serializer')->toArray($district), 200);
 
         }
 
@@ -98,27 +98,27 @@ class DepartmentController extends FOSRestController
     }
 
     /**
-     * Supprime le département $department
-     * DELETE api/departments/{slug}
-     * 
-     * @param  Department $department [description]
+     * Supprime le département $district
+     * DELETE api/districts/{slug}
+     *
+     * @param  District $district [description]
      * @return [type]                 [description]
      */
-    public function deleteDepartmentAction(Department $department)
+    public function deleteDistrictAction(District $district)
     {
-        $this->getDoctrine()->getManager()->remove($department);
+        $this->getDoctrine()->getManager()->remove($district);
         $this->getDoctrine()->getManager()->flush();
 
-        return new JsonResponse(array('Message' => 'Department deleted'), 200);
+        return new JsonResponse(array('Message' => 'District deleted'), 200);
     }
 
     /**
      * Retourne les options possibles pour tous les utilisateurs
-     * OPTIONS api/departments
+     * OPTIONS api/districts
      *
      * @return [type]       [description]
      */
-    public function optionsDepartmentsAction()
+    public function optionsDistrictsAction()
     {
         $response = new Response();
         $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST, PUT');
@@ -128,12 +128,12 @@ class DepartmentController extends FOSRestController
 
     /**
      * Retourne les options possibles pour un département
-     * OPTIONS api/departments
-     * @ParamConverter("department", class="RscineAppBundle:Department")
+     * OPTIONS api/districts
+     * @ParamConverter("district", class="RscineAppBundle:District")
      *
      * @return [type]       [description]
      */
-    public function optionsDepartmentAction(Department $department)
+    public function optionsDistrictAction(District $district)
     {
         $response = new Response();
         $response->headers->set('Allow', 'OPTIONS, GET, PATCH, DELETE, POST, PUT');
@@ -144,25 +144,25 @@ class DepartmentController extends FOSRestController
     /**
      * Retourne le formulaire d'édition d'un départment
      *
-     * @param  [type] $department [description]
+     * @param  [type] $district [description]
      * @return [type]             [description]
      */
-    protected function createEditForm($department)
+    protected function createEditForm($district)
     {
-        $editForm = $this->createForm(new DepartmentType(), $department);
+        $editForm = $this->createForm(new DistrictType(), $district);
 
         return $editForm;
     }
 
     /**
      * Retourne le formulaire de création d'un départment
-     * 
-     * @param  [type] $department [description]
+     *
+     * @param  [type] $district [description]
      * @return [type]             [description]
      */
-    protected function createCreateForm($department)
+    protected function createCreateForm($district)
     {
-        $createForm = $this->createForm(new DepartmentType(), $department);
+        $createForm = $this->createForm(new DistrictType(), $district);
 
         return $createForm;
     }

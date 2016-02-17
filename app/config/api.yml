@@ -7,9 +7,9 @@ counties:
     type: rest
     resource: Rscine\AppBundle\Controller\Api\CountyController
 
-departments:
+disctricts:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\DepartmentController
+    resource: Rscine\AppBundle\Controller\Api\DistrictController
 
 individuals:
     type: rest

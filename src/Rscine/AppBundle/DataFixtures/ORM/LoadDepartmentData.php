@@ -4,12 +4,12 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\AppBundle\Entity\Department;
+use Rscine\AppBundle\Entity\District;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadDepartmentData implements FixtureInterface, OrderedFixtureInterface {
+class LoadDistrictData implements FixtureInterface, OrderedFixtureInterface {
 
-    private $departmentNames = array(
+    private $districtNames = array(
         'Hérault' => 34,
         'Gironde' => 33,
         'Lozère' => 48,
@@ -22,11 +22,11 @@ class LoadDepartmentData implements FixtureInterface, OrderedFixtureInterface {
     public function load(ObjectManager $manager)
     {
 
-        foreach ($this->departmentNames as $departmentName => $departmentNumber) {
-            $department = new Department();
-            $department->setName($departmentName);
-            $department->setNumber($departmentNumber);
-            $manager->persist($department);
+        foreach ($this->districtNames as $districtName => $districtNumber) {
+            $district = new District();
+            $district->setName($districtName);
+            $district->setNumber($districtNumber);
+            $manager->persist($district);
         }
 
         $manager->flush();

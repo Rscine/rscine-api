@@ -15,49 +15,49 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
     private $individuals = array(
         array(
             'name' => 'cormag',
-            'department' => 33,
+            'district' => 33,
             'company' => 'Rausten',
             'domain' => 'Sword'
         ),
         array(
             'name' => 'neimi',
-            'department' => 34,
+            'district' => 34,
             'company' => 'Rausten',
             'domain' => 'Sword'
         ),
         array(
             'name' => 'colm',
-            'department' => 48,
+            'district' => 48,
             'company' => 'Rausten',
             'domain' => 'Spear'
         ),
         array(
             'name' => 'gerrik',
-            'department' => 64,
+            'district' => 64,
             'company' => 'Frelia',
             'domain' => 'Axe'
         ),
         array(
             'name' => 'eirika',
-            'department' => 33,
+            'district' => 33,
             'company' => 'Renais',
             'domain' => 'Spear'
         ),
         array(
             'name' => 'ephraim',
-            'department' => 34,
+            'district' => 34,
             'company' => 'Renais',
             'domain' => 'Bow'
         ),
         array(
             'name' => 'duessel',
-            'department' => 48,
+            'district' => 48,
             'company' => 'Frelia',
             'domain' => 'Bow'
         ),
         array(
             'name' => 'frantz',
-            'department' => 64,
+            'district' => 64,
             'company' => 'Frelia',
             'domain' => 'Axe'
         )
@@ -83,11 +83,11 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
                 $individual->setDomain($domain);
 
 
-            // Department binding
-            $department = $manager->getRepository('RscineAppBundle:Department')->findOneByNumber($individualItem['department']);
+            // District binding
+            $district = $manager->getRepository('RscineAppBundle:District')->findOneByNumber($individualItem['district']);
 
-            if ($department)
-                $individual->setDepartment($department);
+            if ($district)
+                $individual->setDistrict($district);
 
             // Company binding
             $company = $manager->getRepository('RscineAppBundle:Company')->findOneByName($individualItem['company']);

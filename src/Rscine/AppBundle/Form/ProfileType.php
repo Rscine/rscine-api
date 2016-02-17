@@ -14,8 +14,8 @@ class ProfileType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('department', 'entity', array(
-            'class' => 'RscineAppBundle:Department'
+        $builder->add('district', 'entity', array(
+            'class' => 'RscineAppBundle:District'
         ));
     }
 

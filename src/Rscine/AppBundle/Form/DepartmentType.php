@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DepartmentType extends AbstractType
+class DistrictType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -29,7 +29,7 @@ class DepartmentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Rscine\AppBundle\Entity\Department'
+            'data_class' => 'Rscine\AppBundle\Entity\District'
         ));
     }
 
@@ -38,6 +38,6 @@ class DepartmentType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_department';
+        return 'appbundle_district';
     }
 }
