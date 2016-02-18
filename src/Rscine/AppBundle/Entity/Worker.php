@@ -56,25 +56,4 @@ abstract class Worker extends User implements OfferApplicantInterface, OfferHand
     {
         return $this->id;
     }
-
-    /**
-     * Set domain to the worker
-     * @param Domain $domain
-     * @return Worker
-     */
-    public function setDomain(Domain $domain)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Get the worker domain
-     * @return Domain $domain
-     */
-    public function getDomain()
-    {
-        return $this->domain;
-    }
 }

@@ -2,6 +2,8 @@
 
 namespace Rscine\AppBundle\Model\Offer;
 
+use Rscine\AppBundle\Entity\Offer;
+
 /**
  * Représente un utilisateur pouvant créer des offres
  */

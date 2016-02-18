@@ -3,6 +3,7 @@
 namespace Rscine\AppBundle\Model\Offer;
 
 use Doctrine\ORM\Mapping as ORM;
+use Rscine\AppBundle\Entity\Offer;
 
 /**
  * Représente un utilisateur pouvant candidater à des offres
@@ -31,8 +32,6 @@ trait OfferApplicantTrait
     {
         if (!$this->offersAppliedTo->contains($offer)) {
             $this->offersAppliedTo->add($offer);
-
-            $offer->addApplicant($this);
         }
 
         return $this;
@@ -45,8 +44,6 @@ trait OfferApplicantTrait
     {
         if ($this->offersAppliedTo->contains($offer)) {
             $this->offersAppliedTo->removeElement($offer);
-
-            $offer->getApplicants()->removeElement($this);
         }
 
         return $this;
