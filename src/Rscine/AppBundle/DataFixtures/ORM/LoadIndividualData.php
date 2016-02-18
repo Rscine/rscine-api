@@ -17,49 +17,41 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             'name' => 'cormag',
             'district' => 33,
             'company' => 'Rausten',
-            'domain' => 'Sword'
         ),
         array(
             'name' => 'neimi',
             'district' => 34,
             'company' => 'Rausten',
-            'domain' => 'Sword'
         ),
         array(
             'name' => 'colm',
             'district' => 48,
             'company' => 'Rausten',
-            'domain' => 'Spear'
         ),
         array(
             'name' => 'gerrik',
             'district' => 64,
             'company' => 'Frelia',
-            'domain' => 'Axe'
         ),
         array(
             'name' => 'eirika',
             'district' => 33,
             'company' => 'Renais',
-            'domain' => 'Spear'
         ),
         array(
             'name' => 'ephraim',
             'district' => 34,
             'company' => 'Renais',
-            'domain' => 'Bow'
         ),
         array(
             'name' => 'duessel',
             'district' => 48,
             'company' => 'Frelia',
-            'domain' => 'Bow'
         ),
         array(
             'name' => 'frantz',
             'district' => 64,
             'company' => 'Frelia',
-            'domain' => 'Axe'
         )
     );
 
@@ -76,13 +68,6 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             $individual->setLogin($individualItem['name']);
             $individual->setEmail($individualItem['name'].'@gmail.com');
 
-            // Domain binding
-            $domain = $manager->getRepository('RscineAppBundle:Domain')->findOneByName($individualItem['domain']);
-
-            if ($domain)
-                $individual->setDomain($domain);
-
-
             // District binding
             $district = $manager->getRepository('RscineAppBundle:District')->findOneByNumber($individualItem['district']);
 
@@ -98,7 +83,7 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             // Contact informations binding
             $contactInformations = new ContactInformations();
 
-            for ($i=0; $i < 4; $i++) { 
+            for ($i=0; $i < 4; $i++) {
 
                 $phoneNumber = $this->generateRandomPhoneNumber();
 

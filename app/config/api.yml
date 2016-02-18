@@ -3,9 +3,9 @@ users:
     type: rest
     resource: Rscine\AppBundle\Controller\Api\UserController
 
-counties:
+regions:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\CountyController
+    resource: Rscine\AppBundle\Controller\Api\RegionController
 
 disctricts:
     type: rest

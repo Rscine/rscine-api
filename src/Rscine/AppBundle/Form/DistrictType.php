@@ -17,8 +17,8 @@ class DistrictType extends AbstractType
         $builder
             ->add('name')
             ->add('number')
-            ->add('county', 'entity', array(
-                'class' => 'RscineAppBundle:County'
+            ->add('region', 'entity', array(
+                'class' => 'RscineAppBundle:Region'
             ))
         ;
     }

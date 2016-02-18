@@ -8,20 +8,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 
-class CountyController extends FOSRestController
+class RegionController extends FOSRestController
 {
 
     /**
      * Récupère la liste des régions
-     * GET api/counties
+     * GET api/regions
      * @Rest\View()
      *
      * @return [type] [description]
      */
     public function getCountiesAction()
     {
-        $counties = $this->getDoctrine()->getManager()->getRepository('RscineAppBundle:County')->findAll();
-        return $counties;
+        $regions = $this->getDoctrine()->getManager()->getRepository('RscineAppBundle:Region')->findAll();
+        return $regions;
     }
 
 }

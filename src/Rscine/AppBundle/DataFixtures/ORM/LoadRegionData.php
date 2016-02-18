@@ -4,12 +4,12 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\AppBundle\Entity\County;
+use Rscine\AppBundle\Entity\Region;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadCountyData implements FixtureInterface, OrderedFixtureInterface {
+class LoadRegionData implements FixtureInterface, OrderedFixtureInterface {
 
-    private $countyNames = array(
+    private $regionNames = array(
         'Languedoc-Roussillon',
         'Normandie',
         'Picardie',
@@ -22,10 +22,10 @@ class LoadCountyData implements FixtureInterface, OrderedFixtureInterface {
     public function load(ObjectManager $manager)
     {
 
-        foreach ($this->countyNames as $countyName) {
-            $county = new County();
-            $county->setName($countyName);
-            $manager->persist($county);
+        foreach ($this->regionNames as $regionName) {
+            $region = new Region();
+            $region->setName($regionName);
+            $manager->persist($region);
         }
 
         $manager->flush();
