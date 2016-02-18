@@ -4,8 +4,8 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
-use Rscine\AppBundle\Entity\Contractor;
 use Rscine\AppBundle\Entity\Worker;
+use Rscine\AppBundle\Entity\Individual;
 
 /**
  * Company
@@ -43,8 +43,9 @@ class Company extends Worker
     private $name;
 
     /**
-     * OneToMany(targetEntity="Worker", mappedBy="company")
      * @var Worker
+     *
+     * @ORM\OneToMany(targetEntity="Individual", mappedBy="company")
      */
     private $employees;
 

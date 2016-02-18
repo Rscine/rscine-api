@@ -28,6 +28,13 @@ class Individual extends Worker
 
 
     /**
+     * @var Company
+     *
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="employees")
+     */
+    protected $company;
+
+    /**
      * Get id
      *
      * @return integer
@@ -37,4 +44,3 @@ class Individual extends Worker
         return $this->id;
     }
 }
-

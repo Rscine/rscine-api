@@ -2,8 +2,8 @@
 
 namespace Rscine\AppBundle\Entity;
 
-use Rscine\AppBundle\Entity\Domain;
 use Rscine\AppBundle\Entity\User;
+use Rscine\AppBundle\Entity\Company;
 use Rscine\AppBundle\Model\Offer\OfferHandlerTrait;
 use Rscine\AppBundle\Model\Offer\OfferApplicantTrait;
 use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
@@ -46,7 +46,6 @@ abstract class Worker extends User implements OfferApplicantInterface, OfferHand
      * @var Genre
      */
     private $genres;
-
 
     /**
      * Get id
