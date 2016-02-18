@@ -33,3 +33,6 @@ app:
 api:
     resource: "api.yml"
     prefix: api/
+    
+api_login_check:
+    path: /api/login_check
