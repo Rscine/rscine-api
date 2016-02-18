@@ -5,9 +5,6 @@ namespace Rscine\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Rscine\AppBundle\Model\Offer\OfferApplicantTrait;
-use Rscine\AppBundle\Model\Offer\OfferHandlerTrait;
-use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
 use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
 use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
 use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
@@ -180,11 +177,11 @@ class Offer implements TimestampableInterface
     /**
      * Set creator
      *
-     * @param \Rscine\AppBundle\Entity\Rscine\AppBundle\Model\CustomerInterface $creator
+     * @param OfferCreatorInterface $creator
      *
      * @return Offer
      */
-    public function setCreator(CustomerInterface $creator = null)
+    public function setCreator(OfferCreatorInterface $creator = null)
     {
         $this->creator = $creator;
 
@@ -194,7 +191,7 @@ class Offer implements TimestampableInterface
     /**
      * Get creator
      *
-     * @return \Rscine\AppBundle\Entity\Rscine\AppBundle\Model\CustomerInterface
+     * @return OfferCreatorInterface
      */
     public function getCreator()
     {
@@ -204,11 +201,11 @@ class Offer implements TimestampableInterface
     /**
      * Add applicant
      *
-     * @param Rscine\AppBundle\Model\ContractorInterface $applicant
+     * @param OfferApplicantInterface $applicant
      *
      * @return Offer
      */
-    public function addApplicant(ContractorInterface $applicant)
+    public function addApplicant(OfferApplicantInterface $applicant)
     {
         $this->applicants[] = $applicant;
         $applicant->addOfferAppliedTo($this);
@@ -219,9 +216,9 @@ class Offer implements TimestampableInterface
     /**
      * Remove applicant
      *
-     * @param \Rscine\AppBundle\Entity\Rscine\AppBundle\Model\ContractorInterface $applicant
+     * @param OfferApplicantInterface $applicant
      */
-    public function removeApplicant(ContractorInterface $applicant)
+    public function removeApplicant(OfferApplicantInterface $applicant)
     {
         $this->applicants->removeElement($applicant);
         $applicant->removeOfferAppliedTo($this);
@@ -240,11 +237,11 @@ class Offer implements TimestampableInterface
     /**
      * Set handler
      *
-     * @param Rscine\AppBundle\Model\ContractorInterface $handler
+     * @param OfferHandlerInterface $handler
      *
      * @return Offer
      */
-    public function setHandler(ContractorInterface $handler = null)
+    public function setHandler(OfferHandlerInterface $handler = null)
     {
         $this->handler = $handler;
 
@@ -254,7 +251,7 @@ class Offer implements TimestampableInterface
     /**
      * Get handler
      *
-     * @return Rscine\AppBundle\Model\ContractorInterface
+     * @return OfferHandlerInterface
      */
     public function getHandler()
     {

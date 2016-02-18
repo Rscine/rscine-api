@@ -15,10 +15,10 @@ use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"worker" = "Worker", "company" = "Company", "individual" = "Individual"})
+ * @ORM\DiscriminatorMap({"worker" = "Worker", "company" = "Company", "individual" = "Individual", "user" = "User"})
  * @Serializer\ExclusionPolicy("ALL")
  */
-abstract class User extends BaseUser implements OfferCreatorInterface
+class User extends BaseUser implements OfferCreatorInterface
 {
     use OfferCreatorTrait;
 

@@ -29,7 +29,7 @@ class LoadOfferData implements FixtureInterface, OrderedFixtureInterface{
             $offer->setName($offerName);
             $offer->setDescription($offerDescription);
 
-            $applicants = $manager->getRepository('RscineAppBundle:User')->findAll();
+            $applicants = $manager->getRepository('RscineAppBundle:Worker')->findAll();
 
             foreach ($applicants as $applicant) {
                 $offer->addApplicant($applicant);
@@ -40,10 +40,10 @@ class LoadOfferData implements FixtureInterface, OrderedFixtureInterface{
 
             $offer->setCreator($creator);
 
-            $handler = $manager->getRepository('RscineAppBundle:User')->findOneByUsername('Cormag');
+            $handler = $manager->getRepository('RscineAppBundle:Worker')->findOneByUsername('Cormag');
 
             $offer->setHandler($handler);
-                
+
             $manager->persist($creator);
             $manager->persist($handler);
             $manager->persist($offer);
