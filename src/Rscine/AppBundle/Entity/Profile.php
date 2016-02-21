@@ -3,6 +3,9 @@
 namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
+
 use Rscine\AppBundle\Entity\Worker;
 
 /**
@@ -10,6 +13,8 @@ use Rscine\AppBundle\Entity\Worker;
  *
  * @ORM\Table()
  * @ORM\Entity
+ *
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Profile
 {
@@ -19,18 +24,24 @@ class Profile
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Expose()
      */
     private $id;
 
     /**
      * @var string
      * @ORM\Column(name="name", type="string", length=255)
+     *
+     * @Serializer\Expose()
      */
     private $name;
 
     /**
      * @var ArrayCollection<Worker>
      * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Entity\Worker", inversedBy="profiles")
+     *
+     * @Serializer\Expose()
      */
     private $workers;
 

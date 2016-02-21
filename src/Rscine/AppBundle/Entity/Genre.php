@@ -3,13 +3,18 @@
 namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
+
 use Rscine\AppBundle\Entity\Worker;
 
 /**
  * Genre
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
+ *
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Genre
 {
@@ -19,6 +24,8 @@ class Genre
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Expose()
      */
     private $id;
 
@@ -26,12 +33,16 @@ class Genre
      * @var String
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
+     * @Serializer\Expose()
      */
     private $name;
 
     /**
      * @var ArrayCollection<Worker>
      * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Entity\Worker", inversedBy="genres")
+     *
+     * @Serializer\Expose()
      */
     private $workers;
 
