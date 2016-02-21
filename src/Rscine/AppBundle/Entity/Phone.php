@@ -4,14 +4,23 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
+
 use Rscine\AppBundle\Entity\ContactInformation;
 
 /**
  * Phone
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
+ *
  * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "contactInformation",
+ *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getContactInformation() === null)")
+ * )
  */
 class Phone
 {
@@ -21,6 +30,8 @@ class Phone
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Expose()
      */
     private $id;
 
@@ -28,6 +39,8 @@ class Phone
      * @var string
      *
      * @ORM\Column(name="number", type="string", length=255)
+     *
+     * @Serializer\Expose()
      */
     private $number;
 
@@ -35,6 +48,8 @@ class Phone
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     *
+     * @Serializer\Expose()
      */
     private $type;
 
@@ -105,11 +120,11 @@ class Phone
     /**
      * Set contactInformation
      *
-     * @param \Rscine\AppBundle\Entity\ContactInformation $contactInformation
+     * @param ContactInformation $contactInformation
      *
      * @return Phone
      */
-    public function setContactInformation(\Rscine\AppBundle\Entity\ContactInformation $contactInformation = null)
+    public function setContactInformation(ContactInformation $contactInformation = null)
     {
         $this->contactInformation = $contactInformation;
 
@@ -119,7 +134,7 @@ class Phone
     /**
      * Get contactInformation
      *
-     * @return \Rscine\AppBundle\Entity\ContactInformation
+     * @return ContactInformation
      */
     public function getContactInformation()
     {

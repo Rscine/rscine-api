@@ -3,12 +3,22 @@
 namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
 
 /**
  * Email
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
+ *
+ * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "contactInformation",
+ *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getContactInformation() === null)")
+ * )
  */
 class Email
 {
@@ -101,11 +111,11 @@ class Email
     /**
      * Set contactInformation
      *
-     * @param \Rscine\AppBundle\Entity\ContactInformation $contactInformation
+     * @param ContactInformation $contactInformation
      *
      * @return Email
      */
-    public function setContactInformation(\Rscine\AppBundle\Entity\ContactInformation $contactInformation = null)
+    public function setContactInformation(ContactInformation $contactInformation = null)
     {
         $this->contactInformation = $contactInformation;
 
@@ -115,7 +125,7 @@ class Email
     /**
      * Get contactInformation
      *
-     * @return \Rscine\AppBundle\Entity\ContactInformation
+     * @return ContactInformation
      */
     public function getContactInformation()
     {

@@ -3,12 +3,22 @@
 namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
 
 /**
  * Address
  *
  * @ORM\Table()
  * @ORM\Entity()
+ *
+ * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "contactInformation",
+ *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getContactInformation() === null)")
+ * )
  */
 class Address
 {
@@ -18,6 +28,8 @@ class Address
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Expose()
      */
     private $id;
 
@@ -25,6 +37,8 @@ class Address
      * @var string
      *
      * @ORM\Column(name="street", type="text")
+     *
+     * @Serializer\Expose()
      */
     private $street;
 
@@ -32,6 +46,8 @@ class Address
      * @var integer
      *
      * @ORM\Column(name="number", type="integer")
+     *
+     * @Serializer\Expose()
      */
     private $number;
 
@@ -39,6 +55,8 @@ class Address
      * @var integer
      *
      * @ORM\Column(name="postalCode", type="integer")
+     *
+     * @Serializer\Expose()
      */
     private $postalCode;
 
@@ -46,6 +64,8 @@ class Address
      * @var string
      *
      * @ORM\Column(name="complements", type="text")
+     *
+     * @Serializer\Expose()
      */
     private $complements;
 

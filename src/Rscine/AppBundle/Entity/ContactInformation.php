@@ -4,6 +4,7 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
 
 use Rscine\AppBundle\Entity\Email;
 use Rscine\AppBundle\Entity\Phone;
@@ -33,6 +34,8 @@ class ContactInformation
      * @var string
      *
      * @ORM\OneToMany(targetEntity="Email", mappedBy="contactInformation", cascade={"persist"})
+     *
+     * @Serializer\Expose()
      */
     private $emails;
 
@@ -40,6 +43,8 @@ class ContactInformation
      * @var string
      *
      * @ORM\OneToMany(targetEntity="Phone", mappedBy="contactInformation", cascade={"persist"})
+     *
+     * @Serializer\Expose()
      */
     private $phones;
 
@@ -47,6 +52,8 @@ class ContactInformation
      * @var Address
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="contactInformation", cascade={"persist"})
+     *
+     * @Serializer\Expose()
      */
     private $addresses;
 
