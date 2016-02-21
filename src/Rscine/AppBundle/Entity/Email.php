@@ -28,6 +28,8 @@ class Email
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Expose()
      */
     private $id;
 
@@ -35,11 +37,15 @@ class Email
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     *
+     * @Serializer\Expose()
      */
     private $email;
 
     /**
      * @ORM\Column(name="type", type="string", length=255)
+     *
+     * @Serializer\Expose()
      */
     private $type;
 
