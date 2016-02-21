@@ -50,11 +50,11 @@ class Address
     private $complements;
 
     /**
-     * @var ContactInformations
+     * @var ContactInformation
      *
-     * @ORM\ManyToOne(targetEntity="ContactInformations", inversedBy="addresses")
+     * @ORM\ManyToOne(targetEntity="ContactInformation", inversedBy="addresses")
      */
-    private $contactInformations;
+    private $contactInformation;
 
 
     /**

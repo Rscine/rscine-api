@@ -4,7 +4,7 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
-use Rscine\AppBundle\Entity\ContactInformations;
+use Rscine\AppBundle\Entity\ContactInformation;
 
 /**
  * Phone
@@ -39,10 +39,10 @@ class Phone
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ContactInformations", inversedBy="phones")
+     * @ORM\ManyToOne(targetEntity="ContactInformation", inversedBy="phones")
      * @ORM\JoinColumn(name="contact_information_id", referencedColumnName="id")
      */
-    private $contactInformations;
+    private $contactInformation;
 
     /**
      * Get id
@@ -103,26 +103,26 @@ class Phone
     }
 
     /**
-     * Set contactInformations
+     * Set contactInformation
      *
-     * @param \Rscine\AppBundle\Entity\ContactInformations $contactInformations
+     * @param \Rscine\AppBundle\Entity\ContactInformation $contactInformation
      *
      * @return Phone
      */
-    public function setContactInformations(\Rscine\AppBundle\Entity\ContactInformations $contactInformations = null)
+    public function setContactInformation(\Rscine\AppBundle\Entity\ContactInformation $contactInformation = null)
     {
-        $this->contactInformations = $contactInformations;
+        $this->contactInformation = $contactInformation;
 
         return $this;
     }
 
     /**
-     * Get contactInformations
+     * Get contactInformation
      *
-     * @return \Rscine\AppBundle\Entity\ContactInformations
+     * @return \Rscine\AppBundle\Entity\ContactInformation
      */
-    public function getContactInformations()
+    public function getContactInformation()
     {
-        return $this->contactInformations;
+        return $this->contactInformation;
     }
 }

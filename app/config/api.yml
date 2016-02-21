@@ -15,6 +15,10 @@ individuals:
     type: rest
     resource: Rscine\AppBundle\Controller\Api\IndividualController
 
+contactinformations:
+    type: rest
+    resource: Rscine\AppBundle\Controller\Api\ContactInformationController
+
 companies:
     type: rest
     resource: Rscine\AppBundle\Controller\Api\CompanyController

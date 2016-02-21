@@ -34,10 +34,10 @@ class Email
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ContactInformations", inversedBy="emails")
+     * @ORM\ManyToOne(targetEntity="ContactInformation", inversedBy="emails")
      * @ORM\JoinColumn(name="contact_information_id", referencedColumnName="id")
      */
-    private $contactInformations;
+    private $contactInformation;
 
 
     /**
@@ -99,26 +99,26 @@ class Email
     }
 
     /**
-     * Set contactInformations
+     * Set contactInformation
      *
-     * @param \Rscine\AppBundle\Entity\ContactInformations $contactInformations
+     * @param \Rscine\AppBundle\Entity\ContactInformation $contactInformation
      *
      * @return Email
      */
-    public function setContactInformations(\Rscine\AppBundle\Entity\ContactInformations $contactInformations = null)
+    public function setContactInformation(\Rscine\AppBundle\Entity\ContactInformation $contactInformation = null)
     {
-        $this->contactInformations = $contactInformations;
+        $this->contactInformation = $contactInformation;
 
         return $this;
     }
 
     /**
-     * Get contactInformations
+     * Get contactInformation
      *
-     * @return \Rscine\AppBundle\Entity\ContactInformations
+     * @return \Rscine\AppBundle\Entity\ContactInformation
      */
-    public function getContactInformations()
+    public function getContactInformation()
     {
-        return $this->contactInformations;
+        return $this->contactInformation;
     }
 }

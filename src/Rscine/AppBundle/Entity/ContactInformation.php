@@ -4,17 +4,19 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
-use Rscine\AppBundle\Entity\Phone;
+
 use Rscine\AppBundle\Entity\Email;
+use Rscine\AppBundle\Entity\Phone;
 
 /**
- * ContactInformations
+ * ContactInformation
  *
  * @ORM\Table()
  * @ORM\Entity
+ *
  * @Serializer\ExclusionPolicy("ALL")
  */
-class ContactInformations
+class ContactInformation
 {
     /**
      * @var integer
@@ -22,26 +24,29 @@ class ContactInformations
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Expose()
      */
     private $id;
 
     /**
+     * @var string
      *
-     * @ORM\OneToMany(targetEntity="Email", mappedBy="contactInformations", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Email", mappedBy="contactInformation", cascade={"persist"})
      */
     private $emails;
 
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="Phone", mappedBy="contactInformations", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Phone", mappedBy="contactInformation", cascade={"persist"})
      */
     private $phones;
 
     /**
      * @var Address
      *
-     * @ORM\OneToMany(targetEntity="Address", mappedBy="contactInformations", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="contactInformation", cascade={"persist"})
      */
     private $addresses;
 
@@ -60,7 +65,7 @@ class ContactInformations
      *
      * @param array $emails
      *
-     * @return ContactInformations
+     * @return ContactInformation
      */
     public function setEmails($emails)
     {
@@ -84,7 +89,7 @@ class ContactInformations
      *
      * @param string $phones
      *
-     * @return ContactInformations
+     * @return ContactInformation
      */
     public function setPhones($phones)
     {
@@ -115,12 +120,12 @@ class ContactInformations
      *
      * @param \Rscine\AppBundle\Entity\Phone $phone
      *
-     * @return ContactInformations
+     * @return ContactInformation
      */
     public function addPhone(\Rscine\AppBundle\Entity\Phone $phone)
     {
         $this->phones[] = $phone;
-        $phone->setContactInformations($this);
+        $phone->setContactInformation($this);
 
         return $this;
     }
@@ -140,12 +145,12 @@ class ContactInformations
      *
      * @param \Rscine\AppBundle\Entity\Email $email
      *
-     * @return ContactInformations
+     * @return ContactInformation
      */
     public function addEmail(\Rscine\AppBundle\Entity\Email $email)
     {
         $this->emails[] = $email;
-        $email->setContactInformations($this);
+        $email->setContactInformation($this);
 
         return $this;
     }
