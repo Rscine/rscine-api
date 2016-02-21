@@ -4,19 +4,37 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
+use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
-use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
+
 use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
+use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
  * @ORM\Entity
+ *
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"worker" = "Worker", "company" = "Company", "individual" = "Individual", "user" = "User"})
+ *
  * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "district",
+ *     href = @Hateoas\Route("get_district", parameters={"district" = "expr(object.getDistrict().getId())"}),
+ *     embedded = "expr(object.getDistrict())",
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getDistrict() === null)")
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "contactInformation",
+ *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
+ *     embedded = "expr(object.getContactInformation())",
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getContactInformation() === null)")
+ * )
  */
 class User extends BaseUser implements OfferCreatorInterface
 {
@@ -39,58 +57,10 @@ class User extends BaseUser implements OfferCreatorInterface
     private $district;
 
     /**
-     * @ORM\OneToOne(targetEntity="ContactInformations", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="ContactInformation", cascade={"persist"})
      * @ORM\JoinColumn(name="contact_informations_id", referencedColumnName="id")
      */
-    private $contactInformations;
-
-    /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("district_id")
-     */
-    public function getDistrictId()
-    {
-        return ($this->getDistrict()) ? $this->getDistrict()->getId() : null;
-    }
-
-    /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("contact_emails")
-     */
-    public function getContactEmails()
-    {
-        $contactEmails = array();
-
-        if ($this->getContactInformations()) {
-
-            foreach ($this->getContactInformations()->getEmails() as $email) {
-                $contactEmails[] = $email->getEmail();
-            }
-
-        }
-
-        return $contactEmails;
-    }
-
-
-    /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("contact_phones")
-     */
-    public function getContactPhones()
-    {
-        $contactPhones = array();
-
-        if ($this->getContactInformations()) {
-
-            foreach ($this->getContactInformations()->getPhones() as $phone) {
-                $contactPhones[] = $phone->getNumber();
-            }
-
-        }
-
-        return $contactPhones;
-    }
+    private $contactInformation;
 
     /**
      * Get id
@@ -177,11 +147,11 @@ class User extends BaseUser implements OfferCreatorInterface
     /**
      * Set district
      *
-     * @param \Rscine\AppBundle\Entity\District $district
+     * @param District $district
      *
      * @return User
      */
-    public function setDistrict(\Rscine\AppBundle\Entity\District $district = null)
+    public function setDistrict(District $district = null)
     {
         $this->district = $district;
 
@@ -191,7 +161,7 @@ class User extends BaseUser implements OfferCreatorInterface
     /**
      * Get district
      *
-     * @return \Rscine\AppBundle\Entity\District
+     * @return District
      */
     public function getDistrict()
     {
@@ -199,26 +169,26 @@ class User extends BaseUser implements OfferCreatorInterface
     }
 
     /**
-     * Set contactInformations
+     * Set contactInformation
      *
-     * @param \Rscine\AppBundle\Entity\ContactInformations $contactInformations
+     * @param ContactInformation $contactInformation
      *
      * @return User
      */
-    public function setContactInformations(\Rscine\AppBundle\Entity\ContactInformations $contactInformations = null)
+    public function setContactInformation(ContactInformation $contactInformation = null)
     {
-        $this->contactInformations = $contactInformations;
+        $this->contactInformation = $contactInformation;
 
         return $this;
     }
 
     /**
-     * Get contactInformations
+     * Get contactInformation
      *
-     * @return \Rscine\AppBundle\Entity\ContactInformations
+     * @return \Rscine\AppBundle\Entity\ContactInformation
      */
-    public function getContactInformations()
+    public function getContactInformation()
     {
-        return $this->contactInformations;
+        return $this->contactInformation;
     }
 }
