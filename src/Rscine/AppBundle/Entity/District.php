@@ -47,11 +47,6 @@ class District
     private $region;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="district")
-     */
-    private $users;
-
-    /**
      * @Serializer\VirtualProperty
      * @Serializer\SerializedName("region_id")
      */

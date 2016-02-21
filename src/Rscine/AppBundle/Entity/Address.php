@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Hateoas\Configuration\Annotation as Hateoas;
 
+use Rscine\AppBundle\Entity\Address;
+
 /**
  * Address
  *
@@ -18,6 +20,12 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *     "contactInformation",
  *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
  *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getContactInformation() === null)")
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "district",
+ *     href = @Hateoas\Route("get_district", parameters={"district" = "expr(object.getDistrict().getId())"}),
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getDistrict() === null)")
  * )
  */
 class Address
@@ -63,11 +71,17 @@ class Address
     /**
      * @var string
      *
-     * @ORM\Column(name="complements", type="text")
+     * @ORM\Column(name="complements", type="text", nullable=true)
      *
      * @Serializer\Expose()
      */
     private $complements;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="District", cascade={"persist"})
+     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
+     */
+    private $district;
 
     /**
      * @var ContactInformation
@@ -181,5 +195,53 @@ class Address
     public function getComplements()
     {
         return $this->complements;
+    }
+
+    /**
+     * Set contact information
+     *
+     * @param string $contactInformation
+     *
+     * @return Address
+     */
+    public function setContactInformation($contactInformation)
+    {
+        $this->contactInformation = $contactInformation;
+
+        return $this;
+    }
+
+    /**
+     * Get contact information
+     *
+     * @return string
+     */
+    public function getContactInformation()
+    {
+        return $this->contactInformation;
+    }
+
+    /**
+     * Set district
+     *
+     * @param District $district
+     *
+     * @return Address
+     */
+    public function setDistrict(District $district = null)
+    {
+        $this->district = $district;
+
+        return $this;
+    }
+
+    /**
+     * Get district
+     *
+     * @return District
+     */
+    public function getDistrict()
+    {
+        return $this->district;
     }
 }

@@ -5,8 +5,10 @@ namespace Rscine\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Hateoas\Configuration\Annotation as Hateoas;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Rscine\AppBundle\Entity\Email;
+use Rscine\AppBundle\Entity\Address;
 use Rscine\AppBundle\Entity\Phone;
 
 /**
@@ -119,17 +121,17 @@ class ContactInformation
      */
     public function __construct()
     {
-        $this->phones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->phones = new ArrayCollection();
     }
 
     /**
      * Add phone
      *
-     * @param \Rscine\AppBundle\Entity\Phone $phone
+     * @param Phone $phone
      *
      * @return ContactInformation
      */
-    public function addPhone(\Rscine\AppBundle\Entity\Phone $phone)
+    public function addPhone(Phone $phone)
     {
         $this->phones[] = $phone;
         $phone->setContactInformation($this);
@@ -140,9 +142,9 @@ class ContactInformation
     /**
      * Remove phone
      *
-     * @param \Rscine\AppBundle\Entity\Phone $phone
+     * @param Phone $phone
      */
-    public function removePhone(\Rscine\AppBundle\Entity\Phone $phone)
+    public function removePhone(Phone $phone)
     {
         $this->phones->removeElement($phone);
     }
@@ -150,11 +152,11 @@ class ContactInformation
     /**
      * Add email
      *
-     * @param \Rscine\AppBundle\Entity\Email $email
+     * @param Email $email
      *
      * @return ContactInformation
      */
-    public function addEmail(\Rscine\AppBundle\Entity\Email $email)
+    public function addEmail(Email $email)
     {
         $this->emails[] = $email;
         $email->setContactInformation($this);
@@ -165,10 +167,45 @@ class ContactInformation
     /**
      * Remove email
      *
-     * @param \Rscine\AppBundle\Entity\Email $email
+     * @param Email $email
      */
-    public function removeEmail(\Rscine\AppBundle\Entity\Email $email)
+    public function removeEmail(Email $email)
     {
         $this->emails->removeElement($email);
+    }
+
+    /**
+     * Add address
+     *
+     * @param Address $address
+     *
+     * @return ContactInformation
+     */
+    public function addAddress(Address $address)
+    {
+        $this->addresses[] = $address;
+        $address->setContactInformation($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param Address $address
+     */
+    public function removeAddress(Address $address)
+    {
+        $this->addresses->removeElement($address);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return Collection
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
     }
 }

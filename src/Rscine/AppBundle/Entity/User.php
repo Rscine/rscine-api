@@ -23,13 +23,6 @@ use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
  * @Serializer\ExclusionPolicy("ALL")
  *
  * @Hateoas\Relation(
- *     "district",
- *     href = @Hateoas\Route("get_district", parameters={"district" = "expr(object.getDistrict().getId())"}),
- *     embedded = "expr(object.getDistrict())",
- *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getDistrict() === null)")
- * )
- *
- * @Hateoas\Relation(
  *     "contactInformation",
  *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
  *     embedded = "expr(object.getContactInformation())",
@@ -49,12 +42,6 @@ class User extends BaseUser implements OfferCreatorInterface
      * @Serializer\Expose
      */
     protected $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="District", inversedBy="users")
-     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
-     */
-    private $district;
 
     /**
      * @ORM\OneToOne(targetEntity="ContactInformation", cascade={"persist"})
