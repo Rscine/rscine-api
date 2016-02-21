@@ -5,7 +5,7 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Rscine\AppBundle\Entity\Individual;
-use Rscine\AppBundle\Entity\ContactInformations;
+use Rscine\AppBundle\Entity\ContactInformation;
 use Rscine\AppBundle\Entity\Phone;
 use Rscine\AppBundle\Entity\Email;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -81,7 +81,7 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
                 $individual->setCompany($company);
 
             // Contact informations binding
-            $contactInformations = new ContactInformations();
+            $contactInformations = new ContactInformation();
 
             for ($i=0; $i < 4; $i++) {
 
@@ -102,7 +102,7 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             $email->setType('office');
 
             $contactInformations->addEmail($email);
-            $individual->setContactInformations($contactInformations);
+            $individual->setContactInformation($contactInformations);
 
             $manager->persist($individual);
         }
