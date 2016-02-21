@@ -3,17 +3,26 @@
 namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Rscine\AppBundle\Entity\Worker;
+use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
+
 use Rscine\AppBundle\Entity\Company;
+use Rscine\AppBundle\Entity\Worker;
 
 
 /**
  * Individual
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
+ *
  * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "company",
+ *     href = @Hateoas\Route("get_company", parameters={"company" = "expr(object.getCompany().getId())"}),
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getCompany() === null)")
+ * )
  */
 class Individual extends Worker
 {
@@ -24,6 +33,8 @@ class Individual extends Worker
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Expose()
      */
     protected $id;
 

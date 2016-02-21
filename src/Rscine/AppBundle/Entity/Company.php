@@ -4,14 +4,16 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
-use Rscine\AppBundle\Entity\Worker;
+
 use Rscine\AppBundle\Entity\Individual;
+use Rscine\AppBundle\Entity\Worker;
 
 /**
  * Company
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity()
+ *
  * @Serializer\ExclusionPolicy("ALL")
  */
 class Company extends Worker
@@ -22,6 +24,7 @@ class Company extends Worker
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      * @Serializer\Expose
      */
     protected $id;
@@ -30,6 +33,7 @@ class Company extends Worker
      * @var integer
      *
      * @ORM\Column(name="siret", type="integer")
+     *
      * @Serializer\Expose
      */
     private $siret;
@@ -38,6 +42,7 @@ class Company extends Worker
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
      * @Serializer\Expose
      */
     private $name;
@@ -46,6 +51,8 @@ class Company extends Worker
      * @var Worker
      *
      * @ORM\OneToMany(targetEntity="Individual", mappedBy="company")
+     *
+     * @Serializer\Expose()
      */
     private $employees;
 
