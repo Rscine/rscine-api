@@ -32,7 +32,7 @@ app:
 
 api:
     resource: "api.yml"
-    prefix: api/
-    
+    prefix: api/v1
+
 api_login_check:
     path: /api/login_check
