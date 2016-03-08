@@ -3,7 +3,6 @@
 # mod_rewrite). Additionally, this reduces the matching process for the
 # start page (path "/") because otherwise Apache will apply the rewriting rules
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
-DirectoryIndex app_dev.php
 
 # By default, Apache does not evaluate symbolic links if you did not enable this
 # feature in your server configuration. Uncomment the following line if you
@@ -28,7 +27,7 @@ DirectoryIndex app_dev.php
     # fits all solution. But as you do not need it in this case, you can comment
     # the following 2 lines to eliminate the overhead.
     RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
-    RewriteRule ^(.*) app_dev.php [E=BASE:%1]
+    RewriteRule ^(.*) /app_dev.php [E=BASE:%1]
 
     # Sets the HTTP_AUTHORIZATION header removed by apache
     # RewriteCond %{HTTP:Authorization} .
@@ -53,7 +52,7 @@ DirectoryIndex app_dev.php
 
     # If the requested filename exists, simply serve it.
     # We only want to let Apache serve files and not directories.
-    RewriteCond %{REQUEST_FILENAME} -f
+    # RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^(.*)$ app_dev.php [QSA,L]
 
     # Rewrite all other queries to the front controller.
