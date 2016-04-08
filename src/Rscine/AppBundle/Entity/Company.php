@@ -4,6 +4,10 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
+use Hateoas\Configuration\Relation;
+use Hateoas\Configuration\Route;
+use Hateoas\Configuration\Metadata\ClassMetadataInterface;
 
 use Rscine\AppBundle\Entity\Individual;
 use Rscine\AppBundle\Entity\Worker;
@@ -15,6 +19,8 @@ use Rscine\AppBundle\Entity\Worker;
  * @ORM\Entity()
  *
  * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\RelationProvider("addEmployeesRelation")
  */
 class Company extends Worker
 {
@@ -51,8 +57,6 @@ class Company extends Worker
      * @var Worker
      *
      * @ORM\OneToMany(targetEntity="Individual", mappedBy="company")
-     *
-     * @Serializer\Expose()
      */
     private $employees;
 
@@ -112,5 +116,61 @@ class Company extends Worker
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Add employee
+     *
+     * @param Individual $employee
+     *
+     * @return Company
+     */
+    public function addEmployee(Individual $employee)
+    {
+        $this->employees[] = $employee;
+
+        return $this;
+    }
+
+    /**
+     * Remove employee
+     *
+     * @param Individual $employee
+     */
+    public function removeEmployee(Individual $employee)
+    {
+        $this->employees->removeElement($employee);
+    }
+
+    /**
+     * Get employees
+     *
+     * @return Collection
+     */
+    public function getEmployees()
+    {
+        return $this->employees;
+    }
+
+    /**
+     * Adds multiple links for employees
+     *
+     * @param Company                $object
+     * @param ClassMetadataInterface $classMetadata
+     */
+    public function addEmployeesRelation($object, ClassMetadataInterface $classMetadata)
+    {
+        $relations = [];
+
+        foreach ($this->getEmployees() as $employee) {
+            $relations[] = new Relation(
+                'employees',
+                new Route(
+                    'get_individual',
+                    array('individual' => $employee->getId())
+                ));
+        }
+
+        return $relations;
     }
 }

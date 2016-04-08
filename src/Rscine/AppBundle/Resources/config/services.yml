@@ -1,5 +1,4 @@
 services:
-
     app.form.type.user_registration:
         class: Rscine\AppBundle\Form\RegistrationType
         tags:

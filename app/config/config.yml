@@ -108,7 +108,7 @@ fos_rest:
         failed_validation: HTTP_BAD_REQUEST
         default_engine: twig
         mime_types:
-            json: ['application/vnd.api+json', 'application/x-json']
+            json: ['application/json', 'application/x-json']
             rss: 'application/rss+xml'
             jpg: 'image/jpeg'
             png: 'image/png'

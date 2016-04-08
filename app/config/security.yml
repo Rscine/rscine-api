@@ -32,19 +32,19 @@ security:
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
-        api:
-            pattern:   ^/api
-            provider: fos_userbundle
-            stateless: true
-            lexik_jwt:
-                authorization_header: # check token in Authorization Header
-                    enabled: true
-                    prefix:  Bearer
-                query_parameter:      # check token in query string parameter
-                    enabled: true
-                    name:    bearer
-                throw_exceptions: true     # When an authentication failure occurs, return a 401 response immediately
-                create_entry_point: true    # When no authentication details are provided, create a default entry point that returns a 401 response
+        # api:
+        #     pattern:   ^/api
+        #     provider: fos_userbundle
+        #     stateless: true
+        #     lexik_jwt:
+        #         authorization_header: # check token in Authorization Header
+        #             enabled: true
+        #             prefix:  Bearer
+        #         query_parameter:      # check token in query string parameter
+        #             enabled: true
+        #             name:    bearer
+        #         throw_exceptions: true     # When an authentication failure occurs, return a 401 response immediately
+        #         create_entry_point: true    # When no authentication details are provided, create a default entry point that returns a 401 response
 
         main:
             pattern: ^/
@@ -59,4 +59,4 @@ security:
         # - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }

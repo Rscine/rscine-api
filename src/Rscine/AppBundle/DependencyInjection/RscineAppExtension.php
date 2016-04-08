@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-class AppExtension extends Extension
+class RscineAppExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
