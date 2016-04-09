@@ -3,13 +3,15 @@
 namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as Serializer;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
+
 use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
-use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
 use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
-use Rscine\AppBundle\Model\Timestampable\TimestampableTrait;
+use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
 use Rscine\AppBundle\Model\Timestampable\TimestampableInterface;
+use Rscine\AppBundle\Model\Timestampable\TimestampableTrait;
 
 /**
  * Offer
@@ -17,6 +19,17 @@ use Rscine\AppBundle\Model\Timestampable\TimestampableInterface;
  * @ORM\Table()
  * @ORM\Entity
  * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "handler",
+ *     href = @Hateoas\Route("get_user", parameters={"user" = "expr(object.getHandler().getId())"}),
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getHandler() === null)")
+ * )
+ * @Hateoas\Relation(
+ *     "creator",
+ *     href = @Hateoas\Route("get_user", parameters={"user" = "expr(object.getCreator().getId())"}),
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getCreator() === null)")
+ * )
  */
 class Offer implements TimestampableInterface
 {
@@ -77,24 +90,6 @@ class Offer implements TimestampableInterface
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;
-
-    /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("creator_id")
-     */
-    public function getCreatorId()
-    {
-        return ($this->getCreator()) ? $this->getCreator()->getId() : null;
-    }
-
-    /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("handler_id")
-     */
-    public function getHandlerId()
-    {
-        return ($this->getHandler()) ? $this->getHandler()->getId() : null;
-    }
 
     /**
      * @Serializer\VirtualProperty
