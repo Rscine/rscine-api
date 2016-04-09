@@ -15,8 +15,8 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('district', 'entity', array(
-                'class' => 'RscineAppBundle:District'
+            ->add('contactInformation', 'entity', array(
+                'class' => 'RscineAppBundle:ContactInformation'
             ));
     }
 
