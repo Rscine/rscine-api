@@ -31,6 +31,7 @@ app:
     type:     annotation
 
 api:
+    type: rest
     resource: "api.yml"
     prefix: api/v1
 

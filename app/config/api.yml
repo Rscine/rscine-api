@@ -26,3 +26,8 @@ companies:
 offers:
     type: rest
     resource: Rscine\AppBundle\Controller\Api\OfferController
+
+applicants:
+    type:     rest
+    parent:   offers
+    resource: Rscine\AppBundle\Controller\Api\ApplicantController
