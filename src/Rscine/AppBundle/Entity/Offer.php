@@ -5,6 +5,9 @@ namespace Rscine\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Hateoas\Configuration\Annotation as Hateoas;
+use Hateoas\Configuration\Metadata\ClassMetadataInterface;
+use Hateoas\Configuration\Relation;
+use Hateoas\Configuration\Route;
 use JMS\Serializer\Annotation as Serializer;
 
 use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
@@ -30,6 +33,7 @@ use Rscine\AppBundle\Model\Timestampable\TimestampableTrait;
  *     href = @Hateoas\Route("get_user", parameters={"user" = "expr(object.getCreator().getId())"}),
  *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getCreator() === null)")
  * )
+ * @Hateoas\RelationProvider("addApplicantsRelation")
  */
 class Offer implements TimestampableInterface
 {
@@ -90,19 +94,6 @@ class Offer implements TimestampableInterface
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;
-
-    /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("applicants")
-     */
-    public function getApplicantsIds()
-    {
-        $ids = array();
-        foreach ($this->getApplicants() as $applicant) {
-             $ids[] = $applicant->getId();
-         }
-         return $ids;
-    }
 
     /**
      * Get id
@@ -251,5 +242,27 @@ class Offer implements TimestampableInterface
     public function getHandler()
     {
         return $this->handler;
+    }
+
+    /**
+     * Adds multiple links for applicants
+     *
+     * @param Offer                  $object
+     * @param ClassMetadataInterface $classMetadata
+     */
+    public function addApplicantsRelation($object, ClassMetadataInterface $classMetadata)
+    {
+        $relations = [];
+
+        foreach ($this->getApplicants() as $applicant) {
+            $relations[] = new Relation(
+                'applicants',
+                new Route(
+                    'get_user',
+                    array('user' => $applicant->getId())
+                ));
+        }
+
+        return $relations;
     }
 }
