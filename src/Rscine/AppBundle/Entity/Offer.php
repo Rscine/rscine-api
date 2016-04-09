@@ -26,12 +26,14 @@ use Rscine\AppBundle\Model\Timestampable\TimestampableTrait;
  * @Hateoas\Relation(
  *     "handler",
  *     href = @Hateoas\Route("get_user", parameters={"user" = "expr(object.getHandler().getId())"}),
- *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getHandler() === null)")
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getHandler() === null)"),
+ *     attributes = {"id"= "expr(object.getHandler().getId())"}
  * )
  * @Hateoas\Relation(
  *     "creator",
  *     href = @Hateoas\Route("get_user", parameters={"user" = "expr(object.getCreator().getId())"}),
- *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getCreator() === null)")
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getCreator() === null)"),
+ *     attributes = {"id"= "expr(object.getCreator().getId())"}
  * )
  * @Hateoas\RelationProvider("addApplicantsRelation")
  */
@@ -260,7 +262,9 @@ class Offer implements TimestampableInterface
                 new Route(
                     'get_user',
                     array('user' => $applicant->getId())
-                ));
+                ),
+                null, // embedded
+                array('id' => $applicant->getId()));
         }
 
         return $relations;
