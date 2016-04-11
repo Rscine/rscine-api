@@ -4,13 +4,21 @@ namespace Rscine\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Hateoas\Configuration\Annotation as Hateoas;
 
 /**
  * District
  *
  * @ORM\Table()
  * @ORM\Entity
+ *
  * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "region",
+ *     embedded = "expr(object.getRegion())",
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getRegion() === null)")
+ * )
  */
 class District
 {
@@ -28,6 +36,7 @@ class District
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
      * @Serializer\Expose
      */
     private $name;
@@ -36,6 +45,7 @@ class District
      * @var integer
      *
      * @ORM\Column(name="number", type="integer")
+     *
      * @Serializer\Expose
      */
     private $number;
@@ -45,15 +55,6 @@ class District
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
      */
     private $region;
-
-    /**
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("region_id")
-     */
-    public function getRegionId()
-    {
-        return ($this->getRegion()) ? $this->getRegion()->getId() : null;
-    }
 
     /**
      * Get id
