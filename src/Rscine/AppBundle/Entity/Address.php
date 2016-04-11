@@ -17,14 +17,8 @@ use Rscine\AppBundle\Entity\Address;
  * @Serializer\ExclusionPolicy("ALL")
  *
  * @Hateoas\Relation(
- *     "contactInformation",
- *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
- *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getContactInformation() === null)")
- * )
- *
- * @Hateoas\Relation(
  *     "district",
- *     href = @Hateoas\Route("get_district", parameters={"district" = "expr(object.getDistrict().getId())"}),
+ *     embedded = "expr(object.getDistrict())",
  *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getDistrict() === null)")
  * )
  */
@@ -65,6 +59,7 @@ class Address
      * @ORM\Column(name="postalCode", type="integer")
      *
      * @Serializer\Expose()
+     * @Serializer\SerializedName("postal_code")
      */
     private $postalCode;
 
