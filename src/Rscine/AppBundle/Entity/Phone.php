@@ -50,6 +50,7 @@ class Phone
      * @ORM\Column(name="type", type="string", length=255)
      *
      * @Serializer\Expose()
+     * @Serializer\SerializedName("phone_type")
      */
     private $type;
 

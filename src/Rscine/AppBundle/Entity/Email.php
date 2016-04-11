@@ -46,6 +46,7 @@ class Email
      * @ORM\Column(name="type", type="string", length=255)
      *
      * @Serializer\Expose()
+     * @Serializer\SerializedName("email_type")
      */
     private $type;
 
