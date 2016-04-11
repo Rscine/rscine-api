@@ -24,7 +24,6 @@ use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
  *
  * @Hateoas\Relation(
  *     "contactInformation",
- *     href = @Hateoas\Route("get_contactinformation", parameters={"contactInformation" = "expr(object.getContactInformation().getId())"}),
  *     embedded = "expr(object.getContactInformation())",
  *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getContactInformation() === null)")
  * )
