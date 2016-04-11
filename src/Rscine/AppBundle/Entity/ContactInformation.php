@@ -18,6 +18,22 @@ use Rscine\AppBundle\Entity\Phone;
  * @ORM\Entity
  *
  * @Serializer\ExclusionPolicy("ALL")
+ *
+ * @Hateoas\Relation(
+ *     "emails",
+ *     embedded = "expr(object.getEmails())",
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getEmails() === null)")
+ * )
+ * @Hateoas\Relation(
+ *     "addresses",
+ *     embedded = "expr(object.getAddresses())",
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getAddresses() === null)")
+ * )
+ * @Hateoas\Relation(
+ *     "phones",
+ *     embedded = "expr(object.getPhones())",
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getPhones() === null)")
+ * )
  */
 class ContactInformation
 {
@@ -36,8 +52,6 @@ class ContactInformation
      * @var string
      *
      * @ORM\OneToMany(targetEntity="Email", mappedBy="contactInformation", cascade={"persist"})
-     *
-     * @Serializer\Expose()
      */
     private $emails;
 
@@ -45,8 +59,6 @@ class ContactInformation
      * @var string
      *
      * @ORM\OneToMany(targetEntity="Phone", mappedBy="contactInformation", cascade={"persist"})
-     *
-     * @Serializer\Expose()
      */
     private $phones;
 
@@ -54,8 +66,6 @@ class ContactInformation
      * @var Address
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="contactInformation", cascade={"persist"})
-     *
-     * @Serializer\Expose()
      */
     private $addresses;
 
