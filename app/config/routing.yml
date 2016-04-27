@@ -1,3 +1,7 @@
+rscine_worker:
+    resource: "@RscineWorkerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 rscine_core:
     resource: "@RscineCoreBundle/Resources/config/routing.yml"
     prefix:   /

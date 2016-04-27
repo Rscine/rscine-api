@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Rscine\UserBundle\RscineUserBundle(),
             new Rscine\OfferBundle\RscineOfferBundle(),
             new Rscine\CoreBundle\RscineCoreBundle(),
+            new Rscine\WorkerBundle\RscineWorkerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
