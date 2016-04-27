@@ -1,3 +1,14 @@
+rscine_core:
+    resource: "@RscineCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+rscine_offer:
+    resource: "@RscineOfferBundle/Resources/config/routing.yml"
+    prefix:   /
+
+rscine_user:
+    resource: "@RscineUserBundle/Resources/config/routing.yml"
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -25,10 +36,6 @@ fos_user_change_password:
 # hwi_oauth_login:
 #     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
 #     prefix:   /login
-
-app:
-    resource: "@RscineAppBundle/Controller/"
-    type:     annotation
 
 api:
     type: rest
