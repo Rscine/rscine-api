@@ -1,4 +1,2 @@
-services:
-#    rscine_offer.example:
-#        class: Rscine\OfferBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+imports:
+    - { resource: 'validation/offer.yml' }

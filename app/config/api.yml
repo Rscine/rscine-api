@@ -1,7 +1,7 @@
 
 users:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\UserController
+    resource: Rscine\UserBundle\Controller\Api\UserController
 
 regions:
     type: rest
