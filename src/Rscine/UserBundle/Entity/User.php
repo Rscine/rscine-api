@@ -9,6 +9,8 @@ use JMS\Serializer\Annotation as Serializer;
 
 use Rscine\OfferBundle\Model\OfferCreatorInterface;
 use Rscine\OfferBundle\Model\OfferCreatorTrait;
+use Rscine\WorkerBundle\Entity\District;
+use Rscine\WorkerBundle\Entity\ContactInformation;
 
 /**
  * User

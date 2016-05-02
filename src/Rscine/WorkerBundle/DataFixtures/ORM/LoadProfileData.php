@@ -4,7 +4,7 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\AppBundle\Entity\Profile;
+use Rscine\WorkerBundle\Entity\Profile;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 class LoadProfileData implements FixtureInterface, OrderedFixtureInterface {

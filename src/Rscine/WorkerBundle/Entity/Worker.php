@@ -12,8 +12,8 @@ use Rscine\OfferBundle\Model\OfferApplicantInterface;
 use Rscine\OfferBundle\Model\OfferApplicantTrait;
 use Rscine\OfferBundle\Model\OfferHandlerInterface;
 use Rscine\OfferBundle\Model\OfferHandlerTrait;
-use Rscine\AppBundle\Entity\Profile;
-use Rscine\AppBundle\Entity\Genre;
+use Rscine\WorkerBundle\Entity\Profile;
+use Rscine\WorkerBundle\Entity\Genre;
 use Rscine\OfferBundle\Entity\Offer;
 
 /**

@@ -4,7 +4,7 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\AppBundle\Entity\Genre;
+use Rscine\WorkerBundle\Entity\Genre;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 class LoadGenreData implements FixtureInterface, OrderedFixtureInterface {
