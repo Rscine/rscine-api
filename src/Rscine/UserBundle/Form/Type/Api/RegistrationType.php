@@ -16,7 +16,7 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('contactInformation', 'entity', array(
-                'class' => 'RscineAppBundle:ContactInformation'
+                'class' => 'RscineWorkerBundle:ContactInformation'
             ));
     }
 

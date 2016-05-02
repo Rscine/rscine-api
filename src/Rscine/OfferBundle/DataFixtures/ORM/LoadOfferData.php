@@ -29,18 +29,18 @@ class LoadOfferData implements FixtureInterface, OrderedFixtureInterface{
             $offer->setName($offerName);
             $offer->setDescription($offerDescription);
 
-            $applicants = $manager->getRepository('RscineAppBundle:Worker')->findAll();
+            $applicants = $manager->getRepository('RscineWorkerBundle:Worker')->findAll();
 
             foreach ($applicants as $applicant) {
                 $offer->addApplicant($applicant);
                 $manager->persist($applicant);
             }
 
-            $creator = $manager->getRepository('RscineAppBundle:User')->findOneByUsername('Eirika');
+            $creator = $manager->getRepository('RscineUserBundle:User')->findOneByUsername('Eirika');
 
             $offer->setCreator($creator);
 
-            $handler = $manager->getRepository('RscineAppBundle:Worker')->findOneByUsername('Cormag');
+            $handler = $manager->getRepository('RscineWorkerBundle:Worker')->findOneByUsername('Cormag');
 
             $offer->setHandler($handler);
 

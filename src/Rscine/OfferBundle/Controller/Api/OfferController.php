@@ -31,7 +31,7 @@ class OfferController extends FOSRestController
         $sortBy = $paramFetcher->get('sort');
         $sortDir = $paramFetcher->get('dir');
 
-        $offers = $this->getDoctrine()->getManager()->getRepository('RscineAppBundle:Offer')->findBy(array(), array($sortBy => $sortDir));
+        $offers = $this->getDoctrine()->getManager()->getRepository('RscineOfferBundle:Offer')->findBy(array(), array($sortBy => $sortDir));
         return $offers;
     }
 
@@ -39,7 +39,7 @@ class OfferController extends FOSRestController
      * Récupère un départment
      * GET api/offers/{slug}
      * @Rest\View()
-     * @ParamConverter("offer", class="RscineAppBundle:Offer")
+     * @ParamConverter("offer", class="RscineOfferBundle:Offer")
      *
      * @return [type] [description]
      */
@@ -78,7 +78,7 @@ class OfferController extends FOSRestController
      * Modifie un départment
      * PUT api/offers/{slug}
      * @Rest\View()
-     * @ParamConverter("offer", class="RscineAppBundle:Offer")
+     * @ParamConverter("offer", class="RscineOfferBundle:Offer")
      *
      * @param  Request    $request    [description]
      * @param  Offer $offer [description]
@@ -135,7 +135,7 @@ class OfferController extends FOSRestController
     /**
      * Retourne les options possibles pour un département
      * OPTIONS api/offers
-     * @ParamConverter("offer", class="RscineAppBundle:Offer")
+     * @ParamConverter("offer", class="RscineOfferBundle:Offer")
      *
      * @return [type]       [description]
      */

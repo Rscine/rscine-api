@@ -22,7 +22,7 @@ class CustomerController extends FOSRestController
      * GET api/customers/{slug}
      * 
      * @Rest\View()
-     * @ParamConverter("customer", class="RscineAppBundle:User")
+     * @ParamConverter("customer", class="RscineUserBundle:User")
      */
     public function getCustomerAction(CustomerInterface $customer)
     {
@@ -69,7 +69,7 @@ class CustomerController extends FOSRestController
      * Modifie un utilisateur client
      * PUT api/customers/{slug}
      * 
-     * @ParamConverter("customer", class="RscineAppBundle:User")
+     * @ParamConverter("customer", class="RscineUserBundle:User")
      */
     public function putCustomerAction(Request $request, CustomerInterface $customer)
     {
@@ -93,7 +93,7 @@ class CustomerController extends FOSRestController
      * Modifie un utilisateur client
      * PATCH api/customers/{slug}
      * 
-     * @ParamConverter("customer", class="RscineAppBundle:User")
+     * @ParamConverter("customer", class="RscineUserBundle:User")
      */
     public function patchCustomerAction(Request $request, CustomerInterface $customer)
     {
@@ -116,7 +116,7 @@ class CustomerController extends FOSRestController
      * Récupère les options possibles pour un utilisateur client
      * OPTIONS api/customers/{slug}
      *
-     * @ParamConverter("customer", class="RscineAppBundle:User")
+     * @ParamConverter("customer", class="RscineUserBundle:User")
      */
     public function optionsCustomerAction(CustomerInterface $customer)
     {
@@ -142,7 +142,7 @@ class CustomerController extends FOSRestController
      * Supprime un utilisateur client $customer
      * DELETE api/customers/{slug}
      * 
-     * @ParamConverter("customer", class="RscineAppBundle:User")
+     * @ParamConverter("customer", class="RscineUserBundle:User")
      */
     public function deleteCustomerAction(CustomerInterface $customer)
     {

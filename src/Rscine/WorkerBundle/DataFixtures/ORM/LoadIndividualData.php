@@ -79,7 +79,7 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             $individual->setEmail($individualItem['name'].'@gmail.com');
 
             // Company binding
-            $company = $manager->getRepository('RscineAppBundle:Company')->findOneByName($individualItem['company']);
+            $company = $manager->getRepository('RscineWorkerBundle:Company')->findOneByName($individualItem['company']);
 
             if ($company)
                 $individual->setCompany($company);
@@ -113,7 +113,7 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
             $address->setStreet($individualItem['company'].' avenue');
             $address->setPostalCode(00000);
 
-            $district = $manager->getRepository('RscineAppBundle:District')->findOneByNumber($individualItem['district']);
+            $district = $manager->getRepository('RscineWorkerBundle:District')->findOneByNumber($individualItem['district']);
 
             if ($district){
                 $address->setDistrict($district);

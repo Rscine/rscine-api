@@ -21,7 +21,7 @@ class CompanyController extends FOSRestController
      * GET api/companies/{slug}
      *
      * @Rest\View()
-     * @ParamConverter("company", class="RscineAppBundle:Company")
+     * @ParamConverter("company", class="RscineWorkerBundle:Company")
      */
     public function getCompanyAction(Company $company)
     {
@@ -68,7 +68,7 @@ class CompanyController extends FOSRestController
      * Modifie un utilisateur client
      * PUT api/companies/{slug}
      *
-     * @ParamConverter("company", class="RscineAppBundle:Company")
+     * @ParamConverter("company", class="RscineWorkerBundle:Company")
      */
     public function putCompanyAction(Request $request, Company $company)
     {
@@ -91,7 +91,7 @@ class CompanyController extends FOSRestController
      * Récupère les options possibles pour un utilisateur client
      * OPTIONS api/companies/{slug}
      *
-     * @ParamConverter("company", class="RscineAppBundle:Company")
+     * @ParamConverter("company", class="RscineWorkerBundle:Company")
      */
     public function optionsCompanyAction(Company $company)
     {
@@ -117,7 +117,7 @@ class CompanyController extends FOSRestController
      * Supprime un utilisateur client $company
      * DELETE api/companies/{slug}
      *
-     * @ParamConverter("company", class="RscineAppBundle:Company")
+     * @ParamConverter("company", class="RscineWorkerBundle:Company")
      */
     public function deleteCompanyAction(Company $company)
     {

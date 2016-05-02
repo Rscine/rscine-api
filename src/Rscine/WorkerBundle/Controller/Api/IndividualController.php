@@ -21,7 +21,7 @@ class IndividualController extends FOSRestController
      * GET api/individuals/{slug}
      *
      * @Rest\View()
-     * @ParamConverter("individual", class="RscineAppBundle:Individual")
+     * @ParamConverter("individual", class="RscineWorkerBundle:Individual")
      */
     public function getIndividualAction(Individual $individual)
     {
@@ -68,7 +68,7 @@ class IndividualController extends FOSRestController
      * Modifie un utilisateur client
      * PUT api/individuals/{slug}
      *
-     * @ParamConverter("individual", class="RscineAppBundle:Individual")
+     * @ParamConverter("individual", class="RscineWorkerBundle:Individual")
      */
     public function putIndividualAction(Request $request, Individual $individual)
     {
@@ -91,7 +91,7 @@ class IndividualController extends FOSRestController
      * Récupère les options possibles pour un utilisateur client
      * OPTIONS api/individuals/{slug}
      *
-     * @ParamConverter("individual", class="RscineAppBundle:Individual")
+     * @ParamConverter("individual", class="RscineWorkerBundle:Individual")
      */
     public function optionsIndividualAction(Individual $individual)
     {
@@ -117,7 +117,7 @@ class IndividualController extends FOSRestController
      * Supprime un utilisateur client $individual
      * DELETE api/individuals/{slug}
      *
-     * @ParamConverter("individual", class="RscineAppBundle:Individual")
+     * @ParamConverter("individual", class="RscineWorkerBundle:Individual")
      */
     public function deleteIndividualAction(Individual $individual)
     {

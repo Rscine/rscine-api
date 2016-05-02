@@ -28,7 +28,7 @@ class RegionController extends FOSRestController
      */
     public function cgetAction()
     {
-        $regions = $this->getDoctrine()->getManager()->getRepository('RscineAppBundle:Region')->findAll();
+        $regions = $this->getDoctrine()->getManager()->getRepository('RscineWorkerBundle:Region')->findAll();
         return $regions;
     }
 
@@ -36,7 +36,7 @@ class RegionController extends FOSRestController
      * Récupère un départment
      * GET api/regions/{slug}
      * @Rest\View()
-     * @ParamConverter("region", class="RscineAppBundle:Region")
+     * @ParamConverter("region", class="RscineWorkerBundle:Region")
      *
      * @return [type] [description]
      */
@@ -75,7 +75,7 @@ class RegionController extends FOSRestController
      * Modifie un départment
      * PUT api/regions/{slug}
      * @Rest\View()
-     * @ParamConverter("region", class="RscineAppBundle:Region")
+     * @ParamConverter("region", class="RscineWorkerBundle:Region")
      *
      * @param  Request    $request    [description]
      * @param  Region $region [description]
@@ -132,7 +132,7 @@ class RegionController extends FOSRestController
     /**
      * Retourne les options possibles pour un département
      * OPTIONS api/regions
-     * @ParamConverter("region", class="RscineAppBundle:Region")
+     * @ParamConverter("region", class="RscineWorkerBundle:Region")
      *
      * @return [type]       [description]
      */

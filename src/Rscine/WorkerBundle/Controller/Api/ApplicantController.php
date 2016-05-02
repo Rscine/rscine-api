@@ -28,7 +28,7 @@ class ApplicantController extends FOSRestController
      * @param  Offer $offer
      *
      * @Rest\View()
-     * @ParamConverter("offer", class="RscineAppBundle:Offer")
+     * @ParamConverter("offer", class="RscineOfferBundle:Offer")
      */
     public function cgetAction(Offer $offer)
     {
@@ -41,8 +41,8 @@ class ApplicantController extends FOSRestController
      * Supprime le candidat $applicant de l'offre $offer
      * DELETE api/v1/offers/{offer}/applicants/{applicant}
      *
-     * @ParamConverter("offer", class="RscineAppBundle:Offer")
-     * @ParamConverter("applicant", class="RscineAppBundle:Worker")
+     * @ParamConverter("offer", class="RscineOfferBundle:Offer")
+     * @ParamConverter("applicant", class="RscineWorkerBundle:Worker")
      */
     public function deleteAction(Offer $offer, Worker $applicant)
     {

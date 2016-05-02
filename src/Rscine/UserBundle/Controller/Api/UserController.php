@@ -33,7 +33,7 @@ class UserController extends FOSRestController
      */
     public function getUsersAction()
     {
-        $users = $this->getDoctrine()->getManager()->getRepository('RscineAppBundle:User')->findAll();
+        $users = $this->getDoctrine()->getManager()->getRepository('RscineUserBundle:User')->findAll();
         return $users;
     }
 
@@ -42,7 +42,7 @@ class UserController extends FOSRestController
      * Récupère un utilisateur
      * GET api/users/{slug}
      * @Rest\View()
-     * @ParamConverter("user", class="RscineAppBundle:User")
+     * @ParamConverter("user", class="RscineUserBundle:User")
      *
      * @param  [type] $slug [description]
      * @return [type]       [description]
@@ -55,7 +55,7 @@ class UserController extends FOSRestController
     /**
      * Modifie un utilisateur
      * PATCH api/users/{slug}
-     * @ParamConverter("user", class="RscineAppBundle:User")
+     * @ParamConverter("user", class="RscineUserBundle:User")
      *
      * @param  [type] $slug [description]
      * @return [type]       [description]
@@ -80,7 +80,7 @@ class UserController extends FOSRestController
     /**
      * Modifie un utilisateur
      * PUT api/users/{slug}
-     * @ParamConverter("user", class="RscineAppBundle:User")
+     * @ParamConverter("user", class="RscineUserBundle:User")
      *
      * @param  [type] $slug [description]
      * @return [type]       [description]
@@ -119,7 +119,7 @@ class UserController extends FOSRestController
     /**
      * Retourne les options possibles pour un utilisateur
      * OPTIONS api/users/{slug}
-     * @ParamConverter("user", class="RscineAppBundle:User")
+     * @ParamConverter("user", class="RscineUserBundle:User")
      *
      * @return [type]       [description]
      */
@@ -134,7 +134,7 @@ class UserController extends FOSRestController
     /**
      * Supprime l'utilisateur $user
      * DELETE api/users/{slug}
-     * @ParamConverter("user", class="RscineAppBundle:User")
+     * @ParamConverter("user", class="RscineUserBundle:User")
      *
      * @param  [type] $user [description]
      * @return [type]       [description]
