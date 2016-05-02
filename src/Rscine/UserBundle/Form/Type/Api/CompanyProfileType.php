@@ -26,7 +26,7 @@ class CompanyProfileType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Rscine\AppBundle\Entity\Company'
+            'data_class' => 'Rscine\WorkerBundle\Entity\Company'
         ));
     }
 

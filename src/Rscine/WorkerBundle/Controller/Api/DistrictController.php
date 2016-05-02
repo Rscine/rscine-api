@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\AppBundle\Controller\Api;
+namespace Rscine\WorkerBundle\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Rscine\AppBundle\Entity\District;
+use Rscine\WorkerBundle\Entity\District;
 use Rscine\AppBundle\Form\DistrictType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 

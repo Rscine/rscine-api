@@ -1,2 +1,2 @@
 imports:
-    - { resource: 'validation/offer.yml' }
+    # - { resource: 'validation/offer.yml' }

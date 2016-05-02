@@ -26,7 +26,7 @@ class ProfileType extends AbstractType
     {
         $resolver->setDefaults(array(
             'validation_groups' => array('profile'),
-            'data_class' => 'Rscine\AppBundle\Entity\User'
+            'data_class' => 'Rscine\UserBundle\Entity\User'
         ));
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\AppBundle\Controller\Api;
+namespace Rscine\WorkerBundle\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Rscine\AppBundle\Entity\Company;
+use Rscine\WorkerBundle\Entity\Company;
 use Rscine\AppBundle\Form\CompanyRegistrationType;
 use Rscine\AppBundle\Form\CompanyProfileType;
 
@@ -36,7 +36,7 @@ class CompanyController extends FOSRestController
      */
     public function getCompaniesAction()
     {
-        $companies = $this->getDoctrine()->getManager()->getRepository('Rscine\AppBundle\Entity\Company')->findAll();
+        $companies = $this->getDoctrine()->getManager()->getRepository('Rscine\WorkerBundle\Entity\Company')->findAll();
 
         return $companies;
     }

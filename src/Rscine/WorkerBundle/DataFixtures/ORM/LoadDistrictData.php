@@ -4,7 +4,7 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\AppBundle\Entity\District;
+use Rscine\WorkerBundle\Entity\District;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 class LoadDistrictData implements FixtureInterface, OrderedFixtureInterface {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\AppBundle\Controller\Api;
+namespace Rscine\WorkerBundle\Controller\Api;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-use Rscine\AppBundle\Entity\ContactInformation;
+use Rscine\WorkerBundle\Entity\ContactInformation;
 use Rscine\AppBundle\Form\ProfileType as ContactInformationProfileType;
 use Rscine\AppBundle\Form\RegistrationType as ContactInformationRegistrationType;
 
@@ -40,7 +40,7 @@ class ContactInformationController extends FOSRestController
      */
     public function cgetAction()
     {
-        $contactInformations = $this->getDoctrine()->getManager()->getRepository('Rscine\AppBundle\Entity\ContactInformation')->findAll();
+        $contactInformations = $this->getDoctrine()->getManager()->getRepository('Rscine\WorkerBundle\Entity\ContactInformation')->findAll();
 
         return $contactInformations;
     }

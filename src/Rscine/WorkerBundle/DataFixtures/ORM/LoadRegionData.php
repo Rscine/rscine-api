@@ -4,7 +4,7 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\AppBundle\Entity\Region;
+use Rscine\WorkerBundle\Entity\Region;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 class LoadRegionData implements FixtureInterface, OrderedFixtureInterface {

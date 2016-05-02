@@ -27,7 +27,7 @@ class CompanyRegistrationType extends AbstractType
     {
         $resolver->setDefaults(array(
             'validation_groups' => array('registration'),
-            'data_class' => 'Rscine\AppBundle\Entity\Company'
+            'data_class' => 'Rscine\WorkerBundle\Entity\Company'
         ));
     }
 

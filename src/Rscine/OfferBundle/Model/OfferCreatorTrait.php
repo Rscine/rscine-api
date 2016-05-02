@@ -2,7 +2,7 @@
 
 namespace Rscine\OfferBundle\Model;
 
-use Rscine\AppBundle\Entity\Offer;
+use Rscine\OfferBundle\Entity\Offer;
 
 /**
  * Représente un utilisateur pouvant créer des offres
@@ -12,7 +12,7 @@ trait OfferCreatorTrait
     /**
      * @var ArrayCollection<Offer>
      *
-     * @ORM\OneToMany(targetEntity="Offer", mappedBy="creator")
+     * @ORM\OneToMany(targetEntity="Rscine\OfferBundle\Entity\Offer", mappedBy="creator")
      */
     private $offersCreated;
 

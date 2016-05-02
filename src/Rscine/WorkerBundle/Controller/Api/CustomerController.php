@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Rscine\AppBundle\Entity\User;
+use Rscine\UserBundle\Entity\User;
 use Rscine\AppBundle\Model\CustomerInterface;
 use Rscine\AppBundle\Form\CustomerRegistrationType;
 use Rscine\AppBundle\Form\CustomerProfileType;
@@ -37,7 +37,7 @@ class CustomerController extends FOSRestController
      */
     public function getCustomersAction()
     {
-        $customers = $this->getDoctrine()->getManager()->getRepository('Rscine\AppBundle\Entity\User')->findAll();
+        $customers = $this->getDoctrine()->getManager()->getRepository('Rscine\UserBundle\Entity\User')->findAll();
 
         return $customers;  
     }

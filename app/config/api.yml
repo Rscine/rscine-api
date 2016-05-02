@@ -5,29 +5,29 @@ users:
 
 regions:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\RegionController
+    resource: Rscine\WorkerBundle\Controller\Api\RegionController
 
 disctricts:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\DistrictController
+    resource: Rscine\WorkerBundle\Controller\Api\DistrictController
 
 individuals:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\IndividualController
+    resource: Rscine\WorkerBundle\Controller\Api\IndividualController
 
 contactinformations:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\ContactInformationController
+    resource: Rscine\WorkerBundle\Controller\Api\ContactInformationController
 
 companies:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\CompanyController
+    resource: Rscine\WorkerBundle\Controller\Api\CompanyController
 
 offers:
     type: rest
-    resource: Rscine\AppBundle\Controller\Api\OfferController
+    resource: Rscine\OfferBundle\Controller\Api\OfferController
 
 applicants:
     type:     rest
     parent:   offers
-    resource: Rscine\AppBundle\Controller\Api\ApplicantController
+    resource: Rscine\WorkerBundle\Controller\Api\ApplicantController

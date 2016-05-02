@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\AppBundle\Controller\Api;
+namespace Rscine\WorkerBundle\Controller\Api;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -11,9 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-use Rscine\AppBundle\Entity\Offer;
-use Rscine\AppBundle\Entity\Worker;
-use Rscine\AppBundle\Entity\User;
+use Rscine\OfferBundle\Entity\Offer;
+use Rscine\WorkerBundle\Entity\Worker;
+use Rscine\UserBundle\Entity\User;
 use Rscine\AppBundle\Form\ProfileType;
 use Rscine\AppBundle\Form\RegistrationType;
 /**

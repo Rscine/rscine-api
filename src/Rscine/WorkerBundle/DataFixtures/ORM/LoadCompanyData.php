@@ -4,7 +4,7 @@ namespace Rscine\AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\AppBundle\Entity\Company;
+use Rscine\WorkerBundle\Entity\Company;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 class LoadCompanyData implements FixtureInterface, OrderedFixtureInterface {

@@ -1,12 +1,10 @@
 <?php
 
-namespace Rscine\AppBundle\Entity;
+namespace Rscine\WorkerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Hateoas\Configuration\Annotation as Hateoas;
-
-use Rscine\AppBundle\Entity\Address;
 
 /**
  * Address

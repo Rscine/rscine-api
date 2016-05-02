@@ -1,12 +1,12 @@
 <?php
 
-namespace Rscine\AppBundle\Entity;
+namespace Rscine\WorkerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\AppBundle\Entity\Worker;
+use Rscine\WorkerBundle\Entity\Worker;
 
 /**
  * Genre
@@ -40,7 +40,7 @@ class Genre
 
     /**
      * @var ArrayCollection<Worker>
-     * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Entity\Worker", inversedBy="genres")
+     * @ORM\ManyToMany(targetEntity="Rscine\WorkerBundle\Entity\Worker", inversedBy="genres")
      *
      * @Serializer\Expose()
      */
@@ -114,11 +114,11 @@ class Genre
     /**
      * Add worker
      *
-     * @param \Rscine\AppBundle\Entity\User $worker
+     * @param \Rscine\UserBundle\Entity\User $worker
      *
      * @return Genre
      */
-    public function addWorker(\Rscine\AppBundle\Entity\User $worker)
+    public function addWorker(\Rscine\UserBundle\Entity\User $worker)
     {
         $this->workers[] = $worker;
 
@@ -128,9 +128,9 @@ class Genre
     /**
      * Remove worker
      *
-     * @param \Rscine\AppBundle\Entity\User $worker
+     * @param \Rscine\UserBundle\Entity\User $worker
      */
-    public function removeWorker(\Rscine\AppBundle\Entity\User $worker)
+    public function removeWorker(\Rscine\UserBundle\Entity\User $worker)
     {
         $this->workers->removeElement($worker);
     }

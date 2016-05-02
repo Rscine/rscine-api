@@ -7,9 +7,9 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Rscine\AppBundle\Entity\Address;
-use Rscine\AppBundle\Entity\ContactInformation;
+use Rscine\WorkerBundle\Entity\ContactInformation;
 use Rscine\AppBundle\Entity\Email;
-use Rscine\AppBundle\Entity\Individual;
+use Rscine\WorkerBundle\Entity\Individual;
 use Rscine\AppBundle\Entity\Phone;
 
 class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {

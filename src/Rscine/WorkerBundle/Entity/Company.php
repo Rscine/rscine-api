@@ -9,8 +9,8 @@ use Hateoas\Configuration\Relation;
 use Hateoas\Configuration\Route;
 use Hateoas\Configuration\Metadata\ClassMetadataInterface;
 
-use Rscine\AppBundle\Entity\Individual;
-use Rscine\AppBundle\Entity\Worker;
+use Rscine\WorkerBundle\Entity\Individual;
+use Rscine\WorkerBundle\Entity\Worker;
 
 /**
  * Company

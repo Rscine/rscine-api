@@ -124,11 +124,11 @@ class District
     /**
      * Set region
      *
-     * @param \Rscine\AppBundle\Entity\Region $region
+     * @param \Rscine\WorkerBundle\Entity\Region $region
      *
      * @return District
      */
-    public function setRegion(\Rscine\AppBundle\Entity\Region $region = null)
+    public function setRegion(\Rscine\WorkerBundle\Entity\Region $region = null)
     {
         $this->region = $region;
 
@@ -138,7 +138,7 @@ class District
     /**
      * Get region
      *
-     * @return \Rscine\AppBundle\Entity\Region
+     * @return \Rscine\WorkerBundle\Entity\Region
      */
     public function getRegion()
     {
@@ -148,11 +148,11 @@ class District
     /**
      * Add user
      *
-     * @param \Rscine\AppBundle\Entity\User $user
+     * @param \Rscine\UserBundle\Entity\User $user
      *
      * @return District
      */
-    public function addUser(\Rscine\AppBundle\Entity\User $user)
+    public function addUser(\Rscine\UserBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -162,9 +162,9 @@ class District
     /**
      * Remove user
      *
-     * @param \Rscine\AppBundle\Entity\User $user
+     * @param \Rscine\UserBundle\Entity\User $user
      */
-    public function removeUser(\Rscine\AppBundle\Entity\User $user)
+    public function removeUser(\Rscine\UserBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }

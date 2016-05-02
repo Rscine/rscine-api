@@ -29,7 +29,7 @@ class DistrictType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Rscine\AppBundle\Entity\District'
+            'data_class' => 'Rscine\WorkerBundle\Entity\District'
         ));
     }
 

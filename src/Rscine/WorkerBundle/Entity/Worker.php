@@ -1,20 +1,20 @@
 <?php
 
-namespace Rscine\AppBundle\Entity;
+namespace Rscine\WorkerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\AppBundle\Entity\User;
-use Rscine\AppBundle\Entity\Company;
-use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
-use Rscine\AppBundle\Model\Offer\OfferApplicantTrait;
-use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
-use Rscine\AppBundle\Model\Offer\OfferHandlerTrait;
+use Rscine\UserBundle\Entity\User;
+use Rscine\WorkerBundle\Entity\Company;
+use Rscine\OfferBundle\Model\OfferApplicantInterface;
+use Rscine\OfferBundle\Model\OfferApplicantTrait;
+use Rscine\OfferBundle\Model\OfferHandlerInterface;
+use Rscine\OfferBundle\Model\OfferHandlerTrait;
 use Rscine\AppBundle\Entity\Profile;
 use Rscine\AppBundle\Entity\Genre;
-use Rscine\AppBundle\Entity\Offer;
+use Rscine\OfferBundle\Entity\Offer;
 
 /**
  * Worker

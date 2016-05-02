@@ -7,10 +7,6 @@ use JMS\Serializer\Annotation as Serializer;
 use Hateoas\Configuration\Annotation as Hateoas;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Rscine\AppBundle\Entity\Email;
-use Rscine\AppBundle\Entity\Address;
-use Rscine\AppBundle\Entity\Phone;
-
 /**
  * ContactInformation
  *

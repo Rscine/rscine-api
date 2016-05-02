@@ -29,7 +29,7 @@ class OfferType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Rscine\AppBundle\Entity\Offer'
+            'data_class' => 'Rscine\OfferBundle\Entity\Offer'
         ));
     }
 

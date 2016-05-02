@@ -3,7 +3,7 @@
 namespace Rscine\OfferBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-use Rscine\AppBundle\Entity\Offer;
+use Rscine\OfferBundle\Entity\Offer;
 
 /**
  * Représente un utilisateur pouvant candidater à des offres
@@ -13,7 +13,7 @@ trait OfferApplicantTrait
     /**
      * @var ArrayCollection<Offer>
      *
-     * @ORM\ManyToMany(targetEntity="Offer", mappedBy="applicants")
+     * @ORM\ManyToMany(targetEntity="Rscine\OfferBundle\Entity\Offer", mappedBy="applicants")
      */
     private $offersAppliedTo;
 

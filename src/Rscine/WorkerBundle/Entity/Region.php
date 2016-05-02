@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\AppBundle\Entity;
+namespace Rscine\WorkerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;

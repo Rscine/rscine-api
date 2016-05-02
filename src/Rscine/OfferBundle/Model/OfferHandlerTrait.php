@@ -2,7 +2,7 @@
 
 namespace Rscine\OfferBundle\Model;
 
-use Rscine\AppBundle\Entity\Offer;
+use Rscine\OfferBundle\Entity\Offer;
 
 /**
  * Représente un utilisateur pouvant s'occuper des offres
@@ -12,7 +12,7 @@ trait OfferHandlerTrait
     /**
      * @var ArrayCollection<Offer>
      *
-     * @ORM\OneToMany(targetEntity="Offer", mappedBy="handler")
+     * @ORM\OneToMany(targetEntity="Rscine\OfferBundle\Entity\Offer", mappedBy="handler")
      */
     private $offersHandled;
 

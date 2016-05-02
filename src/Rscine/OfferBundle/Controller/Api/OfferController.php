@@ -1,8 +1,8 @@
 <?php
 
-namespace Rscine\AppBundle\Controller\Api;
+namespace Rscine\OfferBundle\Controller\Api;
 
-use Rscine\AppBundle\Entity\Offer;
+use Rscine\OfferBundle\Entity\Offer;
 use Rscine\AppBundle\Form\OfferType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -51,7 +51,7 @@ class OfferController extends FOSRestController
     /**
      * Crée un département
      * POST api/offers
-     * 
+     *
      * @param  Request $request [description]
      * @return [type]           [description]
      */
@@ -106,7 +106,7 @@ class OfferController extends FOSRestController
     /**
      * Supprime le département $offer
      * DELETE api/offers/{slug}
-     * 
+     *
      * @param  Offer $offer [description]
      * @return [type]                 [description]
      */
@@ -162,7 +162,7 @@ class OfferController extends FOSRestController
 
     /**
      * Retourne le formulaire de création d'un départment
-     * 
+     *
      * @param  [type] $offer [description]
      * @return [type]             [description]
      */

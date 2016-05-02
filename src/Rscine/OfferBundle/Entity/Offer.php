@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\AppBundle\Entity;
+namespace Rscine\OfferBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -10,11 +10,11 @@ use Hateoas\Configuration\Relation;
 use Hateoas\Configuration\Route;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\AppBundle\Model\Offer\OfferApplicantInterface;
-use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
-use Rscine\AppBundle\Model\Offer\OfferHandlerInterface;
-use Rscine\AppBundle\Model\Timestampable\TimestampableInterface;
-use Rscine\AppBundle\Model\Timestampable\TimestampableTrait;
+use Rscine\OfferBundle\Model\OfferApplicantInterface;
+use Rscine\OfferBundle\Model\OfferCreatorInterface;
+use Rscine\OfferBundle\Model\OfferHandlerInterface;
+use Rscine\CoreBundle\Model\Timestampable\TimestampableInterface;
+use Rscine\CoreBundle\Model\Timestampable\TimestampableTrait;
 
 /**
  * Offer
@@ -71,7 +71,7 @@ class Offer implements TimestampableInterface
      * Créateur de la demande (utilisateur client)
      * @var OfferCreatorInterface
      *
-     * @ORM\ManyToOne(targetEntity="Rscine\AppBundle\Model\Offer\OfferCreatorInterface", inversedBy="offersCreated")
+     * @ORM\ManyToOne(targetEntity="Rscine\OfferBundle\Model\OfferCreatorInterface", inversedBy="offersCreated")
      * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
      */
     private $creator;
@@ -80,7 +80,7 @@ class Offer implements TimestampableInterface
      * Candidats à la demande
      * @var Array<OfferApplicantInterface>
      *
-     * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Model\Offer\OfferApplicantInterface", inversedBy="offersAppliedTo", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Rscine\OfferBundle\Model\OfferApplicantInterface", inversedBy="offersAppliedTo", cascade={"persist"})
      * @ORM\JoinTable(name="offers_applications",
      *      joinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="applicant_id", referencedColumnName="id")}
@@ -92,7 +92,7 @@ class Offer implements TimestampableInterface
      * Maître d'oeuvre
      * @var OfferHandlerInterface
      *
-     * @ORM\ManyToOne(targetEntity="Rscine\AppBundle\Model\Offer\OfferHandlerInterface", inversedBy="offersHandled")
+     * @ORM\ManyToOne(targetEntity="Rscine\OfferBundle\Model\OfferHandlerInterface", inversedBy="offersHandled")
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;

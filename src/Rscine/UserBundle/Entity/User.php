@@ -7,8 +7,8 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\AppBundle\Model\Offer\OfferCreatorInterface;
-use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
+use Rscine\OfferBundle\Model\OfferCreatorInterface;
+use Rscine\OfferBundle\Model\OfferCreatorTrait;
 
 /**
  * User
@@ -18,7 +18,7 @@ use Rscine\AppBundle\Model\Offer\OfferCreatorTrait;
  *
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"worker" = "Worker", "company" = "Company", "individual" = "Individual", "user" = "User"})
+ * @ORM\DiscriminatorMap({"worker" = "Rscine\WorkerBundle\Entity\Worker", "company" = "Rscine\WorkerBundle\Entity\Company", "individual" = "Rscine\WorkerBundle\Entity\Individual", "user" = "User"})
  *
  * @Serializer\ExclusionPolicy("ALL")
  *
@@ -43,7 +43,7 @@ class User extends BaseUser implements OfferCreatorInterface
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="ContactInformation", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Rscine\WorkerBundle\Entity\ContactInformation", cascade={"persist"})
      * @ORM\JoinColumn(name="contact_informations_id", referencedColumnName="id")
      */
     private $contactInformation;
@@ -171,7 +171,7 @@ class User extends BaseUser implements OfferCreatorInterface
     /**
      * Get contactInformation
      *
-     * @return \Rscine\AppBundle\Entity\ContactInformation
+     * @return \Rscine\WorkerBundle\Entity\ContactInformation
      */
     public function getContactInformation()
     {

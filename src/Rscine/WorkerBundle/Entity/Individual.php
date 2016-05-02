@@ -6,8 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\AppBundle\Entity\Company;
-use Rscine\AppBundle\Entity\Worker;
+use Rscine\WorkerBundle\Entity\Company;
+use Rscine\WorkerBundle\Entity\Worker;
 
 
 /**

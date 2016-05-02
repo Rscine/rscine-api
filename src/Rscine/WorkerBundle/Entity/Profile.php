@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\AppBundle\Entity\Worker;
+use Rscine\WorkerBundle\Entity\Worker;
 
 /**
  * Profile
@@ -39,7 +39,7 @@ class Profile
 
     /**
      * @var ArrayCollection<Worker>
-     * @ORM\ManyToMany(targetEntity="Rscine\AppBundle\Entity\Worker", inversedBy="profiles")
+     * @ORM\ManyToMany(targetEntity="Rscine\WorkerBundle\Entity\Worker", inversedBy="profiles")
      *
      * @Serializer\Expose()
      */
@@ -113,11 +113,11 @@ class Profile
     /**
      * Add worker
      *
-     * @param \Rscine\AppBundle\Entity\User $worker
+     * @param \Rscine\UserBundle\Entity\User $worker
      *
      * @return Profile
      */
-    public function addWorker(\Rscine\AppBundle\Entity\User $worker)
+    public function addWorker(\Rscine\UserBundle\Entity\User $worker)
     {
         $this->workers[] = $worker;
 
@@ -127,9 +127,9 @@ class Profile
     /**
      * Remove worker
      *
-     * @param \Rscine\AppBundle\Entity\User $worker
+     * @param \Rscine\UserBundle\Entity\User $worker
      */
-    public function removeWorker(\Rscine\AppBundle\Entity\User $worker)
+    public function removeWorker(\Rscine\UserBundle\Entity\User $worker)
     {
         $this->workers->removeElement($worker);
     }
