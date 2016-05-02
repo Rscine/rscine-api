@@ -137,3 +137,13 @@ nelmio_cors:
             allow_headers: ['*']
             allow_methods: ['POST', 'PUT', 'PATCH', 'GET', 'DELETE', 'OPTIONS']
             max_age: 3600
+
+# FOS OAuth Server Bundle Configuration
+fos_oauth_server:
+    db_driver:           orm
+    client_class:        Rscine\OAuthServerBundle\Entity\Client
+    access_token_class:  Rscine\OAuthServerBundle\Entity\AccessToken
+    refresh_token_class: Rscine\OAuthServerBundle\Entity\RefreshToken
+    auth_code_class:     Rscine\OAuthServerBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username

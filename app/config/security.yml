@@ -1,3 +1,6 @@
+imports:
+    - { resource: "@FOSOAuthServerBundle/Resources/config/security.xml" }
+
 security:
 
     encoders:
@@ -19,6 +22,14 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        oauth_token:
+            pattern:    ^/oauth/v2/token
+            security:   false
+
+        oauth_authorize:
+            pattern:    ^/oauth/v2/auth
+            anonymous: true
+
         login:
             pattern:  ^/api/login
             stateless: true
@@ -30,22 +41,11 @@ security:
                 password_parameter:       _password
                 require_previous_session: false
 
-        # api:
-        #     pattern:   ^/api
-        #     provider: fos_userbundle
-        #     stateless: true
-
-        main:
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-            logout: true
-            anonymous: true
+        api:
+            pattern:    ^/api
+            fos_oauth:  true
+            stateless:  true
 
     access_control:
-        # - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }

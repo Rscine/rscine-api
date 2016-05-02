@@ -28,6 +28,8 @@ class AppKernel extends Kernel
             new Rscine\OfferBundle\RscineOfferBundle(),
             new Rscine\CoreBundle\RscineCoreBundle(),
             new Rscine\WorkerBundle\RscineWorkerBundle(),
+            new Rscine\OAuthServerBundle\RscineOAuthServerBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

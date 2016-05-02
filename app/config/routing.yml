@@ -1,3 +1,7 @@
+rscine_o_auth_server:
+    resource: "@RscineOAuthServerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 rscine_worker:
     resource: "@RscineWorkerBundle/Resources/config/routing.yml"
     prefix:   /
@@ -32,6 +36,12 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+    
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
 
 # hwi_oauth_redirect:
 #     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
