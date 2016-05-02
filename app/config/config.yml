@@ -132,6 +132,9 @@ jms_serializer:
 # used to allow cross domain calls
 nelmio_cors:
     paths:
+        '^/oauth':
+            allow_origin: ['*']
+            allow_methods: ['POST', 'GET']
         '^/api':
             allow_origin: ['*']
             allow_headers: ['*']
