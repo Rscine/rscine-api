@@ -37,7 +37,6 @@ class UserController extends FOSRestController
         return $users;
     }
 
-
     /**
      * Récupère un utilisateur
      * GET api/users/{slug}

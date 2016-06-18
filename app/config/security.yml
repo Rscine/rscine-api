@@ -31,15 +31,10 @@ security:
             anonymous: true
 
         login:
-            pattern:  ^/api/login
+            pattern:  ^/api/v1/login
             stateless: true
             provider: fos_userbundle
             anonymous: true
-            form_login:
-                check_path:               api_login_check
-                username_parameter:       _username
-                password_parameter:       _password
-                require_previous_session: false
 
         api:
             pattern:    ^/api
@@ -47,5 +42,5 @@ security:
             stateless:  true
 
     access_control:
+        - { path: ^/api/v1/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

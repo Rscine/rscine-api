@@ -23,4 +23,10 @@ class AccessToken extends BaseAccessToken
      */
     protected $client;
 
+    /**
+     * @var UserInterface
+     * @ORM\ManyToOne(targetEntity="Rscine\UserBundle\Entity\User")
+     */
+    protected $user;
+
 }
