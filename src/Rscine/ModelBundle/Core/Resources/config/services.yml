@@ -1,0 +1,4 @@
+services:
+#    rscine_model.example:
+#        class: Rscine\ModelBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
