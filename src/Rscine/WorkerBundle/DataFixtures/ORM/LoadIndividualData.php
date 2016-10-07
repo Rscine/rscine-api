@@ -6,11 +6,11 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Rscine\AppBundle\Entity\Address;
+use Rscine\WorkerBundle\Entity\Address;
 use Rscine\WorkerBundle\Entity\ContactInformation;
-use Rscine\AppBundle\Entity\Email;
+use Rscine\WorkerBundle\Entity\Email;
 use Rscine\WorkerBundle\Entity\Individual;
-use Rscine\AppBundle\Entity\Phone;
+use Rscine\WorkerBundle\Entity\Phone;
 
 class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
 

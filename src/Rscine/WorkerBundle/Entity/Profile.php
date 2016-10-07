@@ -87,30 +87,6 @@ class Profile
     }
 
     /**
-     * Set domain
-     *
-     * @param \Rscine\AppBundle\Entity\Domain $domain
-     *
-     * @return Profile
-     */
-    public function setDomain(\Rscine\AppBundle\Entity\Domain $domain = null)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Get domain
-     *
-     * @return \Rscine\AppBundle\Entity\Domain
-     */
-    public function getDomain()
-    {
-        return $this->domain;
-    }
-
-    /**
      * Add worker
      *
      * @param \Rscine\UserBundle\Entity\User $worker
