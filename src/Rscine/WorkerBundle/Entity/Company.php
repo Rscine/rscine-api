@@ -39,7 +39,7 @@ class Company extends Worker
     /**
      * @var integer
      *
-     * @ORM\Column(name="siret", type="integer")
+     * @ORM\Column(name="siret", type="string", length=255)
      *
      * @Serializer\Expose
      */
