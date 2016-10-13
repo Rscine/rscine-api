@@ -134,7 +134,8 @@ nelmio_cors:
     paths:
         '^/oauth':
             allow_origin: ['*']
-            allow_methods: ['POST', 'GET']
+            allow_headers: ['*']
+            allow_methods: ['POST', 'GET', 'OPTIONS']
         '^/api':
             allow_origin: ['*']
             allow_headers: ['*']

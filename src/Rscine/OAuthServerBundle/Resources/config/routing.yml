@@ -1,3 +1,4 @@
-rscine_o_auth_server_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: RscineOAuthServerBundle:Default:index }
+rscine_oauth_server_token:
+    path: /oauth/v2/token
+    methods: [OPTIONS]
+    defaults: { _controller: RscineOAuthServerBundle:Default:token }
