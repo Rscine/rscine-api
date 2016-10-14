@@ -21,7 +21,8 @@ use Rscine\WorkerBundle\Entity\Worker;
  * @Hateoas\Relation(
  *     "company",
  *     href = @Hateoas\Route("get_company", parameters={"company" = "expr(object.getCompany().getId())"}),
- *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getCompany() === null)")
+ *     exclusion = @Hateoas\Exclusion(excludeIf = "expr(object.getCompany() === null)"),
+ *     attributes = {"id"= "expr(object.getCompany().getId())"}
  * )
  */
 class Individual extends Worker
