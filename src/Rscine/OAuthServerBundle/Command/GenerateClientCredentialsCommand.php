@@ -26,7 +26,7 @@ class GenerateClientCredentialsCommand extends ContainerAwareCommand
     {
         $oAuthClientManager = $this->getContainer()->get('fos_oauth_server.client_manager.default');
         $client = $oAuthClientManager->createClient();
-        $client->setAllowedGrantTypes(array('token', 'authorization_code', 'password'));
+        $client->setAllowedGrantTypes(array('token', 'authorization_code', 'password', 'refresh_token'));
         $oAuthClientManager->updateClient($client);
 
         $clientPublicId = $client->getPublicId();
