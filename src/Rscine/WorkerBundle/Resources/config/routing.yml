@@ -1,0 +1,3 @@
+rscine_worker_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: RscineWorkerBundle:Default:index }

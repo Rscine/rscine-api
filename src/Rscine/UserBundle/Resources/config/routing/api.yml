@@ -1,0 +1,7 @@
+rscine_user_api_login:
+    path: login
+    defaults: { _controller: "RscineUserBundle:Api/Security:login" }
+
+rscine_user_api_current:
+    path: users/me
+    defaults: { _controller: "RscineUserBundle:Api/Security:getCurrentUser" }

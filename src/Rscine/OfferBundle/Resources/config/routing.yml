@@ -1,0 +1,3 @@
+rscine_offer_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: RscineOfferBundle:Default:index }

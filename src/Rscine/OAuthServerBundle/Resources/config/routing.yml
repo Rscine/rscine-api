@@ -1,0 +1,4 @@
+rscine_oauth_server_token:
+    path: /oauth/v2/token
+    methods: [OPTIONS]
+    defaults: { _controller: RscineOAuthServerBundle:Default:token }

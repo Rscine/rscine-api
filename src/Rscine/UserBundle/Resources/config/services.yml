@@ -1,0 +1,14 @@
+imports:
+    # - { resource: 'validation/user.yml' }
+    # - { resource: 'validation/company.yml' }
+
+services:
+    rscine_user.form.type.user_registration:
+        class: Rscine\AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type , alias: appbundle_user_registration}
+
+    rscine_user.form.type.user_profile:
+        class: Rscine\AppBundle\Form\ProfileType
+        tags:
+            - { name: form.type , alias: appbundle_user_profile}

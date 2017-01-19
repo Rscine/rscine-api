@@ -1,0 +1,3 @@
+rscine_user_api:
+    resource: "@RscineUserBundle/Resources/config/routing/api.yml"
+    prefix: api/v1

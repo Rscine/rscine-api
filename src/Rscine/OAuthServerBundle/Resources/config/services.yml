@@ -1,0 +1,4 @@
+services:
+#    rscine_o_auth_server.example:
+#        class: Rscine\OAuthServerBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
