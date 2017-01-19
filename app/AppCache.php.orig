@@ -1,0 +1,12 @@
+<?php
+
+<<<<<<< HEAD
+=======
+require_once __DIR__.'/AppKernel.php';
+
+>>>>>>> 53e6cf956e1bd2c709f0af06a490a79f9c83ac58
+use Symfony\Bundle\FrameworkBundle\HttpCache\HttpCache;
+
+class AppCache extends HttpCache
+{
+}

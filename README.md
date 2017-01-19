@@ -1,4 +1,4 @@
-rscine-api
-==========
+rscine
+======
 
-A Symfony project created on January 19, 2017, 5:41 pm.
+A Symfony project created on October 24, 2015, 12:50 pm.
