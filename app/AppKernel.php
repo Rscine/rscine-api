@@ -8,6 +8,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
+            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
