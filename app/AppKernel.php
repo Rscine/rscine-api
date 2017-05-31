@@ -9,6 +9,7 @@ class AppKernel extends Kernel
     {
         $bundles = [
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new CoreBundle\CoreBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
@@ -16,8 +17,10 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
-            new Rscine\OAuthServerBundle\RscineOAuthServerBundle(),
+            new OAuthServerBundle\OAuthServerBundle(),
+            new OfferBundle\OfferBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new SocialBundle\SocialBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -25,10 +28,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new SocialBundle\SocialBundle(),
             new UserBundle\UserBundle(),
-            new CoreBundle\CoreBundle(),
-            new OfferBundle\OfferBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

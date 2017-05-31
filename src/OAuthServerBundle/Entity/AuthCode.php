@@ -1,14 +1,14 @@
 <?php
 
-namespace Rscine\OAuthServerBundle\Entity;
+namespace OAuthServerBundle\Entity;
 
-use FOS\OAuthServerBundle\Entity\RefreshToken as BaseRefreshToken;
+use FOS\OAuthServerBundle\Entity\AuthCode as BaseAuthCode;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  */
-class RefreshToken extends BaseRefreshToken
+class AuthCode extends BaseAuthCode
 {
     /**
      * @ORM\Id

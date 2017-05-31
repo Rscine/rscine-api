@@ -6,6 +6,7 @@ imports:
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@CoreBundle/Resources/config/services.yml" }
     - { resource: "@OfferBundle/Resources/config/services.yml" }
+    - { resource: "@OAuthServerBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -155,9 +156,9 @@ nelmio_cors:
 # FOS OAuth Server Bundle Configuration
 fos_oauth_server:
     db_driver:           orm
-    client_class:        Rscine\OAuthServerBundle\Entity\Client
-    access_token_class:  Rscine\OAuthServerBundle\Entity\AccessToken
-    refresh_token_class: Rscine\OAuthServerBundle\Entity\RefreshToken
-    auth_code_class:     Rscine\OAuthServerBundle\Entity\AuthCode
+    client_class:        OAuthServerBundle\Entity\Client
+    access_token_class:  OAuthServerBundle\Entity\AccessToken
+    refresh_token_class: OAuthServerBundle\Entity\RefreshToken
+    auth_code_class:     OAuthServerBundle\Entity\AuthCode
     service:
         user_provider: fos_user.user_provider.username

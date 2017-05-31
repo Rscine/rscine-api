@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\OAuthServerBundle\Entity;
+namespace OAuthServerBundle\Entity;
 
 use FOS\OAuthServerBundle\Entity\Client as BaseClient;
 use Doctrine\ORM\Mapping as ORM;
