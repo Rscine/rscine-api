@@ -11,9 +11,9 @@ disctricts:
     type: rest
     resource: SocialBundle\Controller\Api\DistrictController
 
-individuals:
+persons:
     type: rest
-    resource: SocialBundle\Controller\Api\IndividualController
+    resource: SocialBundle\Controller\Api\PersonController
 
 contactinformations:
     type: rest

@@ -9,12 +9,12 @@ use Doctrine\Common\Persistence\ObjectManager;
 use SocialBundle\Entity\Address;
 use SocialBundle\Entity\ContactInformation;
 use SocialBundle\Entity\Email;
-use SocialBundle\Entity\Individual;
+use SocialBundle\Entity\Person;
 use SocialBundle\Entity\Phone;
 
-class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
+class LoadPersonData implements FixtureInterface, OrderedFixtureInterface {
 
-    private $individuals = array(
+    private $persons = array(
         array(
             'name' => 'cormag',
             'district' => 33,
@@ -71,18 +71,18 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
     public function load(ObjectManager $manager)
     {
 
-        foreach ($this->individuals as $individualItem) {
-            $individual = new Individual();
-            $individual->setUsername(ucfirst($individualItem['name']));
-            $individual->setPlainPassword($individualItem['name']);
-            $individual->setLogin($individualItem['name']);
-            $individual->setEmail($individualItem['name'].'@gmail.com');
+        foreach ($this->persons as $personItem) {
+            $person = new Person();
+            $person->setUsername(ucfirst($personItem['name']));
+            $person->setPlainPassword($personItem['name']);
+            $person->setLogin($personItem['name']);
+            $person->setEmail($personItem['name'].'@gmail.com');
 
             // Company binding
-            $company = $manager->getRepository('SocialBundle:Company')->findOneByName($individualItem['company']);
+            $company = $manager->getRepository('SocialBundle:Company')->findOneByName($personItem['company']);
 
             if ($company)
-                $individual->setCompany($company);
+                $person->setCompany($company);
 
             // Contact informations binding
             $contactInformations = new ContactInformation();
@@ -102,18 +102,18 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
 
             $email = new Email();
 
-            $email->setEmail($individualItem['name'].'@'.strtolower($individual->getCompany()->getName()).'.com');
+            $email->setEmail($personItem['name'].'@'.strtolower($person->getCompany()->getName()).'.com');
             $email->setType('office');
 
             $contactInformations->addEmail($email);
 
             // Address binding
             $address = new Address();
-            $address->setNumber($individualItem['address']);
-            $address->setStreet($individualItem['company'].' avenue');
+            $address->setNumber($personItem['address']);
+            $address->setStreet($personItem['company'].' avenue');
             $address->setPostalCode(00000);
 
-            $district = $manager->getRepository('SocialBundle:District')->findOneByNumber($individualItem['district']);
+            $district = $manager->getRepository('SocialBundle:District')->findOneByNumber($personItem['district']);
 
             if ($district){
                 $address->setDistrict($district);
@@ -122,9 +122,9 @@ class LoadIndividualData implements FixtureInterface, OrderedFixtureInterface {
 
             $contactInformations->addAddress($address);
 
-            $individual->setContactInformation($contactInformations);
+            $person->setContactInformation($contactInformations);
 
-            $manager->persist($individual);
+            $manager->persist($person);
         }
 
         $manager->flush();

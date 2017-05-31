@@ -9,7 +9,7 @@ use Hateoas\Configuration\Relation;
 use Hateoas\Configuration\Route;
 use Hateoas\Configuration\Metadata\ClassMetadataInterface;
 
-use SocialBundle\Entity\Individual;
+use SocialBundle\Entity\Person;
 use SocialBundle\Entity\Worker;
 
 /**
@@ -57,7 +57,7 @@ class Company extends Worker
     /**
      * @var Worker
      *
-     * @ORM\OneToMany(targetEntity="Individual", mappedBy="company")
+     * @ORM\OneToMany(targetEntity="Person", mappedBy="company")
      */
     private $employees;
 
@@ -122,11 +122,11 @@ class Company extends Worker
     /**
      * Add employee
      *
-     * @param Individual $employee
+     * @param Person $employee
      *
      * @return Company
      */
-    public function addEmployee(Individual $employee)
+    public function addEmployee(Person $employee)
     {
         $this->employees[] = $employee;
 
@@ -136,9 +136,9 @@ class Company extends Worker
     /**
      * Remove employee
      *
-     * @param Individual $employee
+     * @param Person $employee
      */
-    public function removeEmployee(Individual $employee)
+    public function removeEmployee(Person $employee)
     {
         $this->employees->removeElement($employee);
     }
@@ -167,8 +167,8 @@ class Company extends Worker
             $relations[] = new Relation(
                 'employees',
                 new Route(
-                    'get_individual',
-                    array('individual' => $employee->getId())
+                    'get_person',
+                    array('person' => $employee->getId())
                 ));
         }
 

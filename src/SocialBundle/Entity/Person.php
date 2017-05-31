@@ -11,7 +11,7 @@ use SocialBundle\Entity\Worker;
 
 
 /**
- * Individual
+ * Person
  *
  * @ORM\Table()
  * @ORM\Entity()
@@ -25,7 +25,7 @@ use SocialBundle\Entity\Worker;
  *     attributes = {"id"= "expr(object.getCompany().getId())"}
  * )
  */
-class Individual extends Worker
+class Person extends Worker
 {
 
     /**
@@ -62,7 +62,7 @@ class Individual extends Worker
      *
      * @param Company $company
      *
-     * @return Individual
+     * @return Person
      */
     public function setCompany(Company $company = null)
     {

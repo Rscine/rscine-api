@@ -24,7 +24,7 @@ use OfferBundle\Entity\Offer;
  *
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"individual" = "Individual", "company" = "Company"})
+ * @ORM\DiscriminatorMap({"person" = "Person", "company" = "Company"})
  *
  * @Serializer\ExclusionPolicy("ALL")
  *

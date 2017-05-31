@@ -20,7 +20,7 @@ use SocialBundle\Entity\ContactInformation;
  *
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"worker" = "SocialBundle\Entity\Worker", "company" = "SocialBundle\Entity\Company", "individual" = "SocialBundle\Entity\Individual", "user" = "User"})
+ * @ORM\DiscriminatorMap({"worker" = "SocialBundle\Entity\Worker", "company" = "SocialBundle\Entity\Company", "person" = "SocialBundle\Entity\Person", "user" = "User"})
  *
  * @Serializer\ExclusionPolicy("ALL")
  *
