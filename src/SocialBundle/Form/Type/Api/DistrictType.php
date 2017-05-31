@@ -18,7 +18,7 @@ class DistrictType extends AbstractType
             ->add('name')
             ->add('number')
             ->add('region', 'entity', array(
-                'class' => 'RscineWorkerBundle:Region'
+                'class' => 'SocialBundle:Region'
             ))
         ;
     }

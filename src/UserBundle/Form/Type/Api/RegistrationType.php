@@ -16,7 +16,7 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('contactInformation', 'entity', array(
-                'class' => 'RscineWorkerBundle:ContactInformation'
+                'class' => 'SocialBundle:ContactInformation'
             ));
     }
 

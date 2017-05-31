@@ -25,7 +25,7 @@ class DistrictController extends FOSRestController
      */
     public function getDistrictsAction()
     {
-        $districts = $this->getDoctrine()->getManager()->getRepository('RscineWorkerBundle:District')->findAll();
+        $districts = $this->getDoctrine()->getManager()->getRepository('SocialBundle:District')->findAll();
         return $districts;
     }
 
@@ -33,7 +33,7 @@ class DistrictController extends FOSRestController
      * Récupère un départment
      * GET api/districts/{slug}
      * @Rest\View()
-     * @ParamConverter("district", class="RscineWorkerBundle:District")
+     * @ParamConverter("district", class="SocialBundle:District")
      *
      * @return [type] [description]
      */
@@ -72,7 +72,7 @@ class DistrictController extends FOSRestController
      * Modifie un départment
      * PUT api/districts/{slug}
      * @Rest\View()
-     * @ParamConverter("district", class="RscineWorkerBundle:District")
+     * @ParamConverter("district", class="SocialBundle:District")
      *
      * @param  Request    $request    [description]
      * @param  District $district [description]
@@ -129,7 +129,7 @@ class DistrictController extends FOSRestController
     /**
      * Retourne les options possibles pour un département
      * OPTIONS api/districts
-     * @ParamConverter("district", class="RscineWorkerBundle:District")
+     * @ParamConverter("district", class="SocialBundle:District")
      *
      * @return [type]       [description]
      */

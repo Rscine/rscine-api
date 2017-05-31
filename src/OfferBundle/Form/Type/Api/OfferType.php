@@ -18,7 +18,7 @@ class OfferType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('creator', 'entity', array(
-                'class' => 'RscineUserBundle:User'
+                'class' => 'UserBundle:User'
             ))
         ;
     }

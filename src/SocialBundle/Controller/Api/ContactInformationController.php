@@ -25,7 +25,7 @@ class ContactInformationController extends FOSRestController
      * GET api/contactInformations/{slug}
      *
      * @Rest\View()
-     * @ParamConverter("contactInformation", class="RscineWorkerBundle:ContactInformation")
+     * @ParamConverter("contactInformation", class="SocialBundle:ContactInformation")
      */
     public function getAction(ContactInformation $contactInformation)
     {
@@ -72,7 +72,7 @@ class ContactInformationController extends FOSRestController
      * Modifie un utilisateur client
      * PUT api/contactInformations/{slug}
      *
-     * @ParamConverter("contactInformation", class="RscineWorkerBundle:ContactInformation")
+     * @ParamConverter("contactInformation", class="SocialBundle:ContactInformation")
      */
     public function putAction(Request $request, ContactInformation $contactInformation)
     {
@@ -95,7 +95,7 @@ class ContactInformationController extends FOSRestController
      * Récupère les options possibles pour un utilisateur client
      * OPTIONS api/contactInformations/{slug}
      *
-     * @ParamConverter("contactInformation", class="RscineWorkerBundle:ContactInformation")
+     * @ParamConverter("contactInformation", class="SocialBundle:ContactInformation")
      */
     public function optionsAction(ContactInformation $contactInformation)
     {
@@ -121,7 +121,7 @@ class ContactInformationController extends FOSRestController
      * Supprime un utilisateur client $contactInformation
      * DELETE api/contactInformations/{slug}
      *
-     * @ParamConverter("contactInformation", class="RscineWorkerBundle:ContactInformation")
+     * @ParamConverter("contactInformation", class="SocialBundle:ContactInformation")
      */
     public function deleteAction(ContactInformation $contactInformation)
     {

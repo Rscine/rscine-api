@@ -33,7 +33,7 @@ class UserController extends FOSRestController
      */
     public function getUsersAction()
     {
-        $users = $this->getDoctrine()->getManager()->getRepository('RscineUserBundle:User')->findAll();
+        $users = $this->getDoctrine()->getManager()->getRepository('UserBundle:User')->findAll();
         return $users;
     }
 
@@ -41,7 +41,7 @@ class UserController extends FOSRestController
      * Récupère un utilisateur
      * GET api/users/{slug}
      * @Rest\View()
-     * @ParamConverter("user", class="RscineUserBundle:User")
+     * @ParamConverter("user", class="UserBundle:User")
      *
      * @param  [type] $slug [description]
      * @return [type]       [description]
@@ -54,7 +54,7 @@ class UserController extends FOSRestController
     /**
      * Modifie un utilisateur
      * PATCH api/users/{slug}
-     * @ParamConverter("user", class="RscineUserBundle:User")
+     * @ParamConverter("user", class="UserBundle:User")
      *
      * @param  [type] $slug [description]
      * @return [type]       [description]
@@ -79,7 +79,7 @@ class UserController extends FOSRestController
     /**
      * Modifie un utilisateur
      * PUT api/users/{slug}
-     * @ParamConverter("user", class="RscineUserBundle:User")
+     * @ParamConverter("user", class="UserBundle:User")
      *
      * @param  [type] $slug [description]
      * @return [type]       [description]
@@ -118,7 +118,7 @@ class UserController extends FOSRestController
     /**
      * Retourne les options possibles pour un utilisateur
      * OPTIONS api/users/{slug}
-     * @ParamConverter("user", class="RscineUserBundle:User")
+     * @ParamConverter("user", class="UserBundle:User")
      *
      * @return [type]       [description]
      */
@@ -133,7 +133,7 @@ class UserController extends FOSRestController
     /**
      * Supprime l'utilisateur $user
      * DELETE api/users/{slug}
-     * @ParamConverter("user", class="RscineUserBundle:User")
+     * @ParamConverter("user", class="UserBundle:User")
      *
      * @param  [type] $user [description]
      * @return [type]       [description]
