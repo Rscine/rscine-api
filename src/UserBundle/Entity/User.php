@@ -7,8 +7,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\OfferBundle\Model\OfferCreatorInterface;
-use Rscine\OfferBundle\Model\OfferCreatorTrait;
+use OfferBundle\Model\OfferCreatorInterface;
+use OfferBundle\Model\OfferCreatorTrait;
 use SocialBundle\Entity\District;
 use SocialBundle\Entity\ContactInformation;
 

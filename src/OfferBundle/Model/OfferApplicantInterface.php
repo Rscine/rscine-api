@@ -1,8 +1,8 @@
 <?php
 
-namespace Rscine\OfferBundle\Model;
+namespace OfferBundle\Model;
 
-use Rscine\OfferBundle\Entity\Offer;
+use OfferBundle\Entity\Offer;
 
 /**
  * Représente un utilisateur pouvant candidater à des offres

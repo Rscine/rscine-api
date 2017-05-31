@@ -1,4 +1,4 @@
-Rscine\OfferBundle\Entity\Offer:
+OfferBundle\Entity\Offer:
     constraints: ~
     properties:
         name:

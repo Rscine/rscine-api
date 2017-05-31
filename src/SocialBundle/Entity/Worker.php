@@ -8,13 +8,13 @@ use JMS\Serializer\Annotation as Serializer;
 
 use UserBundle\Entity\User;
 use SocialBundle\Entity\Company;
-use Rscine\OfferBundle\Model\OfferApplicantInterface;
-use Rscine\OfferBundle\Model\OfferApplicantTrait;
-use Rscine\OfferBundle\Model\OfferHandlerInterface;
-use Rscine\OfferBundle\Model\OfferHandlerTrait;
+use OfferBundle\Model\OfferApplicantInterface;
+use OfferBundle\Model\OfferApplicantTrait;
+use OfferBundle\Model\OfferHandlerInterface;
+use OfferBundle\Model\OfferHandlerTrait;
 use SocialBundle\Entity\Profile;
 use SocialBundle\Entity\Genre;
-use Rscine\OfferBundle\Entity\Offer;
+use OfferBundle\Entity\Offer;
 
 /**
  * Worker

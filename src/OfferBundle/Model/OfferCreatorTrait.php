@@ -1,8 +1,8 @@
 <?php
 
-namespace Rscine\OfferBundle\Model;
+namespace OfferBundle\Model;
 
-use Rscine\OfferBundle\Entity\Offer;
+use OfferBundle\Entity\Offer;
 
 /**
  * Représente un utilisateur pouvant créer des offres
@@ -12,7 +12,7 @@ trait OfferCreatorTrait
     /**
      * @var ArrayCollection<Offer>
      *
-     * @ORM\OneToMany(targetEntity="Rscine\OfferBundle\Entity\Offer", mappedBy="creator")
+     * @ORM\OneToMany(targetEntity="OfferBundle\Entity\Offer", mappedBy="creator")
      */
     private $offersCreated;
 

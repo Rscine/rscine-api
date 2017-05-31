@@ -1,8 +1,8 @@
 <?php
 
-namespace Rscine\OfferBundle\Controller\Api;
+namespace OfferBundle\Controller\Api;
 
-use Rscine\OfferBundle\Entity\Offer;
+use OfferBundle\Entity\Offer;
 use Rscine\AppBundle\Form\OfferType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;

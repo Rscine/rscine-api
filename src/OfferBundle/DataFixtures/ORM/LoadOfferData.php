@@ -4,7 +4,7 @@ namespace SocialBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Rscine\OfferBundle\Entity\Offer;
+use OfferBundle\Entity\Offer;
 use Rscine\AppBundle\AppBundle;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 

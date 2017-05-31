@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-use Rscine\OfferBundle\Entity\Offer;
+use OfferBundle\Entity\Offer;
 use SocialBundle\Entity\Worker;
 use UserBundle\Entity\User;
 use Rscine\AppBundle\Form\ProfileType;

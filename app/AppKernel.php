@@ -17,7 +17,6 @@ class AppKernel extends Kernel
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new Rscine\OAuthServerBundle\RscineOAuthServerBundle(),
-            new Rscine\OfferBundle\RscineOfferBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
@@ -29,6 +28,7 @@ class AppKernel extends Kernel
             new SocialBundle\SocialBundle(),
             new UserBundle\UserBundle(),
             new CoreBundle\CoreBundle(),
+            new OfferBundle\OfferBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

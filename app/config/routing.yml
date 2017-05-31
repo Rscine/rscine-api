@@ -1,3 +1,7 @@
+offer:
+    resource: "@OfferBundle/Resources/config/routing.yml"
+    prefix:   /
+
 core:
     resource: "@CoreBundle/Resources/config/routing.yml"
     prefix:   /
@@ -12,10 +16,6 @@ social:
 
 rscine_o_auth_server:
     resource: "@RscineOAuthServerBundle/Resources/config/routing.yml"
-    prefix:   /
-
-rscine_offer:
-    resource: "@RscineOfferBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user_security:

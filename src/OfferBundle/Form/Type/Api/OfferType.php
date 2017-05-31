@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\AppBundle\Form;
+namespace OfferBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +29,7 @@ class OfferType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Rscine\OfferBundle\Entity\Offer'
+            'data_class' => 'OfferBundle\Entity\Offer'
         ));
     }
 

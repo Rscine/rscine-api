@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\OfferBundle\Entity;
+namespace OfferBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -10,9 +10,9 @@ use Hateoas\Configuration\Relation;
 use Hateoas\Configuration\Route;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\OfferBundle\Model\OfferApplicantInterface;
-use Rscine\OfferBundle\Model\OfferCreatorInterface;
-use Rscine\OfferBundle\Model\OfferHandlerInterface;
+use OfferBundle\Model\OfferApplicantInterface;
+use OfferBundle\Model\OfferCreatorInterface;
+use OfferBundle\Model\OfferHandlerInterface;
 use CoreBundle\Model\Timestampable\TimestampableInterface;
 use CoreBundle\Model\Timestampable\TimestampableTrait;
 
@@ -71,7 +71,7 @@ class Offer implements TimestampableInterface
      * Créateur de la demande (utilisateur client)
      * @var OfferCreatorInterface
      *
-     * @ORM\ManyToOne(targetEntity="Rscine\OfferBundle\Model\OfferCreatorInterface", inversedBy="offersCreated")
+     * @ORM\ManyToOne(targetEntity="OfferBundle\Model\OfferCreatorInterface", inversedBy="offersCreated")
      * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
      */
     private $creator;
@@ -80,7 +80,7 @@ class Offer implements TimestampableInterface
      * Candidats à la demande
      * @var Array<OfferApplicantInterface>
      *
-     * @ORM\ManyToMany(targetEntity="Rscine\OfferBundle\Model\OfferApplicantInterface", inversedBy="offersAppliedTo", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="OfferBundle\Model\OfferApplicantInterface", inversedBy="offersAppliedTo", cascade={"persist"})
      * @ORM\JoinTable(name="offers_applications",
      *      joinColumns={@ORM\JoinColumn(name="offer_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="applicant_id", referencedColumnName="id")}
@@ -92,7 +92,7 @@ class Offer implements TimestampableInterface
      * Maître d'oeuvre
      * @var OfferHandlerInterface
      *
-     * @ORM\ManyToOne(targetEntity="Rscine\OfferBundle\Model\OfferHandlerInterface", inversedBy="offersHandled")
+     * @ORM\ManyToOne(targetEntity="OfferBundle\Model\OfferHandlerInterface", inversedBy="offersHandled")
      * @ORM\JoinColumn(name="handler_id", referencedColumnName="id")
      */
     private $handler;
