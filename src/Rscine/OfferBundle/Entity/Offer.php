@@ -13,8 +13,8 @@ use JMS\Serializer\Annotation as Serializer;
 use Rscine\OfferBundle\Model\OfferApplicantInterface;
 use Rscine\OfferBundle\Model\OfferCreatorInterface;
 use Rscine\OfferBundle\Model\OfferHandlerInterface;
-use Rscine\CoreBundle\Model\Timestampable\TimestampableInterface;
-use Rscine\CoreBundle\Model\Timestampable\TimestampableTrait;
+use CoreBundle\Model\Timestampable\TimestampableInterface;
+use CoreBundle\Model\Timestampable\TimestampableTrait;
 
 /**
  * Offer

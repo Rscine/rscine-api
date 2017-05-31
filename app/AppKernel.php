@@ -16,7 +16,6 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
-            new Rscine\CoreBundle\RscineCoreBundle(),
             new Rscine\OAuthServerBundle\RscineOAuthServerBundle(),
             new Rscine\OfferBundle\RscineOfferBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
@@ -29,6 +28,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new SocialBundle\SocialBundle(),
             new UserBundle\UserBundle(),
+            new CoreBundle\CoreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

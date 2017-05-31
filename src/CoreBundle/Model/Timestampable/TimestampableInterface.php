@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\CoreBundle\Model\Timestampable;
+namespace CoreBundle\Model\Timestampable;
 
 interface TimestampableInterface
 {

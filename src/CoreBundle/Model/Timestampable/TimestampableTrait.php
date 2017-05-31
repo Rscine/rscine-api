@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\CoreBundle\Model\Timestampable;
+namespace CoreBundle\Model\Timestampable;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
