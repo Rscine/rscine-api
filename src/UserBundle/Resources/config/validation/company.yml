@@ -1,4 +1,4 @@
-Rscine\WorkerBundle\Entity\Company:
+SocialBundle\Entity\Company:
     constraints: ~
     properties:
         name:

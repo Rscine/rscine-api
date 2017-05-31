@@ -9,8 +9,8 @@ use JMS\Serializer\Annotation as Serializer;
 
 use Rscine\OfferBundle\Model\OfferCreatorInterface;
 use Rscine\OfferBundle\Model\OfferCreatorTrait;
-use Rscine\WorkerBundle\Entity\District;
-use Rscine\WorkerBundle\Entity\ContactInformation;
+use SocialBundle\Entity\District;
+use SocialBundle\Entity\ContactInformation;
 
 /**
  * User
@@ -20,7 +20,7 @@ use Rscine\WorkerBundle\Entity\ContactInformation;
  *
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"worker" = "Rscine\WorkerBundle\Entity\Worker", "company" = "Rscine\WorkerBundle\Entity\Company", "individual" = "Rscine\WorkerBundle\Entity\Individual", "user" = "User"})
+ * @ORM\DiscriminatorMap({"worker" = "SocialBundle\Entity\Worker", "company" = "SocialBundle\Entity\Company", "individual" = "SocialBundle\Entity\Individual", "user" = "User"})
  *
  * @Serializer\ExclusionPolicy("ALL")
  *
@@ -45,7 +45,7 @@ class User extends BaseUser implements OfferCreatorInterface
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Rscine\WorkerBundle\Entity\ContactInformation", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="SocialBundle\Entity\ContactInformation", cascade={"persist"})
      * @ORM\JoinColumn(name="contact_informations_id", referencedColumnName="id")
      */
     private $contactInformation;
@@ -173,7 +173,7 @@ class User extends BaseUser implements OfferCreatorInterface
     /**
      * Get contactInformation
      *
-     * @return \Rscine\WorkerBundle\Entity\ContactInformation
+     * @return \SocialBundle\Entity\ContactInformation
      */
     public function getContactInformation()
     {
