@@ -148,11 +148,11 @@ class District
     /**
      * Add user
      *
-     * @param \Rscine\UserBundle\Entity\User $user
+     * @param \UserBundle\Entity\User $user
      *
      * @return District
      */
-    public function addUser(\Rscine\UserBundle\Entity\User $user)
+    public function addUser(\UserBundle\Entity\User $user)
     {
         $this->users[] = $user;
 
@@ -162,9 +162,9 @@ class District
     /**
      * Remove user
      *
-     * @param \Rscine\UserBundle\Entity\User $user
+     * @param \UserBundle\Entity\User $user
      */
-    public function removeUser(\Rscine\UserBundle\Entity\User $user)
+    public function removeUser(\UserBundle\Entity\User $user)
     {
         $this->users->removeElement($user);
     }

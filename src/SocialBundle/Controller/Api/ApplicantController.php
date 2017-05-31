@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Rscine\OfferBundle\Entity\Offer;
 use SocialBundle\Entity\Worker;
-use Rscine\UserBundle\Entity\User;
+use UserBundle\Entity\User;
 use Rscine\AppBundle\Form\ProfileType;
 use Rscine\AppBundle\Form\RegistrationType;
 /**

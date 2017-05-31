@@ -1,12 +1,12 @@
 <?php
 
-namespace Rscine\AppBundle\Form;
+namespace UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RegistrationType extends AbstractType
+class ProfileType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -14,10 +14,9 @@ class RegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('contactInformation', 'entity', array(
-                'class' => 'RscineWorkerBundle:ContactInformation'
-            ));
+        $builder->add('district', 'entity', array(
+            'class' => 'RscineWorkerBundle:District'
+        ));
     }
 
     /**
@@ -26,8 +25,8 @@ class RegistrationType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'validation_groups' => array('registration'),
-            'data_class' => 'Rscine\UserBundle\Entity\User'
+            'validation_groups' => array('profile'),
+            'data_class' => 'UserBundle\Entity\User'
         ));
     }
 
@@ -36,7 +35,7 @@ class RegistrationType extends AbstractType
      */
     public function getParent()
     {
-        return 'fos_user_registration';
+        return 'fos_user_profile';
     }
 
     /**
@@ -44,6 +43,6 @@ class RegistrationType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_user_registration';
+        return 'appbundle_user_profile';
     }
 }

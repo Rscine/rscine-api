@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\UserBundle\Model;
+namespace UserBundle\Model;
 
 interface UserInterface
 {

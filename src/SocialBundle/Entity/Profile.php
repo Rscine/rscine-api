@@ -89,11 +89,11 @@ class Profile
     /**
      * Add worker
      *
-     * @param \Rscine\UserBundle\Entity\User $worker
+     * @param \UserBundle\Entity\User $worker
      *
      * @return Profile
      */
-    public function addWorker(\Rscine\UserBundle\Entity\User $worker)
+    public function addWorker(\UserBundle\Entity\User $worker)
     {
         $this->workers[] = $worker;
 
@@ -103,9 +103,9 @@ class Profile
     /**
      * Remove worker
      *
-     * @param \Rscine\UserBundle\Entity\User $worker
+     * @param \UserBundle\Entity\User $worker
      */
-    public function removeWorker(\Rscine\UserBundle\Entity\User $worker)
+    public function removeWorker(\UserBundle\Entity\User $worker)
     {
         $this->workers->removeElement($worker);
     }

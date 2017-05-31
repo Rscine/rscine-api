@@ -90,11 +90,11 @@ class Genre
     /**
      * Add worker
      *
-     * @param \Rscine\UserBundle\Entity\User $worker
+     * @param \UserBundle\Entity\User $worker
      *
      * @return Genre
      */
-    public function addWorker(\Rscine\UserBundle\Entity\User $worker)
+    public function addWorker(\UserBundle\Entity\User $worker)
     {
         $this->workers[] = $worker;
 
@@ -104,9 +104,9 @@ class Genre
     /**
      * Remove worker
      *
-     * @param \Rscine\UserBundle\Entity\User $worker
+     * @param \UserBundle\Entity\User $worker
      */
-    public function removeWorker(\Rscine\UserBundle\Entity\User $worker)
+    public function removeWorker(\UserBundle\Entity\User $worker)
     {
         $this->workers->removeElement($worker);
     }

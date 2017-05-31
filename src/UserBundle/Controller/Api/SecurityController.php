@@ -1,6 +1,6 @@
 <?php
 
-namespace Rscine\UserBundle\Controller\Api;
+namespace UserBundle\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

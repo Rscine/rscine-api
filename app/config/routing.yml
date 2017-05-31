@@ -1,3 +1,7 @@
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 social:
     resource: "@SocialBundle/Resources/config/routing.yml"
     prefix:   /
@@ -12,10 +16,6 @@ rscine_core:
 
 rscine_offer:
     resource: "@RscineOfferBundle/Resources/config/routing.yml"
-    prefix:   /
-
-rscine_user:
-    resource: "@RscineUserBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user_security:

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
 use JMS\Serializer\Annotation as Serializer;
 
-use Rscine\UserBundle\Entity\User;
+use UserBundle\Entity\User;
 use SocialBundle\Entity\Company;
 use Rscine\OfferBundle\Model\OfferApplicantInterface;
 use Rscine\OfferBundle\Model\OfferApplicantTrait;

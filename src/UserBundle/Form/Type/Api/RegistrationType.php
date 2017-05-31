@@ -1,12 +1,12 @@
 <?php
 
-namespace Rscine\AppBundle\Form;
+namespace UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CompanyProfileType extends AbstractType
+class RegistrationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,9 @@ class CompanyProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('siret')
-            ->add('name')
-        ;
+            ->add('contactInformation', 'entity', array(
+                'class' => 'RscineWorkerBundle:ContactInformation'
+            ));
     }
 
     /**
@@ -26,7 +26,8 @@ class CompanyProfileType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Rscine\WorkerBundle\Entity\Company'
+            'validation_groups' => array('registration'),
+            'data_class' => 'UserBundle\Entity\User'
         ));
     }
 
@@ -35,7 +36,7 @@ class CompanyProfileType extends AbstractType
      */
     public function getParent()
     {
-        return 'appbundle_user_profile';
+        return 'fos_user_registration';
     }
 
     /**
@@ -43,6 +44,6 @@ class CompanyProfileType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_company_profile';
+        return 'appbundle_user_registration';
     }
 }

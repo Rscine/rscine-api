@@ -1,13 +1,13 @@
 <?php
 
-namespace Rscine\UserBundle\Controller\Api;
+namespace UserBundle\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations as Rest;
-use Rscine\UserBundle\Entity\User;
+use UserBundle\Entity\User;
 use Rscine\AppBundle\Form\RegistrationType;
 use Rscine\AppBundle\Form\ProfileType;
 use Symfony\Component\HttpFoundation\Request;
