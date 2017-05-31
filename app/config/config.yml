@@ -80,9 +80,9 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         resolve_target_entities:
-            Rscine\OfferBundle\Model\OfferApplicantInterface: Rscine\WorkerBundle\Entity\Worker
-            Rscine\OfferBundle\Model\OfferHandlerInterface: Rscine\WorkerBundle\Entity\Worker
-            Rscine\OfferBundle\Model\OfferCreatorInterface: Rscine\UserBundle\Entity\User
+            OfferBundle\Model\OfferApplicantInterface: SocialBundle\Entity\Worker
+            OfferBundle\Model\OfferHandlerInterface: SocialBundle\Entity\Worker
+            OfferBundle\Model\OfferCreatorInterface: UserBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:
