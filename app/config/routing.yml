@@ -1,3 +1,7 @@
+project:
+    resource: "@ProjectBundle/Resources/config/routing.yml"
+    prefix:   /
+
 o_auth_server:
     resource: "@OAuthServerBundle/Resources/config/routing.yml"
     prefix:   /

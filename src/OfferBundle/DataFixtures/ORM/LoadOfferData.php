@@ -8,7 +8,8 @@ use OfferBundle\Entity\Offer;
 use Rscine\AppBundle\AppBundle;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadOfferData implements FixtureInterface, OrderedFixtureInterface{
+class LoadOfferData implements FixtureInterface, OrderedFixtureInterface
+{
 
     private $offers = array(
         'Take back Neimi' => 'You need to take back Neimi so that she can be with us all along from now on',
@@ -18,7 +19,7 @@ class LoadOfferData implements FixtureInterface, OrderedFixtureInterface{
     );
 
     /**
-     *
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
