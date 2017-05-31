@@ -1,6 +1,6 @@
 #!/bin/bash
 
-php app/console doctrine:database:drop --force
-php app/console doctrine:database:create
-php app/console doctrine:schema:update --force
-php app/console doctrine:fixtures:load
+php bin/console doctrine:database:drop --force
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
+php bin/console doctrine:fixtures:load
