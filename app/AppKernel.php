@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new Rscine\OAuthServerBundle\RscineOAuthServerBundle(),
             new Rscine\OfferBundle\RscineOfferBundle(),
             new Rscine\UserBundle\RscineUserBundle(),
-            new Rscine\WorkerBundle\RscineWorkerBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
@@ -29,6 +28,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new SocialBundle\SocialBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

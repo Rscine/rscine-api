@@ -1,9 +1,9 @@
-rscine_o_auth_server:
-    resource: "@RscineOAuthServerBundle/Resources/config/routing.yml"
+social:
+    resource: "@SocialBundle/Resources/config/routing.yml"
     prefix:   /
 
-rscine_worker:
-    resource: "@RscineWorkerBundle/Resources/config/routing.yml"
+rscine_o_auth_server:
+    resource: "@RscineOAuthServerBundle/Resources/config/routing.yml"
     prefix:   /
 
 rscine_core:
